@@ -3,32 +3,32 @@ package maxb.pro;
 
 public class Place
 {
-    private int X = 0;
-    private int Y = 0;
+    private int row = 0;
+    private int col = 0;
 
-    public Place(int X, int Y)
+    public Place(int row, int col)
     {
-        this.X = X;
-        this.Y = Y;
+        this.row = row;
+        this.col = col;
     }
 
-    public int getX()
+    public int getCol()
     {
-        return X;
+        return col;
     }
 
-    public int getY()
+    public int getRow()
     {
-        return Y;
+        return row;
     }
 
-    public void setX(int X)
+    public void setCol(int col)
     {
-        this.X = X;
+        this.col = col;
     }
 
-    public void setY(int Y)
+    public void setRow(int row)
     {
-        this.Y = Y;
+        this.row = row;
     }
 }
