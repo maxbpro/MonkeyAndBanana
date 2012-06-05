@@ -1,12 +1,16 @@
 package maxb.pro;
 
 
-import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
 public class EmptyActor extends Actor
 {
-    public EmptyActor(Context context, Place place)
+
+    @Override
+    public Drawable getImage(Resources resources)
     {
-        super(context, place);
+        return null;
     }
 }

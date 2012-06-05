@@ -1,17 +1,16 @@
 package maxb.pro;
 
 
-import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 
 public class Banana extends Actor
 {
 
 
-    public Banana(Context context, Place place)
+    @Override
+    public Drawable getImage(Resources resources)
     {
-        super(context, place);
-        setImageDrawable(getResources().getDrawable(R.drawable.banana));
+         return resources.getDrawable(R.drawable.banana);
     }
-
-
 }

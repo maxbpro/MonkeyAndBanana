@@ -20,7 +20,7 @@ public class MainActivity extends Activity
             public void onClick(View view)
             {
 
-                field.toRigthMonkey();
+                field.toDownMonkey();
             }
         });
     }

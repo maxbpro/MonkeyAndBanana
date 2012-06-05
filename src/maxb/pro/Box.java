@@ -1,18 +1,19 @@
 package maxb.pro;
 
 
-import android.content.Context;
+
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 
 public class Box extends Actor
 {
 
-    public Box(Context context, Place place)
+
+    @Override
+    public Drawable getImage(Resources resources)
     {
-        super(context, place);
-        setImageDrawable(getResources().getDrawable(R.drawable.box));
-
+        return resources.getDrawable(R.drawable.box);
     }
-
 
 
 }
