@@ -5,10 +5,13 @@ package maxb.pro;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.*;
+
+import java.util.Random;
 
 public class FieldView extends FrameLayout
 {
@@ -20,11 +23,16 @@ public class FieldView extends FrameLayout
     private Cell monkeyCell = null;
     private Cell boxCell = null;
     private Cell bananaCell = null;
+    private Handler handler = null;
+    private long DELAY = 100;
 
 
     public FieldView(Context context, AttributeSet attr)
     {
         super(context, attr);
+
+        handler = new Handler();
+
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
@@ -51,8 +59,6 @@ public class FieldView extends FrameLayout
         }
         monkeyCell.updateState(MonkeySingleton.getInstance());
         initAllCells();
-        initCellsEscape();
-
 
     }
 
@@ -94,6 +100,7 @@ public class FieldView extends FrameLayout
                 cell.setLeftCell(cellLeft);
                 cell.setTopCell(cellTop);
                 cell.setBottomCell(cellBottom);
+                cell.setPosition(Cell.Position.CENTER);
             }
         }
 
@@ -112,6 +119,7 @@ public class FieldView extends FrameLayout
             cell.setBottomCell(cellBottom);
             Cell cellRigth = (Cell)row.getChildAt(1);
             cell.setRigthCell(cellRigth);
+            cell.setPosition(Cell.Position.LEFT);
 
             Cell rCellTop = (Cell)rowTop.getChildAt(COLNUM-1);
             Cell rCellBottom = (Cell)rowBottom.getChildAt(COLNUM-1);
@@ -119,12 +127,7 @@ public class FieldView extends FrameLayout
             rCell.setBottomCell(rCellBottom);
             Cell rcellLeft = (Cell)row.getChildAt(COLNUM-2);
             rCell.setLeftCell(rcellLeft);
-
-
-
-
-
-
+            rCell.setPosition(Cell.Position.RIGHT);
         }
 
         TableRow row = (TableRow)field.getChildAt(0);
@@ -137,24 +140,28 @@ public class FieldView extends FrameLayout
         leftTopCell.setRigthCell(rigthCell);
         Cell bottomCell = (Cell)rowBottom.getChildAt(0);
         leftTopCell.setBottomCell(bottomCell);
+        leftTopCell.setPosition(Cell.Position.LEFTTOP);
 
         Cell rigthTopCell = (Cell)row.getChildAt(COLNUM-1);
         Cell leftCell = (Cell)row.getChildAt(COLNUM-2);
         rigthTopCell.setLeftCell(leftCell);
         bottomCell = (Cell)rowBottom.getChildAt(COLNUM-1);
         rigthTopCell.setBottomCell(bottomCell);
+        rigthTopCell.setPosition(Cell.Position.RIGTHTOP);
 
         Cell bottomLeftCell = (Cell)brow.getChildAt(0);
         rigthCell = (Cell)brow.getChildAt(1);
         bottomLeftCell.setRigthCell(rigthCell);
         Cell topCell = (Cell)rowTop.getChildAt(0);
         bottomLeftCell.setTopCell(topCell);
+        bottomLeftCell.setPosition(Cell.Position.LEFTBOTTOM);
 
         Cell bottomRightCell = (Cell)brow.getChildAt(COLNUM-1);
         leftCell = (Cell)brow.getChildAt(COLNUM-2);
         bottomRightCell.setLeftCell(leftCell);
         topCell = (Cell)rowTop.getChildAt(COLNUM-1);
         bottomRightCell.setTopCell(topCell);
+        bottomRightCell.setPosition(Cell.Position.RIGTHBOTTOM);
 
         for(int i = 1; i < COLNUM-1; i++)
         {
@@ -166,6 +173,7 @@ public class FieldView extends FrameLayout
             Cell cellRigth = (Cell)row.getChildAt(i+1);
             cell.setRigthCell(cellRigth);
             cell.setLeftCell(cellLeft);
+            cell.setPosition(Cell.Position.TOP);
 
             Cell bCell = (Cell)brow.getChildAt(i);
             Cell cellTop = (Cell)rowTop.getChildAt(i);
@@ -175,57 +183,184 @@ public class FieldView extends FrameLayout
             Cell bCellRigth = (Cell)brow.getChildAt(ROWNUM-1);
             bCell.setRigthCell(bCellRigth);
             bCell.setLeftCell(bCellLeft);
+            bCell.setPosition(Cell.Position.BOTTOM);
         }
     }
 
-    private void initCellsEscape()
-    {
-        int F = 0;
-        int T = 0;
-        int TH = 0;
 
-        for (int i=0; i<ROWNUM; i++)
-        {
-            TableRow row = (TableRow)field.getChildAt(i);
-            for (int j=0; j<COLNUM; j++)
-            {
-                Cell cell = (Cell)row.getChildAt(j);
-                cell.initEscapes();
-            }
-
-        }
-    }
 
     private void toRigthMonkey()
     {
-        toMoveMonkey(monkeyCell, monkeyCell.getRigthCell());
+        toMoveMonkey(monkeyCell.getRigthCell());
     }
 
     private void toDownMonkey()
     {
-        toMoveMonkey(monkeyCell, monkeyCell.getBottomCell());
+        toMoveMonkey(monkeyCell.getBottomCell());
     }
 
     private void toLeftMonkey()
     {
-         toMoveMonkey(monkeyCell, monkeyCell.getLeftCell());
+         toMoveMonkey(monkeyCell.getLeftCell());
     }
 
     private void toUpMonkey()
     {
-        toMoveMonkey(monkeyCell, monkeyCell.getTopCell());
+        toMoveMonkey(monkeyCell.getTopCell());
     }
 
-    private void toMoveMonkey(Cell cell, Cell newCell)
+    private void toMoveMonkey(Cell newCell)
     {
-        cell.updateState(new EmptyActor());
+        monkeyCell.updateState(new EmptyActor());
         newCell.updateState(MonkeySingleton.getInstance());
-        cell = newCell;
+        monkeyCell = newCell;
     }
 
     public void start()
     {
+        Runnable RecurringTask = new Runnable()
+        {
+            public void run()
+            {
+                movement();
+                handler.postDelayed(this, DELAY);
+            }
+        };
+        handler.postDelayed(RecurringTask, DELAY);
 
+    }
+
+    private void movement()
+    {
+
+        Random rn = new Random();
+        switch (monkeyCell.getPosition())
+        {
+            case LEFTTOP:
+            {
+                int num = rn.nextInt(2);
+                if(num==0)
+                    toRigthMonkey();
+                else
+                    toDownMonkey();
+                break;
+            }
+            case LEFTBOTTOM:
+            {
+                int num = rn.nextInt(2);
+                if(num==0)
+                    toRigthMonkey();
+                else
+                    toUpMonkey();
+                break;
+            }
+            case RIGTHTOP:
+            {
+                int num = rn.nextInt(2);
+                if (num==0)
+                  toLeftMonkey();
+                else
+                  toDownMonkey();
+                break;
+            }
+            case RIGTHBOTTOM:
+            {
+                int num = rn.nextInt(2);
+                if (num==0)
+                    toLeftMonkey();
+                else
+                    toUpMonkey();
+                break;
+            }
+            case LEFT:
+            {
+                int num = rn.nextInt(3);
+                switch (num)
+                {
+                    case 0:
+                        toUpMonkey();
+                        break;
+                    case 1:
+                        toRigthMonkey();
+                        break;
+                    case 2:
+                        toDownMonkey();
+                        break;
+                }
+                break;
+            }
+            case RIGHT:
+            {
+                int num = rn.nextInt(3);
+                switch (num)
+                {
+                    case 0:
+                        toUpMonkey();
+                        break;
+                    case 1:
+                        toDownMonkey();
+                        break;
+                    case 2:
+                        toLeftMonkey();
+                        break;
+                }
+                break;
+            }
+            case TOP:
+            {
+                int num = rn.nextInt(3);
+                switch (num)
+                {
+                    case 0:
+                        toDownMonkey();
+                        break;
+                    case 1:
+                        toRigthMonkey();
+                        break;
+                    case 2:
+                        toLeftMonkey();
+                        break;
+                }
+                break;
+            }
+            case BOTTOM:
+            {
+                int num = rn.nextInt(3);
+                switch (num)
+                {
+                    case 0:
+                        toUpMonkey();
+                        break;
+                    case 1:
+                        toRigthMonkey();
+                        break;
+                    case 2:
+                        toLeftMonkey();
+                        break;
+                }
+                break;
+            }
+            case CENTER:
+            {
+                int num = rn.nextInt(4);
+                switch (num)
+                {
+                    case 0:
+                        toLeftMonkey();
+                        break;
+                    case 1:
+                        toUpMonkey();
+                        break;
+                    case 2:
+                        toRigthMonkey();
+                        break;
+                    case 3:
+                        toDownMonkey();
+                        break;
+                }
+                break;
+            }
+        }
     }
 
 
