@@ -11,18 +11,44 @@ public class Cell extends ImageView
     private Cell leftCell = null;
     private Cell topCell = null;
     private Cell bottomCell = null;
+    public enum State {TWO_ESCAPE, THREE_ESCAPE, FOUR_ESCAPE}
+    private State mStateEscape = State.FOUR_ESCAPE;
 
     public Cell(Context context, Actor mState)
     {
         super(context);
         this.mState = mState;
-
     }
 
     public void updateState(Actor mState)
     {
         this.mState = mState;
         setImageDrawable(mState.getImage(getResources()));
+    }
+
+    public void initEscapes()
+    {
+        int counter = 0;
+        if (rigthCell == null)
+            counter++;
+        if (leftCell == null)
+            counter++;
+        if(bottomCell == null)
+            counter++;
+        if(topCell == null)
+            counter++;
+        switch (counter)
+        {
+            case 0:
+                mStateEscape = State.FOUR_ESCAPE;
+                break;
+            case 1:
+               mStateEscape = State.THREE_ESCAPE;
+               break;
+            case 2:
+                mStateEscape = State.TWO_ESCAPE;
+                break;
+        }
     }
 
     public Cell getRigthCell()
@@ -65,7 +91,10 @@ public class Cell extends ImageView
          this.bottomCell = cell;
     }
 
-
+    public State getStateEscape()
+    {
+        return mStateEscape;
+    }
 
 
 }

@@ -14,8 +14,8 @@ public class FieldView extends FrameLayout
 {
     private TableLayout field = null;
     private Context context = null;
-    private static final int ROWNUM = 6;
-    private static final int COLNUM = 6;
+    private static final int ROWNUM = 10;
+    private static final int COLNUM = 10;
     private int cellWidth = 0;
     private Cell monkeyCell = null;
     private Cell boxCell = null;
@@ -51,7 +51,7 @@ public class FieldView extends FrameLayout
         }
         monkeyCell.updateState(MonkeySingleton.getInstance());
         initAllCells();
-
+        initCellsEscape();
 
 
     }
@@ -97,48 +97,33 @@ public class FieldView extends FrameLayout
             }
         }
 
-        for (int i = 0; i < ROWNUM; i++)
+        for (int i = 1; i < ROWNUM-1; i++)
         {
             TableRow row = (TableRow)field.getChildAt(i);
             Cell cell = (Cell)row.getChildAt(0);
+            Cell rCell = (Cell)row.getChildAt(COLNUM-1);
+
+            TableRow rowTop = (TableRow)field.getChildAt(i-1);
+            TableRow rowBottom = (TableRow)field.getChildAt(i+1);
+
+            Cell cellTop = (Cell)rowTop.getChildAt(0);
+            Cell cellBottom = (Cell)rowBottom.getChildAt(0);
+            cell.setTopCell(cellTop);
+            cell.setBottomCell(cellBottom);
             Cell cellRigth = (Cell)row.getChildAt(1);
             cell.setRigthCell(cellRigth);
 
-            Cell rCell = (Cell)row.getChildAt(COLNUM-1);
+            Cell rCellTop = (Cell)rowTop.getChildAt(COLNUM-1);
+            Cell rCellBottom = (Cell)rowBottom.getChildAt(COLNUM-1);
+            rCell.setTopCell(rCellTop);
+            rCell.setBottomCell(rCellBottom);
             Cell rcellLeft = (Cell)row.getChildAt(COLNUM-2);
             rCell.setLeftCell(rcellLeft);
 
-            if(i==0)
-            {
-                TableRow rowBottom = (TableRow)field.getChildAt(i+1);
-                Cell cellBottom = (Cell)rowBottom.getChildAt(0);
-                cell.setBottomCell(cellBottom);
-            }
-            else
-            {
-                if(i==ROWNUM-1)
-                {
-                    TableRow rowTop = (TableRow)field.getChildAt(ROWNUM-2);
-                    Cell cellTop = (Cell)rowTop.getChildAt(0);
-                    rCell.setTopCell(cellTop);
-                }
-                else
-                {
-                    TableRow rowTop = (TableRow)field.getChildAt(i-1);
-                    TableRow rowBottom = (TableRow)field.getChildAt(i+1);
 
-                    Cell cellTop = (Cell)rowTop.getChildAt(0);
-                    Cell cellBottom = (Cell)rowBottom.getChildAt(0);
-                    cell.setTopCell(cellTop);
-                    cell.setBottomCell(cellBottom);
 
-                    Cell rCellTop = (Cell)rowTop.getChildAt(COLNUM-1);
-                    Cell rCellBottom = (Cell)rowBottom.getChildAt(COLNUM-1);
-                    rCell.setTopCell(rCellTop);
-                    rCell.setBottomCell(rCellBottom);
-                }
 
-            }
+
 
         }
 
@@ -147,7 +132,31 @@ public class FieldView extends FrameLayout
         TableRow brow = (TableRow)field.getChildAt(ROWNUM-1);
         TableRow rowTop = (TableRow)field.getChildAt(ROWNUM-2);
 
-        for(int i = 0; i < COLNUM; i++)
+        Cell leftTopCell = (Cell)row.getChildAt(0);
+        Cell rigthCell = (Cell)row.getChildAt(1);
+        leftTopCell.setRigthCell(rigthCell);
+        Cell bottomCell = (Cell)rowBottom.getChildAt(0);
+        leftTopCell.setBottomCell(bottomCell);
+
+        Cell rigthTopCell = (Cell)row.getChildAt(COLNUM-1);
+        Cell leftCell = (Cell)row.getChildAt(COLNUM-2);
+        rigthTopCell.setLeftCell(leftCell);
+        bottomCell = (Cell)rowBottom.getChildAt(COLNUM-1);
+        rigthTopCell.setBottomCell(bottomCell);
+
+        Cell bottomLeftCell = (Cell)brow.getChildAt(0);
+        rigthCell = (Cell)brow.getChildAt(1);
+        bottomLeftCell.setRigthCell(rigthCell);
+        Cell topCell = (Cell)rowTop.getChildAt(0);
+        bottomLeftCell.setTopCell(topCell);
+
+        Cell bottomRightCell = (Cell)brow.getChildAt(COLNUM-1);
+        leftCell = (Cell)brow.getChildAt(COLNUM-2);
+        bottomRightCell.setLeftCell(leftCell);
+        topCell = (Cell)rowTop.getChildAt(COLNUM-1);
+        bottomRightCell.setTopCell(topCell);
+
+        for(int i = 1; i < COLNUM-1; i++)
         {
             Cell cell = (Cell)row.getChildAt(i);
             Cell cellBottom = (Cell)rowBottom.getChildAt(i);
@@ -166,10 +175,23 @@ public class FieldView extends FrameLayout
             Cell bCellRigth = (Cell)brow.getChildAt(ROWNUM-1);
             bCell.setRigthCell(bCellRigth);
             bCell.setLeftCell(bCellLeft);
+        }
+    }
 
+    private void initCellsEscape()
+    {
+        int F = 0;
+        int T = 0;
+        int TH = 0;
 
-
-
+        for (int i=0; i<ROWNUM; i++)
+        {
+            TableRow row = (TableRow)field.getChildAt(i);
+            for (int j=0; j<COLNUM; j++)
+            {
+                Cell cell = (Cell)row.getChildAt(j);
+                cell.initEscapes();
+            }
 
         }
     }
@@ -199,6 +221,11 @@ public class FieldView extends FrameLayout
         cell.updateState(new EmptyActor());
         newCell.updateState(MonkeySingleton.getInstance());
         cell = newCell;
+    }
+
+    public void start()
+    {
+
     }
 
 
