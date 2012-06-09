@@ -1,5 +1,5 @@
 <resources>
-    <style name="defaultTheme" parent="android:Theme.Black.NoTitleBar">
+    <style name="defaultTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
 
     </style>
 </resources>

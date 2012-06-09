@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="10dp">
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        android:padding="10dp">
     <Button android:layout_height="85dp"
             android:layout_width="85dp"
-            android:id="@+id/btn_sound"
             android:background="@drawable/button_sound_on"/>
     <Button android:layout_height="85dp"
             android:layout_width="85dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/button_play"
-            android:id="@+id/btn_play"/>
+            android:background="@drawable/button_info"/>
     <ImageView android:layout_height="wrap_content"
                android:layout_width="wrap_content"
                android:layout_centerInParent="true"

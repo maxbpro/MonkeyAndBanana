@@ -5,7 +5,6 @@ package maxb.pro;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -17,37 +16,27 @@ public class FieldView extends FrameLayout
 {
     private TableLayout field = null;
     private Context context = null;
-    private static final int ROWNUM = 10;
-    private static final int COLNUM = 10;
-    private int cellWidth = 0;
+    private static final int NUM = 10;
+    private int cellSizePixels = 0;
+    private int fieldSizePixels = 0;
     private Cell monkeyCell = null;
     private Cell boxCell = null;
     private Cell bananaCell = null;
-    private Handler handler = null;
-    private long DELAY = 100;
 
 
     public FieldView(Context context, AttributeSet attr)
     {
         super(context, attr);
-
-        handler = new Handler();
-
-        DisplayMetrics dm = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-
-
-        cellWidth = Math.round(width/COLNUM);
         this.context = context;
+        determineSize();
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.field, this, true);
         field = (TableLayout)findViewById(R.id.table);
 
-        for (int i = 0; i < ROWNUM; i++)
+        for (int i = 0; i < NUM; i++)
         {
             TableRow row = getTableRow();
-            for (int j = 0; j < COLNUM; j++)
+            for (int j = 0; j < NUM; j++)
             {
                 Cell view = getEmptyCell();
                 row.addView(view);
@@ -67,29 +56,30 @@ public class FieldView extends FrameLayout
     private Cell getEmptyCell()
     {
         Cell cell = new Cell(context, new EmptyActor());
-        TableRow.LayoutParams params = new TableRow.LayoutParams(cellWidth, cellWidth    );
+        TableRow.LayoutParams params = new TableRow.LayoutParams(cellSizePixels, cellSizePixels);
         params.setMargins(1, 1, 1, 1);
         cell.setLayoutParams(params);
-        cell.setBackgroundColor(Color.GREEN);
+        cell.setBackgroundColor(Color.TRANSPARENT);
         return cell;
     }
 
     private TableRow getTableRow()
     {
         TableRow row = new TableRow(context);
-        LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, cellWidth );
+        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
         row.setLayoutParams(params);
+        row.setBackgroundColor(Color.TRANSPARENT);
         return row;
     }
 
     private void initAllCells()
     {
-        for (int i = 1; i < ROWNUM-1; i++)
+        for (int i = 1; i < NUM-1; i++)
         {
             TableRow row = (TableRow)field.getChildAt(i);
             TableRow rowTop = (TableRow)field.getChildAt(i-1);
             TableRow rowBottom = (TableRow)field.getChildAt(i+1);
-            for (int j = 1; j < COLNUM-1; j++)
+            for (int j = 1; j < NUM-1; j++)
             {
                 Cell cellLeft = (Cell)row.getChildAt(j-1);
                 Cell cellRight = (Cell)row.getChildAt(j+1);
@@ -104,11 +94,11 @@ public class FieldView extends FrameLayout
             }
         }
 
-        for (int i = 1; i < ROWNUM-1; i++)
+        for (int i = 1; i < NUM-1; i++)
         {
             TableRow row = (TableRow)field.getChildAt(i);
             Cell cell = (Cell)row.getChildAt(0);
-            Cell rCell = (Cell)row.getChildAt(COLNUM-1);
+            Cell rCell = (Cell)row.getChildAt(NUM-1);
 
             TableRow rowTop = (TableRow)field.getChildAt(i-1);
             TableRow rowBottom = (TableRow)field.getChildAt(i+1);
@@ -121,19 +111,19 @@ public class FieldView extends FrameLayout
             cell.setRigthCell(cellRigth);
             cell.setPosition(Cell.Position.LEFT);
 
-            Cell rCellTop = (Cell)rowTop.getChildAt(COLNUM-1);
-            Cell rCellBottom = (Cell)rowBottom.getChildAt(COLNUM-1);
+            Cell rCellTop = (Cell)rowTop.getChildAt(NUM-1);
+            Cell rCellBottom = (Cell)rowBottom.getChildAt(NUM-1);
             rCell.setTopCell(rCellTop);
             rCell.setBottomCell(rCellBottom);
-            Cell rcellLeft = (Cell)row.getChildAt(COLNUM-2);
+            Cell rcellLeft = (Cell)row.getChildAt(NUM-2);
             rCell.setLeftCell(rcellLeft);
             rCell.setPosition(Cell.Position.RIGHT);
         }
 
         TableRow row = (TableRow)field.getChildAt(0);
         TableRow rowBottom = (TableRow)field.getChildAt(1);
-        TableRow brow = (TableRow)field.getChildAt(ROWNUM-1);
-        TableRow rowTop = (TableRow)field.getChildAt(ROWNUM-2);
+        TableRow brow = (TableRow)field.getChildAt(NUM-1);
+        TableRow rowTop = (TableRow)field.getChildAt(NUM-2);
 
         Cell leftTopCell = (Cell)row.getChildAt(0);
         Cell rigthCell = (Cell)row.getChildAt(1);
@@ -142,10 +132,10 @@ public class FieldView extends FrameLayout
         leftTopCell.setBottomCell(bottomCell);
         leftTopCell.setPosition(Cell.Position.LEFTTOP);
 
-        Cell rigthTopCell = (Cell)row.getChildAt(COLNUM-1);
-        Cell leftCell = (Cell)row.getChildAt(COLNUM-2);
+        Cell rigthTopCell = (Cell)row.getChildAt(NUM-1);
+        Cell leftCell = (Cell)row.getChildAt(NUM-2);
         rigthTopCell.setLeftCell(leftCell);
-        bottomCell = (Cell)rowBottom.getChildAt(COLNUM-1);
+        bottomCell = (Cell)rowBottom.getChildAt(NUM-1);
         rigthTopCell.setBottomCell(bottomCell);
         rigthTopCell.setPosition(Cell.Position.RIGTHTOP);
 
@@ -156,14 +146,14 @@ public class FieldView extends FrameLayout
         bottomLeftCell.setTopCell(topCell);
         bottomLeftCell.setPosition(Cell.Position.LEFTBOTTOM);
 
-        Cell bottomRightCell = (Cell)brow.getChildAt(COLNUM-1);
-        leftCell = (Cell)brow.getChildAt(COLNUM-2);
+        Cell bottomRightCell = (Cell)brow.getChildAt(NUM-1);
+        leftCell = (Cell)brow.getChildAt(NUM-2);
         bottomRightCell.setLeftCell(leftCell);
-        topCell = (Cell)rowTop.getChildAt(COLNUM-1);
+        topCell = (Cell)rowTop.getChildAt(NUM-1);
         bottomRightCell.setTopCell(topCell);
         bottomRightCell.setPosition(Cell.Position.RIGTHBOTTOM);
 
-        for(int i = 1; i < COLNUM-1; i++)
+        for(int i = 1; i < NUM-1; i++)
         {
             Cell cell = (Cell)row.getChildAt(i);
             Cell cellBottom = (Cell)rowBottom.getChildAt(i);
@@ -179,8 +169,8 @@ public class FieldView extends FrameLayout
             Cell cellTop = (Cell)rowTop.getChildAt(i);
             bCell.setTopCell(cellTop);
 
-            Cell bCellLeft = (Cell)brow.getChildAt(ROWNUM-1);
-            Cell bCellRigth = (Cell)brow.getChildAt(ROWNUM-1);
+            Cell bCellLeft = (Cell)brow.getChildAt(NUM-1);
+            Cell bCellRigth = (Cell)brow.getChildAt(NUM-1);
             bCell.setRigthCell(bCellRigth);
             bCell.setLeftCell(bCellLeft);
             bCell.setPosition(Cell.Position.BOTTOM);
@@ -216,21 +206,9 @@ public class FieldView extends FrameLayout
         monkeyCell = newCell;
     }
 
-    public void start()
-    {
-        Runnable RecurringTask = new Runnable()
-        {
-            public void run()
-            {
-                movement();
-                handler.postDelayed(this, DELAY);
-            }
-        };
-        handler.postDelayed(RecurringTask, DELAY);
 
-    }
 
-    private void movement()
+    public void moveMonkey()
     {
 
         Random rn = new Random();
@@ -361,6 +339,29 @@ public class FieldView extends FrameLayout
                 break;
             }
         }
+    }
+
+    private void determineSize()
+    {
+        DisplayMetrics dm = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        // - 10*2 for margin of all device
+        int heightPixels = dm.heightPixels - 20 - 50;
+        cellSizePixels = Math.round(heightPixels/NUM)-2;
+        fieldSizePixels = heightPixels;
+    }
+
+    private int convertPixelsToDP(int pixels)
+    {
+        final float scale = getResources().getDisplayMetrics().density;
+        int dp = Math.round(pixels/scale);
+        return dp;
+    }
+
+    public int getSize()
+    {
+        return fieldSizePixels;
     }
 
 
