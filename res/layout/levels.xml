@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10dp"
+        android:background="@drawable/modes_background">
+    <maxb.pro.myButton android:layout_height="100dp"
+                       android:layout_width="100dp"
+                       android:layout_alignParentBottom="true"
+                       mb:image="@drawable/back"
+                       android:id="@+id/levels_back"/>
+    <GridView android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        android:padding="10dp">
-    <Button android:layout_height="85dp"
-            android:layout_width="85dp"
-            android:background="@drawable/button_sound_on"/>
-    <Button android:layout_height="85dp"
-            android:layout_width="85dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/button_info"/>
-    <ImageView android:layout_height="wrap_content"
-               android:layout_width="wrap_content"
-               android:layout_centerInParent="true"
-               android:src="@drawable/monkey_main"/>
-
-
+              android:layout_above="@id/levels_back"
+              android:paddingBottom="15dp"
+              android:paddingTop="30dp"
+              android:paddingLeft="30dp"
+              android:paddingRight="30dp"
+              android:id="@+id/levelsGrid"
+              android:numColumns="6"/>
 </RelativeLayout>

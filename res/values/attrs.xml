@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="myButton">
+        <attr name="image" format="integer"/>
+    </declare-styleable>
+</resources>
