@@ -9,13 +9,15 @@
             android:layout_width="100dp"
             android:id="@+id/btn_settings"
             mb:image="@drawable/settings"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            mb:animMode="ROTATE"/>
     <maxb.pro.myButton android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             mb:image="@drawable/forward"
-            android:id="@+id/btn_forward"/>
+            android:id="@+id/btn_forward"
+            mb:animMode="RIGHT"/>
     <ImageView android:layout_height="wrap_content"
                android:layout_width="wrap_content"
                android:layout_centerInParent="true"

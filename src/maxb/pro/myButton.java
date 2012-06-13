@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.view.LayoutInflater;
@@ -14,39 +12,46 @@ import android.view.animation.*;
 
 public class myButton extends FrameLayout
 {
+    private Context mContext = null;
     private ImageView mImage = null;
     private AnimationSet animSet = null;
+    private enum AnimationMode {TWITCH, ROTATE, LEFT, RIGHT}
+    private AnimationMode animationMode = AnimationMode.ROTATE;
+    private Animation animation = null;
 
     public myButton(Context mContext, AttributeSet set)
     {
          super(mContext, set);
+         this.mContext = mContext;
          LayoutInflater li = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          li.inflate(R.layout.my_button, this,true);
          mImage = (ImageView)findViewById(R.id.my_button_pic);
          TypedArray a = mContext.obtainStyledAttributes(set, R.styleable.myButton);
          Drawable pic = a.getDrawable(R.styleable.myButton_image);
+         animationMode = AnimationMode.values()[a.getInt(R.styleable.myButton_animMode, 0)];
          mImage.setImageDrawable(pic);
          a.recycle();
-
          initAnimation();
     }
 
+
     private void initAnimation()
     {
-        animSet = new AnimationSet(true);
-        animSet.setInterpolator(new DecelerateInterpolator());
-        animSet.setFillAfter(true);
-        animSet.setFillEnabled(true);
-
-        final RotateAnimation animRotate = new RotateAnimation(0.0f, -360.0f,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-
-        animRotate.setDuration(1500);
-        animRotate.setFillAfter(true);
-        animSet.addAnimation(animRotate);
-
-
+         switch (animationMode)
+         {
+             case ROTATE:
+                 animation = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
+                 break;
+             case LEFT:
+                 animation = AnimationUtils.loadAnimation(mContext, R.anim.left);
+                 break;
+             case RIGHT:
+                 animation = AnimationUtils.loadAnimation(mContext, R.anim.right);
+                 break;
+             case TWITCH:
+                 animation = AnimationUtils.loadAnimation(mContext, R.anim.twitch);
+                 break;
+         }
     }
 
     public ImageView getImageView()
@@ -56,7 +61,7 @@ public class myButton extends FrameLayout
 
     public void startAnimation()
     {
-        mImage.startAnimation(animSet);
+        mImage.startAnimation(animation);
     }
 
     public void stopAnimation()

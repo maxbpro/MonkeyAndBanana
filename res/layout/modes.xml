@@ -10,12 +10,15 @@
                        android:layout_width="100dp"
                        android:layout_alignParentBottom="true"
                        mb:image="@drawable/back"
-                       android:id="@+id/modes_back"/>
+                       android:id="@+id/modes_back"
+                       mb:animMode="LEFT"/>
     <maxb.pro.myButton android:layout_height="100dp"
                        android:layout_width="100dp"
                        android:layout_alignParentBottom="true"
                        android:layout_alignParentRight="true"
                        mb:image="@drawable/info"
+                       mb:animMode="TWITCH"
+                       android:id="@+id/modes_info"
             />
     <Gallery android:layout_height="wrap_content"
              android:layout_width="fill_parent"

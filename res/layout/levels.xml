@@ -10,7 +10,8 @@
                        android:layout_width="100dp"
                        android:layout_alignParentBottom="true"
                        mb:image="@drawable/back"
-                       android:id="@+id/levels_back"/>
+                       android:id="@+id/levels_back"
+                       mb:animMode="LEFT"/>
     <GridView android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:layout_above="@id/levels_back"

@@ -9,6 +9,7 @@
                            android:layout_width="100dp"
                            android:layout_alignParentBottom="true"
                            mb:image="@drawable/back"
-                android:id="@+id/settings_back"/>
+                android:id="@+id/settings_back"
+                mb:animMode="LEFT"/>
 
 </RelativeLayout>

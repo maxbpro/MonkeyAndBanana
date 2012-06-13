@@ -39,6 +39,22 @@ public class ModesActivity extends Activity
                 return true;
             }
         });
+        final myButton btn_info = (myButton)findViewById(R.id.modes_info);
+        btn_info.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch(motionEvent.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        btn_info.startAnimation();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        // create intent
+                        break;
+                }
+                return true;
+            }
+        });
         gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
