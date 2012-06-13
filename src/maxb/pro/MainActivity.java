@@ -1,12 +1,15 @@
 package maxb.pro;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity
 {
@@ -57,5 +60,25 @@ public class MainActivity extends Activity
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+
+        final Attention dialog = new Attention(this, R.style.DialogTheme,
+                getResources().getString(R.string.question_about_exit));
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if(dialog.getResult() == Attention.Results.AGREE)
+                    finish();
+            }
+        });
+
+        dialog.show();
+
+
     }
 }

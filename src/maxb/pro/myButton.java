@@ -14,7 +14,6 @@ public class myButton extends FrameLayout
 {
     private Context mContext = null;
     private ImageView mImage = null;
-    private AnimationSet animSet = null;
     private enum AnimationMode {TWITCH, ROTATE, LEFT, RIGHT}
     private AnimationMode animationMode = AnimationMode.ROTATE;
     private Animation animation = null;
