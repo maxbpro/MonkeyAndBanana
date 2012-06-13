@@ -11,6 +11,7 @@ public class SettingsActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.settings);
         final myButton btn_back = (myButton)findViewById(R.id.settings_back);
         btn_back.setOnTouchListener(new View.OnTouchListener() {

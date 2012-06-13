@@ -17,6 +17,7 @@ public class ModesActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;
         setContentView(R.layout.modes);
         Gallery gallery = (Gallery)findViewById(R.id.modes_gallery);

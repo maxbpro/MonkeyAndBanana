@@ -16,6 +16,7 @@ public class LevelsActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.levels);
         GridView grid = (GridView)findViewById(R.id.levelsGrid);
         final myButton btn_back = (myButton)findViewById(R.id.levels_back);

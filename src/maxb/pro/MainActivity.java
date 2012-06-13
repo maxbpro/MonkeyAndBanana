@@ -17,6 +17,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;
         final myButton btn_forward = (myButton)findViewById(R.id.btn_forward);
         final myButton btn_settings = (myButton)findViewById(R.id.btn_settings);

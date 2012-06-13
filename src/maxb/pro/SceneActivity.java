@@ -22,6 +22,7 @@ public class SceneActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.scene);
         initPanel();
         initField();

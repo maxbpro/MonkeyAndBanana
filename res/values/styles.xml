@@ -2,4 +2,10 @@
     <style name="defaultTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
 
     </style>
+
+    <style name="Fade">
+        <item name="android:windowEnterAnimation">@anim/fadein</item>
+        <item name="android:windowExitAnimation">@anim/fadeout</item>
+    </style>
+
 </resources>
