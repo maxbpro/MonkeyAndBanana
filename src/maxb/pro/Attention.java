@@ -13,7 +13,7 @@ public class Attention extends Dialog
 {
     private Animation animation = null;
     public enum Results {AGREE, CANCEL}
-    private Results mResult = Results.CANCEL;
+    private Results mResult = Results.AGREE;
 
     public Attention(Context context, int theme, String text)
     {

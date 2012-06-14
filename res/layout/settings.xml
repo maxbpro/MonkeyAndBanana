@@ -11,5 +11,33 @@
                            mb:image="@drawable/back"
                 android:id="@+id/settings_back"
                 mb:animMode="LEFT"/>
+        <TableLayout android:layout_height="wrap_content"
+                      android:layout_width="400dp"
 
+                      android:layout_centerInParent="true"
+                android:stretchColumns="*">
+            <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                <TextView android:text="@string/music"
+                          android:layout_gravity="center"/>
+                <CheckBox android:id="@+id/music_check"
+                          android:checked="true"/>
+            </TableRow>
+            <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                <TextView android:text="@string/sounds"
+                          android:layout_gravity="center"/>
+                <CheckBox android:id="@+id/sounds_check"
+                          android:checked="true"/>
+            </TableRow>
+            <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                <TextView android:text="@string/vibration"
+                          android:layout_gravity="center"/>
+                <CheckBox android:id="@+id/vibro_check"
+                          android:checked="true"/>
+            </TableRow>
+
+
+        </TableLayout>
 </RelativeLayout>

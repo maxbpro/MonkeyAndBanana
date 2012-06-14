@@ -1,6 +1,23 @@
 <resources>
     <style name="defaultTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:checkboxStyle">@style/CheckBoxStyle</item>
+        <item name="android:textViewStyle">@style/smallTextView</item>
+    </style>
 
+    <style name="CheckBoxStyle" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/chechbox_background</item>
+    </style>
+
+
+
+    <style name="smallTextView" parent="android:Widget.TextView">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="bigTextView" parent="android:Widget.TextView">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="Fade">
@@ -11,6 +28,7 @@
     <style name="DialogTheme" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
 
 
 </resources>
