@@ -39,20 +39,11 @@ public class LevelsAdapter extends BaseAdapter
     public View getView(int i, View convertView, ViewGroup viewGroup)
     {
            LevelView view = null;
-            if (convertView == null)
-            {
-                view = new LevelView(mContext, String.valueOf(i));
-                //int w = GridView.LayoutParams.WRAP_CONTENT;
-                //int h = GridView.LayoutParams.WRAP_CONTENT;
-                //view.setLayoutParams(new GridView.LayoutParams(w, h));
-                view.setPadding(5, 5, 5, 5);
-            }
-            else
-            {
-                view= (LevelView) convertView;
-            }
-
-            return view;
-
+           view = new LevelView(mContext, String.valueOf(i));
+           //int w = GridView.LayoutParams.WRAP_CONTENT;
+           //int h = GridView.LayoutParams.WRAP_CONTENT;
+           //view.setLayoutParams(new GridView.LayoutParams(w, h));
+           view.setPadding(5, 5, 5, 5);
+           return view;
     }
 }

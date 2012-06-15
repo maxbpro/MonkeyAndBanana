@@ -4,7 +4,7 @@ package maxb.pro;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-public class Banana extends Actor
+public class Banana extends Actor implements IActivate
 {
 
 
@@ -12,5 +12,11 @@ public class Banana extends Actor
     public Drawable getImage(Resources resources)
     {
          return resources.getDrawable(R.drawable.banana);
+    }
+
+    @Override
+    public Boolean activate(ScoreSingleton score)
+    {
+        return true;
     }
 }

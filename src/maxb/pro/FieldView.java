@@ -4,35 +4,50 @@ package maxb.pro;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FieldView extends FrameLayout
 {
     private TableLayout field = null;
     private Context context = null;
-    private static final int NUM = 10;
+    private int NUM = 0;
     private int cellSizePixels = 0;
     private int fieldSizePixels = 0;
+
+    private ScoreSingleton score = null;
     private Cell monkeyCell = null;
     private Cell boxCell = null;
-    private Cell bananaCell = null;
+    private ArrayList<Cell> bananaCells = null;
 
 
     public FieldView(Context context, AttributeSet attr)
     {
         super(context, attr);
         this.context = context;
-        determineSize();
+        setWillNotDraw(false);
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.field, this, true);
         field = (TableLayout)findViewById(R.id.table);
+    }
 
+    public void initField(int NUM, ArrayList<Point> actors)
+    {
+
+        this.NUM = NUM;
+
+        score = ScoreSingleton.getInstance();
+        determineSize();
+        bananaCells = new ArrayList<Cell>();
         for (int i = 0; i < NUM; i++)
         {
             TableRow row = getTableRow();
@@ -43,13 +58,22 @@ public class FieldView extends FrameLayout
 
                 if (i==0 && j==0)
                     monkeyCell = view;
+                if (i==0 && j==1)
+                    boxCell = view;
+                if(actors.contains(new Point(i,j)))
+                    bananaCells.add(view);
             }
             field.addView(row);
         }
         monkeyCell.updateState(MonkeySingleton.getInstance());
+        boxCell.updateState(BoxSingleton.getInstance());
+        for(Cell cell : bananaCells)
+              cell.updateState(new Banana());
         initAllCells();
-
+        //invalidate();
     }
+
+
 
 
 
@@ -59,7 +83,8 @@ public class FieldView extends FrameLayout
         TableRow.LayoutParams params = new TableRow.LayoutParams(cellSizePixels, cellSizePixels);
         params.setMargins(1, 1, 1, 1);
         cell.setLayoutParams(params);
-        cell.setBackgroundColor(Color.TRANSPARENT);
+        cell.setBackgroundColor(Color.WHITE);
+        cell.getBackground().setAlpha(50);
         return cell;
     }
 
@@ -68,7 +93,8 @@ public class FieldView extends FrameLayout
         TableRow row = new TableRow(context);
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT );
         row.setLayoutParams(params);
-        row.setBackgroundColor(Color.TRANSPARENT);
+        row.setBackgroundColor(Color.WHITE);
+        row.getBackground().setAlpha(50);
         return row;
     }
 
@@ -364,5 +390,19 @@ public class FieldView extends FrameLayout
         return fieldSizePixels;
     }
 
-
+    @Override
+    protected void onDraw(Canvas canvas)
+    {
+        super.onDraw(canvas);
+        /*Paint pen = new Paint(Paint.ANTI_ALIAS_FLAG);
+        pen.setStrokeWidth(2);
+        int counter = 0;
+        for (int i=0; i<NUM+1; i++)
+        {
+            //canvas.drawLine(counter, 0, counter, getHeight(), pen);
+            //canvas.drawLine(0, counter, getWidth(), counter, pen);
+            counter+=(cellSizePixels+2);
+        }
+        */
+    }
 }

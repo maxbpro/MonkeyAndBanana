@@ -1,21 +1,26 @@
 package maxb.pro;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
 
 public class LevelsActivity extends Activity
 {
-    private enum Mode{ONE, TWO,BONUS}
-    private Mode mMode = Mode.ONE;
+    private Context mContext = null;
+    private static final String MODE = "MODE";
+    private static final String LEVEL = "LEVEL";
 
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        mContext = this;
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.levels);
         GridView grid = (GridView)findViewById(R.id.levelsGrid);
@@ -39,16 +44,16 @@ public class LevelsActivity extends Activity
             }
         });
 
-        int m = getIntent().getIntExtra("mode",0);
-        mMode = Mode.values()[m];
-        switch (mMode)
-        {
-            case ONE:
-                break;
-            case TWO:
-                break;
-            case BONUS:
-                break;
-        }
+        final int mode = getIntent().getIntExtra("mode",0);
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(mContext, SceneActivity.class);
+                intent.putExtra(MODE, mode);
+                intent.putExtra(LEVEL, i);
+                startActivity(intent);
+            }
+        });
     }
 }
