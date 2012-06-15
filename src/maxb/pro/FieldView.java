@@ -28,6 +28,8 @@ public class FieldView extends FrameLayout
     private Cell monkeyCell = null;
     private Cell boxCell = null;
     private ArrayList<Cell> bananaCells = null;
+    private int currentBananasCount = 0;
+    private int BananasCount = 0;
 
 
     public FieldView(Context context, AttributeSet attr)
@@ -40,11 +42,11 @@ public class FieldView extends FrameLayout
         field = (TableLayout)findViewById(R.id.table);
     }
 
-    public void initField(int NUM, ArrayList<Point> actors)
+    public void initField(int NUM, ArrayList<Point> bananas)
     {
 
         this.NUM = NUM;
-
+        this.BananasCount = bananas.size();
         score = ScoreSingleton.getInstance();
         determineSize();
         bananaCells = new ArrayList<Cell>();
@@ -60,7 +62,7 @@ public class FieldView extends FrameLayout
                     monkeyCell = view;
                 if (i==0 && j==1)
                     boxCell = view;
-                if(actors.contains(new Point(i,j)))
+                if(bananas.contains(new Point(i,j)))
                     bananaCells.add(view);
             }
             field.addView(row);
@@ -205,38 +207,44 @@ public class FieldView extends FrameLayout
 
 
 
-    private void toRigthMonkey()
+    private boolean toRigthMonkey()
     {
-        toMoveMonkey(monkeyCell.getRigthCell());
+       return toMoveMonkey(monkeyCell.getRigthCell());
     }
 
-    private void toDownMonkey()
+    private boolean toDownMonkey()
     {
-        toMoveMonkey(monkeyCell.getBottomCell());
+        return toMoveMonkey(monkeyCell.getBottomCell());
     }
 
-    private void toLeftMonkey()
+    private boolean toLeftMonkey()
     {
-         toMoveMonkey(monkeyCell.getLeftCell());
+       return  toMoveMonkey(monkeyCell.getLeftCell());
     }
 
-    private void toUpMonkey()
+    private boolean toUpMonkey()
     {
-        toMoveMonkey(monkeyCell.getTopCell());
+       return toMoveMonkey(monkeyCell.getTopCell());
     }
 
-    private void toMoveMonkey(Cell newCell)
+    private boolean toMoveMonkey(Cell newCell)
     {
+        boolean result = true;
         monkeyCell.updateState(new EmptyActor());
+        if (newCell.getState() instanceof IActivate)
+             result = ((IActivate) newCell.getState()).activate(score);
+        if(newCell.getState() instanceof Banana)
+            currentBananasCount++;
         newCell.updateState(MonkeySingleton.getInstance());
         monkeyCell = newCell;
+        return result;
     }
 
 
 
     public void moveMonkey()
     {
-
+        boolean result = true;
         Random rn = new Random();
         switch (monkeyCell.getPosition())
         {
@@ -244,36 +252,36 @@ public class FieldView extends FrameLayout
             {
                 int num = rn.nextInt(2);
                 if(num==0)
-                    toRigthMonkey();
+                    result = toRigthMonkey();
                 else
-                    toDownMonkey();
+                    result = toDownMonkey();
                 break;
             }
             case LEFTBOTTOM:
             {
                 int num = rn.nextInt(2);
                 if(num==0)
-                    toRigthMonkey();
+                    result = toRigthMonkey();
                 else
-                    toUpMonkey();
+                    result = toUpMonkey();
                 break;
             }
             case RIGTHTOP:
             {
                 int num = rn.nextInt(2);
                 if (num==0)
-                  toLeftMonkey();
+                    result = toLeftMonkey();
                 else
-                  toDownMonkey();
+                    result = toDownMonkey();
                 break;
             }
             case RIGTHBOTTOM:
             {
                 int num = rn.nextInt(2);
                 if (num==0)
-                    toLeftMonkey();
+                    result = toLeftMonkey();
                 else
-                    toUpMonkey();
+                    result = toUpMonkey();
                 break;
             }
             case LEFT:
@@ -282,13 +290,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        toUpMonkey();
+                        result = toUpMonkey();
                         break;
                     case 1:
-                        toRigthMonkey();
+                        result = toRigthMonkey();
                         break;
                     case 2:
-                        toDownMonkey();
+                        result = toDownMonkey();
                         break;
                 }
                 break;
@@ -299,13 +307,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        toUpMonkey();
+                        result = toUpMonkey();
                         break;
                     case 1:
-                        toDownMonkey();
+                        result = toDownMonkey();
                         break;
                     case 2:
-                        toLeftMonkey();
+                        result = toLeftMonkey();
                         break;
                 }
                 break;
@@ -316,13 +324,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        toDownMonkey();
+                        result = toDownMonkey();
                         break;
                     case 1:
-                        toRigthMonkey();
+                        result = toRigthMonkey();
                         break;
                     case 2:
-                        toLeftMonkey();
+                        result = toLeftMonkey();
                         break;
                 }
                 break;
@@ -333,13 +341,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        toUpMonkey();
+                        result = toUpMonkey();
                         break;
                     case 1:
-                        toRigthMonkey();
+                        result = toRigthMonkey();
                         break;
                     case 2:
-                        toLeftMonkey();
+                        result = toLeftMonkey();
                         break;
                 }
                 break;
@@ -350,21 +358,36 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        toLeftMonkey();
+                        result = toLeftMonkey();
                         break;
                     case 1:
-                        toUpMonkey();
+                        result = toUpMonkey();
                         break;
                     case 2:
-                        toRigthMonkey();
+                        result = toRigthMonkey();
                         break;
                     case 3:
-                        toDownMonkey();
+                        result = toDownMonkey();
                         break;
                 }
                 break;
             }
         }
+        //
+        isLostLevel(result);
+        isFinishLevel();
+    }
+
+    private void isLostLevel(boolean result)
+    {
+         //if(result == false)
+             // exit from the level like fail
+    }
+
+    private void isFinishLevel()
+    {
+        //if (currentBananasCount == BananasCount)
+            // exit from the level like success
     }
 
     private void determineSize()

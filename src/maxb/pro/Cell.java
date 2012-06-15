@@ -26,6 +26,11 @@ public class Cell extends ImageView
         setImageDrawable(mState.getImage(getResources()));
     }
 
+    public Actor getState()
+    {
+        return mState;
+    }
+
     public void setPosition(Position position)
     {
         mPosition = position;
