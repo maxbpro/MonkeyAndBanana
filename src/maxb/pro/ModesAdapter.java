@@ -5,10 +5,13 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Gallery;
 
 public class ModesAdapter extends BaseAdapter
 {
     private Context mContext = null;
+    private static final int MODE_WIDTH = 300;
+    private static final int MODE_HEIGHT = 250;
 
 
     public ModesAdapter(Context context)
@@ -38,6 +41,18 @@ public class ModesAdapter extends BaseAdapter
     public View getView(int i, View oldView, ViewGroup viewGroup)
     {
         ModeView view = new ModeView(mContext, String.valueOf(i));
+        int h = dpToPx(MODE_HEIGHT);
+        int w = dpToPx(MODE_WIDTH);
+        Gallery.LayoutParams params = new Gallery.LayoutParams(w,h);
+        view.setLayoutParams(params);
+        view.setPadding(30,0,30,
+                0);
         return view;
+    }
+
+    private int dpToPx(int dp)
+    {
+        float density = mContext.getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }

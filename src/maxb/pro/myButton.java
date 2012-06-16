@@ -14,7 +14,7 @@ public class myButton extends FrameLayout
 {
     private Context mContext = null;
     private ImageView mImage = null;
-    private enum AnimationMode {TWITCH, ROTATE, LEFT, RIGHT}
+    private enum AnimationMode {TWITCH, ROTATE, LEFT, RIGHT, ROTATE_SLOW}
     private AnimationMode animationMode = AnimationMode.ROTATE;
     private Animation animation = null;
 
@@ -50,6 +50,8 @@ public class myButton extends FrameLayout
              case TWITCH:
                  animation = AnimationUtils.loadAnimation(mContext, R.anim.twitch);
                  break;
+             case ROTATE_SLOW:
+                 animation = AnimationUtils.loadAnimation(mContext, R.anim.rotate_slow);
          }
     }
 

@@ -29,7 +29,7 @@
                           android:layout_height="100dp"
                           android:id="@+id/lost_refresh"
                           mb:image="@drawable/refresh"
-                          mb:animMode="ROTATE"
+                          mb:animMode="ROTATE_SLOW"
                           android:layout_alignParentBottom="true"
                           android:layout_alignParentRight="true"/>
 

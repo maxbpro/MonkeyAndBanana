@@ -20,13 +20,11 @@
         <TableLayout android:layout_height="fill_parent"
                      android:layout_width="fill_parent"
                      android:stretchColumns="*">
-            <TableRow android:layout_height="20dp"
-                      android:layout_width="wrap_content">
+            <TableRow>
                 <ImageView android:src="@drawable/timer"/>
-                <TextView android:id="@+id/result_text_time"/>
+                <TextView android:id="@+id/result_text_time" android:text="45:43"/>
             </TableRow>
-            <TableRow android:layout_height="20dp"
-                      android:layout_width="wrap_content">
+            <TableRow>
                 <ImageView android:src="@drawable/star"/>
                 <TextView android:id="@+id/result_text_score"/>
             </TableRow>
