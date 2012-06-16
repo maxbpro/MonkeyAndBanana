@@ -14,8 +14,7 @@ import android.widget.GridView;
 public class LevelsActivity extends Activity
 {
     private Context mContext = null;
-    private static final String MODE = "MODE";
-    private static final String LEVEL = "LEVEL";
+
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -25,7 +24,8 @@ public class LevelsActivity extends Activity
         setContentView(R.layout.levels);
         GridView grid = (GridView)findViewById(R.id.levelsGrid);
         final myButton btn_back = (myButton)findViewById(R.id.levels_back);
-        LevelsAdapter adapter = new LevelsAdapter(this);
+        final int mode = getIntent().getIntExtra("mode",0);
+        LevelsAdapter adapter = new LevelsAdapter(this, mode);
         grid.setAdapter(adapter);
         btn_back.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -44,16 +44,7 @@ public class LevelsActivity extends Activity
             }
         });
 
-        final int mode = getIntent().getIntExtra("mode",0);
 
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(mContext, SceneActivity.class);
-                intent.putExtra(MODE, mode);
-                intent.putExtra(LEVEL, i);
-                startActivity(intent);
-            }
-        });
+
     }
 }

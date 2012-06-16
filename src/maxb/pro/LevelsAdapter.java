@@ -10,11 +10,13 @@ import android.widget.GridView;
 public class LevelsAdapter extends BaseAdapter
 {
     private Context mContext = null;
+    private static final int LEVEL_SIZE = 150;
+    private int mode = 0;
 
-
-    public LevelsAdapter(Context context)
+    public LevelsAdapter(Context context, int mode)
     {
         mContext = context;
+        this.mode = mode;
     }
 
     @Override
@@ -39,11 +41,16 @@ public class LevelsAdapter extends BaseAdapter
     public View getView(int i, View convertView, ViewGroup viewGroup)
     {
            LevelView view = null;
-           view = new LevelView(mContext, String.valueOf(i));
-           //int w = GridView.LayoutParams.WRAP_CONTENT;
-           //int h = GridView.LayoutParams.WRAP_CONTENT;
-           //view.setLayoutParams(new GridView.LayoutParams(w, h));
-           view.setPadding(5, 5, 5, 5);
+           view = new LevelView(mContext, LevelView.State.FINISH, mode, i);
+           int s = dpToPx(LEVEL_SIZE);
+           view.setLayoutParams(new GridView.LayoutParams(s, s));
+           //view.setPadding(5, 5, 5, 5);
            return view;
+    }
+
+    private int dpToPx(int dp)
+    {
+        float density = mContext.getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }
