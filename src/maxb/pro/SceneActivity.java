@@ -17,13 +17,16 @@ import java.util.ArrayList;
 public class SceneActivity extends Activity
 {
     private Handler handler = null;
+    private Runnable RecurringTask = null;
     private long DELAY = 100;
+    private Thread thread = null;
     private FieldView field = null;
     private IndicatorView indicator = null;
     private static final int THICKNESS = 10;
     // for interact with the database
     private int mMode = 0;
     private int mLevel = 0;
+    private boolean isPauseThread = false;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -40,10 +43,33 @@ public class SceneActivity extends Activity
             @Override
             public void onClick(View view)
             {
-                start();
+                activate();
             }
         });
         handler = new Handler();
+        RecurringTask = new Runnable()
+        {
+            public void run()
+            {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(isPauseThread == false)
+                        {
+                           field.moveMonkey();
+                           indicator.updateIndicator();
+                           handler.postDelayed(this, DELAY);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }, DELAY);
+            }
+        };
+
+        thread = new Thread(null,RecurringTask);
     }
 
     private void initPanel()
@@ -88,9 +114,9 @@ public class SceneActivity extends Activity
         mLevel = getIntent().getIntExtra("LEVEL", 0);
     }
 
-    private void start()
+    /*private void start()
     {
-        Runnable RecurringTask = new Runnable()
+        RecurringTask = new Runnable()
         {
             public void run()
             {
@@ -101,5 +127,23 @@ public class SceneActivity extends Activity
         };
         handler.postDelayed(RecurringTask, DELAY);
     }
+     */
+
+    public void activate()
+    {
+        thread.start();
+    }
+
+    public void pause()
+    {
+         isPauseThread = true;
+    }
+
+    public void start()
+    {
+        isPauseThread = false;
+    }
+
+
 }
 

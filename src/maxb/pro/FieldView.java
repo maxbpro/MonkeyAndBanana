@@ -4,6 +4,7 @@ package maxb.pro;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -380,14 +381,47 @@ public class FieldView extends FrameLayout
 
     private void isLostLevel(boolean result)
     {
-         //if(result == false)
+         if(result == false)
+         {
              // exit from the level like fail
+             final LostDialog dialog = new LostDialog(context, R.style.DialogTheme);
+             ((SceneActivity)context).pause();
+             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                 @Override
+                 public void onDismiss(DialogInterface dialogInterface) {
+                     //if(dialog.getResult()==LostDialog.Result.REFRESH)
+
+                 }
+             });
+             dialog.show();
+         }
     }
 
     private void isFinishLevel()
     {
-        //if (currentBananasCount == BananasCount)
+        if (currentBananasCount == BananasCount)
+        {
             // exit from the level like success
+            ((SceneActivity)context).pause();
+            final ResultDialog dialog = new ResultDialog(context, R.style.DialogTheme,
+                    ResultDialog.Mode.FROM_GAME, null);
+            // pause
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                        switch (dialog.getResult())
+                        {
+                            case  REFRESH:
+                                break;
+                            case NEXT_LEVEL:
+                                break;
+                        }
+                }
+            });
+            dialog.show();
+
+        }
+             // save result
     }
 
     private void determineSize()

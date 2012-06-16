@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro"
+                android:layout_width="400dp"
+                android:layout_height="320dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle">
+    <ImageView android:layout_height="96dp"
+               android:layout_width="96dp"
+               android:src="@drawable/happy"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="20dp"
+               android:id="@+id/result_image"/>
+    <ScrollView android:layout_height="120dp"
+                android:layout_width="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/result_image">
+           <TableLayout android:layout_height="fill_parent"
+                        android:layout_width="fill_parent"
+                        android:stretchColumns="*">
+                  <TableRow android:layout_height="20dp"
+                            android:layout_width="wrap_content">
+                       <ImageView android:src="@drawable/timer"/>
+                       <TextView android:id="@+id/result_text_time"/>
+                  </TableRow>
+                  <TableRow android:layout_height="20dp"
+                            android:layout_width="wrap_content">
+                       <ImageView android:src="@drawable/star"/>
+                       <TextView android:id="@+id/result_text_score"/>
+                  </TableRow>
+           </TableLayout>
+    </ScrollView>
+    <maxb.pro.myButton android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       mb:image="@drawable/refresh"
+                       mb:animMode="ROTATE"
+                       android:layout_alignParentBottom="true"
+                       android:id="@+id/result_refresh"/>
+    <maxb.pro.myButton android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:id="@+id/result_next_level"
+                       mb:image="@drawable/forward"
+                       mb:animMode="RIGHT"
+                       android:layout_alignParentBottom="true"
+                       android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

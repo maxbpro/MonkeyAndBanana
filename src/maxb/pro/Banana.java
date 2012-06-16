@@ -17,6 +17,6 @@ public class Banana extends Actor implements IActivate
     @Override
     public boolean activate(ScoreSingleton score)
     {
-        return false;
+        return true;
     }
 }

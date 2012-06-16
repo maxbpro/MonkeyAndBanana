@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.view.animation.*;
 
-public class Attention extends Dialog
+public class AttentionDialog extends Dialog
 {
     private Animation animation = null;
     public enum Results {AGREE, CANCEL}
     private Results mResult = Results.AGREE;
 
-    public Attention(Context context, int theme, String text)
+    public AttentionDialog(Context context, int theme, String text)
     {
         super(context, theme);
         final Dialog dialog = this;

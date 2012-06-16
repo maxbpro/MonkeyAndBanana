@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro"
+              android:layout_width="400dp"
+              android:layout_height="320dp"
+              android:padding="10dp"
+              android:background="@drawable/rectangle">
+        <ImageView android:layout_height="120dp"
+                   android:layout_width="120dp"
+                   android:src="@drawable/sad"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginBottom="20dp"
+                   android:id="@+id/lost_image"/>
+        <TextView style="@style/bigTextView"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:text="@string/you_are_lost"
+                  android:layout_centerHorizontal="true"
+                  android:layout_below="@id/lost_image"/>
+        <maxb.pro.myButton android:layout_width="100dp"
+                           android:layout_height="100dp"
+                           mb:image="@drawable/back"
+                           mb:animMode="LEFT"
+                           android:layout_alignParentBottom="true"
+                           android:id="@+id/lost_back"/>
+        <maxb.pro.myButton android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:id="@+id/lost_refresh"
+                          mb:image="@drawable/refresh"
+                          mb:animMode="ROTATE"
+                          android:layout_alignParentBottom="true"
+                          android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
