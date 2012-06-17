@@ -4,18 +4,30 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity
 {
     private Context mContext = null;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        GameDataBaseAdapter gameAdapter = new GameDataBaseAdapter(this);
+        gameAdapter.open();
+        ArrayList<Row_Game_Actors> list = gameAdapter.getAllEntriesByLevelAndByMode(1,1);
+        gameAdapter.close();
+
         setContentView(R.layout.main);
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;
