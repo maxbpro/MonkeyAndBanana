@@ -1,22 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:background="@drawable/scene_background">
+
+ <LinearLayout android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        android:background="@drawable/scene_background">
+              android:gravity="center_horizontal">
     <maxb.pro.FieldView android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:id="@+id/field"/>
-    <LinearLayout android:layout_width="fill_parent"
+    <RelativeLayout android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:id="@+id/panel">
-        <Button android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_weight="1"
-               android:id="@+id/btn" android:text="START"/>
+            android:id="@+id/panel"
+            android:background="@android:color/black">
+        <ImageView android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:src="@drawable/timer"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_clock_pic"/>
+        <ImageView android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/star"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_scores_pic"
+                   android:layout_below="@id/scene_clock_pic"
+                   android:layout_margin="5dp"/>
+        <ImageView android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/banana"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_bananas_pic"
+                   android:layout_below="@id/scene_scores_pic"
+                   android:layout_margin="5dp"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_time"
+                  style="@style/timeTextStyle"
+                  android:text="@string/start_time"
+                  android:layout_toLeftOf="@id/scene_clock_pic"
+                  android:layout_alignTop="@id/scene_clock_pic"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_scores"
+                  style="@style/smallTextView"
+                  android:layout_toLeftOf="@id/scene_scores_pic"
+                  android:layout_alignBottom="@id/scene_scores_pic"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_bananas"
+                  style="@style/smallTextView"
+                  android:layout_toLeftOf="@id/scene_bananas_pic"
+                  android:layout_alignBottom="@id/scene_bananas_pic"/>
+
         <maxb.pro.IndicatorView android:layout_height="wrap_content"
                android:layout_width="wrap_content"
-               android:layout_weight="1"
+               android:layout_alignParentBottom="true"
                android:id="@+id/indicator"/>
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
+</FrameLayout>

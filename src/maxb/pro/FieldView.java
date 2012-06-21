@@ -19,64 +19,78 @@ import java.util.Random;
 
 public class FieldView extends FrameLayout
 {
+    private SceneActivity scene = null;
     private TableLayout field = null;
     private Context context = null;
     private int NUM = 0;
     private int cellSizePixels = 0;
     private int fieldSizePixels = 0;
 
-    private ScoreSingleton score = null;
+
     private Cell monkeyCell = null;
     private Cell boxCell = null;
-    private ArrayList<Cell> bananaCells = null;
-    private int currentBananasCount = 0;
-    private int BananasCount = 0;
-
+    //private ArrayList<Cell> mBananasCells = null;
+    private ArrayList<Point> pointsBananas = null;
+    private ArrayList<Point> pointsActors = null;
 
     public FieldView(Context context, AttributeSet attr)
     {
         super(context, attr);
         this.context = context;
+        scene = (SceneActivity)context;
         setWillNotDraw(false);
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.field, this, true);
         field = (TableLayout)findViewById(R.id.table);
     }
 
-    public void initField(int NUM, ArrayList<Point> bananas)
+    public void initField(int NUM, int bananasCount, ArrayList<IActivate> actors)
     {
-
         this.NUM = NUM;
-        this.BananasCount = bananas.size();
-        score = ScoreSingleton.getInstance();
+        initPointsCollections(bananasCount, actors);
         determineSize();
-        bananaCells = new ArrayList<Cell>();
+
         for (int i = 0; i < NUM; i++)
         {
             TableRow row = getTableRow();
             for (int j = 0; j < NUM; j++)
             {
-                Cell view = getEmptyCell();
-                row.addView(view);
+                Cell cell = getEmptyCell();
+                row.addView(cell);
 
+                Point currentPoint = new Point(i,j);
                 if (i==0 && j==0)
-                    monkeyCell = view;
+                    monkeyCell = cell;
                 if (i==0 && j==1)
-                    boxCell = view;
-                if(bananas.contains(new Point(i,j)))
-                    bananaCells.add(view);
+                    boxCell = cell;
+                if(pointsBananas.contains(currentPoint))
+                    cell.updateState(new Banana());
             }
             field.addView(row);
         }
         monkeyCell.updateState(MonkeySingleton.getInstance());
         boxCell.updateState(BoxSingleton.getInstance());
-        for(Cell cell : bananaCells)
-              cell.updateState(new Banana());
         initAllCells();
-        //invalidate();
     }
 
+    private void initPointsCollections(int bananasCount, ArrayList<IActivate> actors)
+    {
+        RandomPoints rn = new RandomPoints(NUM);
+        pointsBananas = new ArrayList<Point>();
+        for (int i = 0; i < bananasCount; i++)
+        {
+            Point point = rn.getPoint();
+            pointsBananas.add(point);
+        }
+        pointsActors = new ArrayList<Point>();
+        //for(IActivate actor : actors)
+        //{
+             //switch (actor.getClassName())
+             //{
 
+             //}
+        //}
+    }
 
 
 
@@ -208,44 +222,41 @@ public class FieldView extends FrameLayout
 
 
 
-    private boolean toRigthMonkey()
+    private void toRigthMonkey()
     {
-       return toMoveMonkey(monkeyCell.getRigthCell());
+        toMoveMonkey(monkeyCell.getRigthCell());
     }
 
-    private boolean toDownMonkey()
+    private void toDownMonkey()
     {
-        return toMoveMonkey(monkeyCell.getBottomCell());
+        toMoveMonkey(monkeyCell.getBottomCell());
     }
 
-    private boolean toLeftMonkey()
+    private void toLeftMonkey()
     {
-       return  toMoveMonkey(monkeyCell.getLeftCell());
+       toMoveMonkey(monkeyCell.getLeftCell());
     }
 
-    private boolean toUpMonkey()
+    private void toUpMonkey()
     {
-       return toMoveMonkey(monkeyCell.getTopCell());
+       toMoveMonkey(monkeyCell.getTopCell());
     }
 
-    private boolean toMoveMonkey(Cell newCell)
+    private void toMoveMonkey(Cell newCell)
     {
-        boolean result = true;
         monkeyCell.updateState(new EmptyActor());
         if (newCell.getState() instanceof IActivate)
-             result = ((IActivate) newCell.getState()).activate(score);
+             ((IActivate) newCell.getState()).activate(scene.getScore());
         if(newCell.getState() instanceof Banana)
-            currentBananasCount++;
+            scene.CurrentBananasCountIncrement();
         newCell.updateState(MonkeySingleton.getInstance());
         monkeyCell = newCell;
-        return result;
     }
 
 
 
     public void moveMonkey()
     {
-        boolean result = true;
         Random rn = new Random();
         switch (monkeyCell.getPosition())
         {
@@ -253,36 +264,36 @@ public class FieldView extends FrameLayout
             {
                 int num = rn.nextInt(2);
                 if(num==0)
-                    result = toRigthMonkey();
+                    toRigthMonkey();
                 else
-                    result = toDownMonkey();
+                    toDownMonkey();
                 break;
             }
             case LEFTBOTTOM:
             {
                 int num = rn.nextInt(2);
                 if(num==0)
-                    result = toRigthMonkey();
+                    toRigthMonkey();
                 else
-                    result = toUpMonkey();
+                    toUpMonkey();
                 break;
             }
             case RIGTHTOP:
             {
                 int num = rn.nextInt(2);
                 if (num==0)
-                    result = toLeftMonkey();
+                    toLeftMonkey();
                 else
-                    result = toDownMonkey();
+                    toDownMonkey();
                 break;
             }
             case RIGTHBOTTOM:
             {
                 int num = rn.nextInt(2);
                 if (num==0)
-                    result = toLeftMonkey();
+                    toLeftMonkey();
                 else
-                    result = toUpMonkey();
+                    toUpMonkey();
                 break;
             }
             case LEFT:
@@ -291,13 +302,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        result = toUpMonkey();
+                        toUpMonkey();
                         break;
                     case 1:
-                        result = toRigthMonkey();
+                        toRigthMonkey();
                         break;
                     case 2:
-                        result = toDownMonkey();
+                        toDownMonkey();
                         break;
                 }
                 break;
@@ -308,13 +319,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        result = toUpMonkey();
+                        toUpMonkey();
                         break;
                     case 1:
-                        result = toDownMonkey();
+                        toDownMonkey();
                         break;
                     case 2:
-                        result = toLeftMonkey();
+                        toLeftMonkey();
                         break;
                 }
                 break;
@@ -325,13 +336,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        result = toDownMonkey();
+                        toDownMonkey();
                         break;
                     case 1:
-                        result = toRigthMonkey();
+                        toRigthMonkey();
                         break;
                     case 2:
-                        result = toLeftMonkey();
+                        toLeftMonkey();
                         break;
                 }
                 break;
@@ -342,13 +353,13 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        result = toUpMonkey();
+                        toUpMonkey();
                         break;
                     case 1:
-                        result = toRigthMonkey();
+                        toRigthMonkey();
                         break;
                     case 2:
-                        result = toLeftMonkey();
+                        toLeftMonkey();
                         break;
                 }
                 break;
@@ -359,87 +370,33 @@ public class FieldView extends FrameLayout
                 switch (num)
                 {
                     case 0:
-                        result = toLeftMonkey();
+                        toLeftMonkey();
                         break;
                     case 1:
-                        result = toUpMonkey();
+                        toUpMonkey();
                         break;
                     case 2:
-                        result = toRigthMonkey();
+                        toRigthMonkey();
                         break;
                     case 3:
-                        result = toDownMonkey();
+                        toDownMonkey();
                         break;
                 }
                 break;
             }
         }
-        //
-        isLostLevel(result);
-        isFinishLevel();
     }
 
-    private void isLostLevel(boolean result)
-    {
-         if(result == false)
-         {
-             // exit from the level like fail
-             final LostDialog dialog = new LostDialog(context, R.style.DialogTheme);
-             ((SceneActivity)context).pause();
-             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                 @Override
-                 public void onDismiss(DialogInterface dialogInterface) {
-                     //if(dialog.getResult()==LostDialog.Result.REFRESH)
 
-                 }
-             });
-             dialog.show();
-         }
-    }
-
-    private void isFinishLevel()
-    {
-        if (currentBananasCount == BananasCount)
-        {
-            // exit from the level like success
-            ((SceneActivity)context).pause();
-            final ResultDialog dialog = new ResultDialog(context, R.style.DialogTheme,
-                    ResultDialog.Mode.FROM_GAME, null);
-            // pause
-            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialogInterface) {
-                        switch (dialog.getResult())
-                        {
-                            case  REFRESH:
-                                break;
-                            case NEXT_LEVEL:
-                                break;
-                        }
-                }
-            });
-            dialog.show();
-
-        }
-             // save result
-    }
 
     private void determineSize()
     {
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        // - 10*2 for margin of all device
-        int heightPixels = dm.heightPixels - 20 - 50;
+        // - 10*2 for margin
+        int heightPixels = dm.heightPixels - 20;
         cellSizePixels = Math.round(heightPixels/NUM)-2;
         fieldSizePixels = heightPixels;
-    }
-
-    private int convertPixelsToDP(int pixels)
-    {
-        final float scale = getResources().getDisplayMetrics().density;
-        int dp = Math.round(pixels/scale);
-        return dp;
     }
 
     public int getSize()
@@ -447,19 +404,5 @@ public class FieldView extends FrameLayout
         return fieldSizePixels;
     }
 
-    @Override
-    protected void onDraw(Canvas canvas)
-    {
-        super.onDraw(canvas);
-        /*Paint pen = new Paint(Paint.ANTI_ALIAS_FLAG);
-        pen.setStrokeWidth(2);
-        int counter = 0;
-        for (int i=0; i<NUM+1; i++)
-        {
-            //canvas.drawLine(counter, 0, counter, getHeight(), pen);
-            //canvas.drawLine(0, counter, getWidth(), counter, pen);
-            counter+=(cellSizePixels+2);
-        }
-        */
-    }
+
 }

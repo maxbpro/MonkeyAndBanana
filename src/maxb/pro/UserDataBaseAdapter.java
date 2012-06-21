@@ -1,6 +1,7 @@
 package maxb.pro;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -78,7 +79,7 @@ public class UserDataBaseAdapter
                 cursor_level.getInt(LEVEL_COL_INT),
                 cursor_level.getInt(MODE_COL_INT),
                 cursor_level.getInt(BANANAS_COL_INT),
-                cursor_level.getString(TIME_COL_INT),
+                cursor_level.getInt(TIME_COL_INT),
                 cursor_level.getInt(SCORES_COL_INT)
                 );
         ArrayList<Row_User_Actors> listActors = new ArrayList<Row_User_Actors>();
@@ -87,8 +88,7 @@ public class UserDataBaseAdapter
         cursor_actors.moveToFirst();
         while (!cursor_actors.isAfterLast())
         {
-            Row_User_Actors row = new Row_User_Actors(cursor_actors.getInt(KEY_ID_INT),
-                    cursor_actors.getString(NAME_COL_INT),
+            Row_User_Actors row = new Row_User_Actors(cursor_actors.getString(NAME_COL_INT),
                     cursor_actors.getInt(NUMBER_COL_INT),
                     row_level);
             listActors.add(row);
@@ -106,5 +106,37 @@ public class UserDataBaseAdapter
         db.delete(ACTORS_TABLE, LEVEL_ID_COL + "=" + index, null);
     }
 
+    public void insertEntryLevel(Row_User_Levels level, ArrayList<Row_User_Actors> actors)
+    {
+        int id = level.get_id();
+        ContentValues row_level = new ContentValues();
+        row_level.put(LEVEL_COL, level.get_level());
+        row_level.put(MODE_COL, level.get_mode());
+        row_level.put(TIME_COL, level.get_time_like_integer());
+        row_level.put(SCORES_COL, level.get_scores());
+        row_level.put(BANANAS_COL, level.get_bananas());
+        db.insert(LEVELS_TABLE,null, row_level);
+        if(actors != null)
+        {
+           for(Row_User_Actors actor : actors)
+           {
+               ContentValues row_actor = new ContentValues();
+               row_actor.put(NAME_COL, actor.get_name());
+               row_actor.put(NUMBER_COL, actor.get_number());
+               row_actor.put(LEVEL_ID_COL, id );
+               db.insert(ACTORS_TABLE, null, row_actor);
+           }
+        }
+    }
 
+    public ArrayList<Integer> getAllLevelsName(int mode)
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        Cursor cursor_levels = db.query(LEVELS_TABLE, new String[]{LEVEL_COL},"mode=" + mode, null, null,null,null);
+        while (!cursor_levels.isAfterLast())
+        {
+            list.add(cursor_levels.getInt(LEVEL_COL_INT));
+        }
+        return list;
+    }
 }

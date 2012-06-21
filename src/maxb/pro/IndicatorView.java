@@ -12,6 +12,9 @@ public class IndicatorView extends View
     private int mStep = 0;
     private int mWidth = 0;
     private int mCenter = 0;
+    private enum SmileState {NORMAL, HAPPY}
+    private SmileState smile = SmileState.NORMAL;
+    private Bitmap bmp = null;
 
     public IndicatorView(Context context, AttributeSet attr)
     {
@@ -27,13 +30,9 @@ public class IndicatorView extends View
     {
         float X = orientation.getX();
         float Y = orientation.getY();
-        canvas.drawColor(Color.WHITE);
-        Paint paint_red = new Paint();
-        paint_red.setColor(Color.RED);
-        canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
-
-        //GradientDrawable circle = (GradientDrawable)getResources().getDrawable(R.drawable.circle);
-
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.happy);
+        //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
+        canvas.drawBitmap(bmp, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
     }
 
 

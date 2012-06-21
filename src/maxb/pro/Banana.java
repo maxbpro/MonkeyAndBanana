@@ -15,8 +15,13 @@ public class Banana extends Actor implements IActivate
     }
 
     @Override
-    public boolean activate(ScoreSingleton score)
+    public void activate(Integer score)
     {
-        return true;
+          // TODO changing score
+    }
+
+    @Override
+    public String getClassName() {
+        return "Banana";
     }
 }

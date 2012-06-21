@@ -1,15 +1,18 @@
 package maxb.pro;
 
+import java.sql.Time;
+
 public class Row_User_Levels
 {
-    private int id = 0;
-    private int level = 0;
-    private int mode = 0;
+    private final int id;
+    private final int level;
+    private final int mode;
     private int bananas = 0;
-    private String time = null;
-    private int scores = 0;
+    private long time = 0;
+    private Integer scores = 0;
 
-    public Row_User_Levels(int id, int level, int mode, int bananas, String time,int scores)
+    // For reading from DB
+    public Row_User_Levels(int id, int level, int mode, int bananas, long time,int scores)
     {
         this.id = id;
         this.level = level;
@@ -19,34 +22,26 @@ public class Row_User_Levels
         this.scores = scores;
     }
 
-    public void set_id(int id)
-    {
-        this.id = id;
-    }
-
-    public void set_level(int level)
+    // for store in the game
+    public Row_User_Levels(int level, int mode)
     {
         this.level = level;
+        this.mode = mode;
+        this.bananas = 0;
+        this.time = 0;
+        this.scores = 0;
+        this.id = 0;
     }
 
-    public void set_mode(int mode)
-    {
-        this.mode = mode;
-    }
 
     public void set_bananas(int bananas)
     {
         this.bananas = bananas;
     }
 
-    public void set_time(String time)
+    public void set_time(long time)
     {
         this.time = time;
-    }
-
-    public void set_scores(int scores)
-    {
-        this.scores = scores;
     }
 
     public int get_id()
@@ -69,14 +64,26 @@ public class Row_User_Levels
         return bananas;
     }
 
-    public String get_time()
+    public long get_time_like_integer()
     {
         return time;
     }
 
-    public int get_scores()
+    public String get_time_like_string()
+    {
+        String t = "0:00:00";
+        //Time time = Time.valueOf(t);
+        return t;
+    }
+
+    public Integer get_scores()
     {
         return scores;
+    }
+
+    public void Bananas_increment()
+    {
+        bananas++;
     }
 
 }

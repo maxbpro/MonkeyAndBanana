@@ -1,6 +1,7 @@
 package maxb.pro;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -10,23 +11,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
 
 public class SceneActivity extends Activity
 {
-    private Handler handler = null;
-    private Runnable RecurringTask = null;
-    private long DELAY = 100;
     private Thread thread = null;
-    private FieldView field = null;
-    private IndicatorView indicator = null;
-    private static final int THICKNESS = 10;
-    // for interact with the database
+    private boolean isPauseThread = false;
     private int mMode = 0;
     private int mLevel = 0;
-    private boolean isPauseThread = false;
+    private SceneModel mGameModel = null;
+    private SceneView mGameView = null;
+
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -34,20 +32,11 @@ public class SceneActivity extends Activity
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.scene);
         initVariablesForDataBase();
-        initField();
-        initPanel();
-        initIndicator();
+        mGameModel = new SceneModel(getActorsInfo(), 100);
+        mGameView = new SceneView(this, 10, mGameModel.getBananasCount(), null);
 
-        Button btn = (Button)findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                activate();
-            }
-        });
-        handler = new Handler();
-        RecurringTask = new Runnable()
+        final Handler handler = new Handler();
+        Runnable RecurringTask = new Runnable()
         {
             public void run()
             {
@@ -56,57 +45,19 @@ public class SceneActivity extends Activity
                     public void run() {
                         if(isPauseThread == false)
                         {
-                           field.moveMonkey();
-                           indicator.updateIndicator();
-                           handler.postDelayed(this, DELAY);
-                        }
-                        else
-                        {
-
+                           MoveMonkeyAndCheck();
+                           UpdateUI();
+                           handler.postDelayed(this, mGameModel.getDelay());
                         }
                     }
-                }, DELAY);
+                }, mGameModel.getDelay());
             }
         };
 
         thread = new Thread(null,RecurringTask);
+        initAndShowTouchMeDialog();
     }
 
-    private void initPanel()
-    {
-        LinearLayout panel = (LinearLayout)findViewById(R.id.panel);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
-        params.setMargins(THICKNESS/2,THICKNESS,THICKNESS,THICKNESS);
-        panel.setLayoutParams(params);
-    }
-
-
-    private void initField()
-    {
-        field = (FieldView)findViewById(R.id.field);
-        ArrayList<Point> list = new ArrayList<Point>();
-        list.add(new Point(4,6));
-        list.add(new Point(5,3));
-        list.add(new Point(7,8));
-        field.initField(10, list);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(field.getSize(), field.getSize());
-        params.setMargins(THICKNESS,THICKNESS,THICKNESS/2,THICKNESS);
-        field.setLayoutParams(params);
-    }
-
-    private void initIndicator()
-    {
-        indicator = (IndicatorView)findViewById(R.id.indicator);
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int screen_width = dm.widthPixels;
-        int size = screen_width - field.getSize() - 30;
-        if(size>dm.heightPixels/2)
-            size = dm.heightPixels/2;
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
-        params.setMargins(0,THICKNESS,0,0);
-        indicator.setLayoutParams(params);
-    }
 
     private void initVariablesForDataBase()
     {
@@ -114,20 +65,15 @@ public class SceneActivity extends Activity
         mLevel = getIntent().getIntExtra("LEVEL", 0);
     }
 
-    /*private void start()
+    private ArrayList<Row_Game_Actors> getActorsInfo()
     {
-        RecurringTask = new Runnable()
-        {
-            public void run()
-            {
-                field.moveMonkey();
-                indicator.updateIndicator();
-                handler.postDelayed(this, DELAY);
-            }
-        };
-        handler.postDelayed(RecurringTask, DELAY);
+        GameDataBaseAdapter adapter = new GameDataBaseAdapter(this);
+        adapter.open();
+        ArrayList<Row_Game_Actors> actors =
+                adapter.getAllEntriesByLevelAndByMode(mLevel, mMode);
+        adapter.close();
+        return actors;
     }
-     */
 
     public void activate()
     {
@@ -144,6 +90,100 @@ public class SceneActivity extends Activity
         isPauseThread = false;
     }
 
+    private void isLostLevel()
+    {
+        // exit from the level like fail
+        final LostDialog dialog = new LostDialog(this, R.style.DialogTheme);
+        pause();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    //if(dialog.getResult()==LostDialog.Result.REFRESH)
 
+                }
+        });
+        dialog.show();
+
+    }
+
+    private void isFinishLevel()
+    {
+        if (mGameModel.getUser_level().get_bananas() == mGameModel.getBananasCount())
+        {
+            // exit from the level like success
+            pause();
+            final ResultDialog dialog = new ResultDialog(this, R.style.DialogTheme,
+                    ResultDialog.Mode.FROM_GAME, null);
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    switch (dialog.getResult())
+                    {
+                        case  REFRESH:
+                            break;
+                        case NEXT_LEVEL:
+                            break;
+                    }
+                    SaveResultToDB();
+                }
+            });
+            dialog.show();
+        }
+
+    }
+
+    public void CurrentBananasCountIncrement()
+    {
+        mGameModel.getUser_level().Bananas_increment();
+    }
+
+    public int getScore()
+    {
+        return mGameModel.getUser_level().get_scores();
+    }
+
+    private void SaveResultToDB()
+    {
+        UserDataBaseAdapter adapter = new UserDataBaseAdapter(this);
+        adapter.open();
+        adapter.insertEntryLevel(mGameModel.getUser_level(), mGameModel.getActivated());
+        adapter.close();
+    }
+
+    private void MoveMonkeyAndCheck()
+    {
+        mGameView.getField().moveMonkey();
+        boolean isContinues  = true;
+        if(mGameModel.getUser_level().get_scores()<0)
+            isContinues = false;
+
+        if(!isContinues)
+            isLostLevel();
+        else
+            isFinishLevel();
+
+    }
+
+    private void UpdateUI()
+    {
+        mGameView.getIndicator().updateIndicator();
+        mGameView.getTxt_bananas().setText(mGameModel.getUser_level().get_bananas() + " / " + mGameModel.getBananasCount());
+        Integer score = mGameModel.getUser_level().get_scores();
+        mGameView.getTxt_score().setText(score.toString());
+        String time = mGameModel.getUser_level().get_time_like_string();
+        mGameView.getTxt_time().setText(time);
+    }
+
+    private void initAndShowTouchMeDialog()
+    {
+        TouchMeDialog dialog = new TouchMeDialog(this, R.style.DialogTheme);
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                activate();
+            }
+        });
+        dialog.show();
+    }
 }
 

@@ -13,7 +13,7 @@
                    android:layout_marginTop="20dp"
                    android:layout_marginBottom="20dp"
                    android:id="@+id/lost_image"/>
-        <TextView style="@style/bigTextView"
+        <TextView style="@style/smallTextView"
                   android:layout_height="wrap_content"
                   android:layout_width="wrap_content"
                   android:text="@string/you_are_lost"

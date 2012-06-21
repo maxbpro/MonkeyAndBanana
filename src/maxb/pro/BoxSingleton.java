@@ -22,8 +22,13 @@ public class BoxSingleton extends Actor implements IActivate
 
 
     @Override
-    public boolean activate(ScoreSingleton score)
+    public void activate(Integer score)
     {
-         return true;
+
+    }
+
+    @Override
+    public String getClassName() {
+        return "Box";
     }
 }

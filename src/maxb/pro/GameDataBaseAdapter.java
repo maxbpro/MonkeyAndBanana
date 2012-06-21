@@ -74,8 +74,7 @@ public class GameDataBaseAdapter
         cursor_actors.moveToFirst();
         while (!cursor_actors.isAfterLast())
         {
-            Row_Game_Actors row = new Row_Game_Actors(cursor_actors.getInt(KEY_ID_INT),
-                    cursor_actors.getString(NAME_COL_INT),
+            Row_Game_Actors row = new Row_Game_Actors(cursor_actors.getString(NAME_COL_INT),
                     cursor_actors.getInt(NUMBER_COL_INT),
                     row_level);
             listActors.add(row);

@@ -71,11 +71,7 @@ public class LevelView extends FrameLayout
     {
         setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-            }
-        });
-
+            public void onClick(View view) {} });
     }
 
     private void initOpenModeLevel()

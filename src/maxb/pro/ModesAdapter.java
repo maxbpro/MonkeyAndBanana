@@ -40,13 +40,13 @@ public class ModesAdapter extends BaseAdapter
     @Override
     public View getView(int i, View oldView, ViewGroup viewGroup)
     {
-        ModeView view = new ModeView(mContext, String.valueOf(i));
+        int mode = i+1;
+        ModeView view = new ModeView(mContext, String.valueOf(mode));
         int h = dpToPx(MODE_HEIGHT);
         int w = dpToPx(MODE_WIDTH);
         Gallery.LayoutParams params = new Gallery.LayoutParams(w,h);
         view.setLayoutParams(params);
-        view.setPadding(30,0,30,
-                0);
+        view.setPadding(30,0,30,0);
         return view;
     }
 

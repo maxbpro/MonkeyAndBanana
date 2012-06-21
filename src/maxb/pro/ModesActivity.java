@@ -60,7 +60,7 @@ public class ModesActivity extends Activity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(mContext, LevelsActivity.class);
-                intent.putExtra("mode", i);
+                intent.putExtra("mode", i+1);
                 startActivity(intent);
             }
         });

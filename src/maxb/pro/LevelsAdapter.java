@@ -7,16 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import java.util.ArrayList;
+
 public class LevelsAdapter extends BaseAdapter
 {
     private Context mContext = null;
     private static final int LEVEL_SIZE = 150;
-    private int mode = 0;
+    private final int mode;
+    private final ArrayList<Integer> list_open_levels;
 
     public LevelsAdapter(Context context, int mode)
     {
         mContext = context;
         this.mode = mode;
+        UserDataBaseAdapter dbAdapter = new UserDataBaseAdapter(context);
+        dbAdapter.open();
+        list_open_levels = dbAdapter.getAllLevelsName(mode);
+        dbAdapter.close();
     }
 
     @Override
@@ -40,12 +47,17 @@ public class LevelsAdapter extends BaseAdapter
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup)
     {
-           LevelView view = null;
-           view = new LevelView(mContext, LevelView.State.FINISH, mode, i);
-           int s = dpToPx(LEVEL_SIZE);
-           view.setLayoutParams(new GridView.LayoutParams(s, s));
-           //view.setPadding(5, 5, 5, 5);
-           return view;
+        int level = i+1;
+        LevelView.State state = LevelView.State.CLOSE;
+        if(list_open_levels.contains(level))
+           state =  LevelView.State.FINISH;
+        else
+           if (level == list_open_levels.size()+1)
+               state = LevelView.State.OPEN;
+        LevelView view = new LevelView(mContext, state, mode, level);
+        int s = dpToPx(LEVEL_SIZE);
+        view.setLayoutParams(new GridView.LayoutParams(s, s));
+        return view;
     }
 
     private int dpToPx(int dp)

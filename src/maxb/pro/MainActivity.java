@@ -22,12 +22,6 @@ public class MainActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        GameDataBaseAdapter gameAdapter = new GameDataBaseAdapter(this);
-        gameAdapter.open();
-        ArrayList<Row_Game_Actors> list = gameAdapter.getAllEntriesByLevelAndByMode(1,1);
-        gameAdapter.close();
-
         setContentView(R.layout.main);
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;

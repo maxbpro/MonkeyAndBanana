@@ -2,6 +2,6 @@ package maxb.pro;
 
 public interface IActivate
 {
-    boolean activate(ScoreSingleton score);
-
+    void activate(Integer score);
+    String getClassName();
 }
