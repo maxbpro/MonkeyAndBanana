@@ -1,8 +1,8 @@
 package maxb.pro;
 
-
-import android.graphics.Point;
+import android.view.animation.*;
 import android.util.DisplayMetrics;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class SceneView
 {
-    private static final int THICKNESS = 10;
+    private static final int THICKNESS = 5;
     private int panel_width = 0;
     private SceneActivity scene = null;
     private final FieldView field;
@@ -19,6 +19,9 @@ public class SceneView
     private final TextView txt_bananas;
     private final TextView txt_score;
     private final TextView txt_time;
+    private final ImageView pic_bananas;
+    private final ImageView pic_scores;
+    private Animation animation = null;
 
     public SceneView(SceneActivity scene, int size, int bananasCount,
                      ArrayList<IActivate> actors)
@@ -29,11 +32,14 @@ public class SceneView
         txt_bananas = (TextView)scene.findViewById(R.id.scene_bananas);
         txt_score = (TextView)scene.findViewById(R.id.scene_scores);
         txt_time = (TextView)scene.findViewById(R.id.scene_time);
+        pic_bananas = (ImageView)scene.findViewById(R.id.scene_bananas_pic);
+        pic_scores = (ImageView)scene.findViewById(R.id.scene_scores_pic);
         field.initField(size, bananasCount, actors);
         initField();
         initIndicator();
         initPanel();
         initTexts(bananasCount);
+        initAnimation();
     }
 
     private void initField()
@@ -43,6 +49,20 @@ public class SceneView
         field.setLayoutParams(params);
     }
 
+    private void initIndicator()
+    {
+        DisplayMetrics dm = new DisplayMetrics();
+        scene.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int screen_width = dm.widthPixels;
+        panel_width = screen_width - field.getSize() - 15;
+        if(panel_width > field.getSize()/2)
+            panel_width = field.getSize()/2;
+        indicator.setWidth(panel_width);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(panel_width, panel_width);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        indicator.setLayoutParams(params);
+        //indicator.getBackground().setAlpha(50);
+    }
 
     private void initPanel()
     {
@@ -54,25 +74,6 @@ public class SceneView
     }
 
 
-
-    private void initIndicator()
-    {
-        DisplayMetrics dm = new DisplayMetrics();
-        scene.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int screen_width = dm.widthPixels;
-        panel_width = screen_width - field.getSize() - 30;
-        if(panel_width > dm.heightPixels/2)
-            panel_width = dm.heightPixels/2;
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(panel_width, panel_width);
-        params.addRule(RelativeLayout.BELOW, txt_bananas.getId());
-        indicator.setLayoutParams(params);
-        //indicator.getBackground().setAlpha(50);
-    }
-
-    private void initTexts(int count)
-    {
-        txt_bananas.setText("0 / " + count);
-    }
 
     public FieldView getField()
     {
@@ -101,10 +102,26 @@ public class SceneView
 
 
 
-    private int DpToPx(int dp)
+    public void txt_bananas_scale()
     {
-       float density = scene.getResources().getDisplayMetrics().density;
-       return Math.round(dp * density);
+        pic_bananas.startAnimation(animation);
+        txt_bananas.startAnimation(animation);
+
     }
 
+    public void txt_scores_scale()
+    {
+        pic_scores.startAnimation(animation);
+        txt_score.startAnimation(animation);
+    }
+
+    private void initAnimation()
+    {
+        animation = AnimationUtils.loadAnimation(scene, R.anim.scale_in);
+    }
+
+    private void initTexts(int count)
+    {
+        txt_bananas.setText("0 / " + count);
+    }
 }

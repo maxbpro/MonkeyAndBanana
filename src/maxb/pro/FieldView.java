@@ -1,23 +1,19 @@
 package maxb.pro;
 
-
+import maxb.pro.IndicatorView;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.widget.*;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Random;
+
 
 public class FieldView extends FrameLayout
 {
@@ -86,6 +82,151 @@ public class FieldView extends FrameLayout
         initAllCells();
     }
 
+    public int getSize()
+    {
+        return fieldSizePixels;
+    }
+
+
+
+    // Monkey's movements
+
+    public IndicatorView.Smiles moveMonkey(IndicatorRoute.Route route)
+    {
+        switch (monkeyCell.getPosition())
+        {
+            case LEFTTOP:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case BOTTOM: return toDownMonkey();
+                }
+                break;
+            }
+            case LEFTBOTTOM:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case TOP: return toUpMonkey();
+                }
+                break;
+            }
+            case RIGTHTOP:
+            {
+                switch (route)
+                {
+                    case LEFT: return toLeftMonkey();
+                    case BOTTOM: return toDownMonkey();
+                }
+                break;
+            }
+            case RIGTHBOTTOM:
+            {
+                switch (route)
+                {
+                    case LEFT: return toLeftMonkey();
+                    case TOP: return toUpMonkey();
+                }
+                break;
+            }
+            case LEFT:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case BOTTOM: return toDownMonkey();
+                    case TOP: return toUpMonkey();
+                }
+                break;
+            }
+            case RIGHT:
+            {
+                switch (route)
+                {
+                    case LEFT: return toLeftMonkey();
+                    case BOTTOM: return toDownMonkey();
+                    case TOP: return toUpMonkey();
+                }
+                break;
+            }
+            case TOP:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case BOTTOM: return toDownMonkey();
+                    case LEFT: return toLeftMonkey();
+                }
+                break;
+            }
+            case BOTTOM:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case LEFT: return toLeftMonkey();
+                    case TOP: return toUpMonkey();
+                }
+                break;
+            }
+            case CENTER:
+            {
+                switch (route)
+                {
+                    case RIGHT: return toRigthMonkey();
+                    case BOTTOM: return toDownMonkey();
+                    case TOP: return toUpMonkey();
+                    case LEFT: return toLeftMonkey();
+                }
+                break;
+            }
+        }
+        return IndicatorView.Smiles.NORMAL;
+    }
+
+    private IndicatorView.Smiles toRigthMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getRigthCell());
+    }
+
+    private IndicatorView.Smiles toDownMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getBottomCell());
+    }
+
+    private IndicatorView.Smiles toLeftMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getLeftCell());
+    }
+
+    private IndicatorView.Smiles toUpMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getTopCell());
+    }
+
+    private IndicatorView.Smiles toMoveMonkey(Cell newCell)
+    {
+        monkeyCell.updateState(new EmptyActor());
+        if (newCell.getState() instanceof IActivate)
+            ((IActivate) newCell.getState()).activate(scene.getScore());
+
+        IndicatorView.Smiles smile = IndicatorView.Smiles.NORMAL;
+        if(newCell.getState() instanceof Banana)
+            smile = IndicatorView.Smiles.IN_LOVE;
+        else
+            if (newCell.getState() instanceof BoxSingleton)
+                smile = IndicatorView.Smiles.WINK;
+
+        newCell.updateState(MonkeySingleton.getInstance());
+        monkeyCell = newCell;
+
+        return smile;
+    }
+
+    // View
+
     private void initPointsCollections(int bananasCount, ArrayList<IActivate> actors)
     {
         RandomPoints rn = new RandomPoints(NUM);
@@ -102,8 +243,6 @@ public class FieldView extends FrameLayout
             actorsMap.put(point, actor);
         }
     }
-
-
 
     private Cell getEmptyCell()
     {
@@ -231,185 +370,6 @@ public class FieldView extends FrameLayout
         }
     }
 
-
-
-    private void toRigthMonkey()
-    {
-        toMoveMonkey(monkeyCell.getRigthCell());
-    }
-
-    private void toDownMonkey()
-    {
-        toMoveMonkey(monkeyCell.getBottomCell());
-    }
-
-    private void toLeftMonkey()
-    {
-       toMoveMonkey(monkeyCell.getLeftCell());
-    }
-
-    private void toUpMonkey()
-    {
-       toMoveMonkey(monkeyCell.getTopCell());
-    }
-
-    private void toMoveMonkey(Cell newCell)
-    {
-        monkeyCell.updateState(new EmptyActor());
-        if (newCell.getState() instanceof IActivate)
-             ((IActivate) newCell.getState()).activate(scene.getScore());
-        if(newCell.getState() instanceof Banana)
-            scene.CurrentBananasCountIncrement();
-        newCell.updateState(MonkeySingleton.getInstance());
-        monkeyCell = newCell;
-    }
-
-
-
-    public void moveMonkey(IndicatorRoute.Route route)
-    {
-        switch (monkeyCell.getPosition())
-        {
-            case LEFTTOP:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                }
-                break;
-            }
-            case LEFTBOTTOM:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                }
-                break;
-            }
-            case RIGTHTOP:
-            {
-                switch (route)
-                {
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                }
-                break;
-            }
-            case RIGTHBOTTOM:
-            {
-                switch (route)
-                {
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                }
-                break;
-            }
-            case LEFT:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                }
-                break;
-            }
-            case RIGHT:
-            {
-                switch (route)
-                {
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                }
-                break;
-            }
-            case TOP:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                }
-                break;
-            }
-            case BOTTOM:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                }
-                break;
-            }
-            case CENTER:
-            {
-                switch (route)
-                {
-                    case RIGHT:
-                        toRigthMonkey();
-                        break;
-                    case BOTTOM:
-                        toDownMonkey();
-                        break;
-                    case TOP:
-                        toUpMonkey();
-                        break;
-                    case LEFT:
-                        toLeftMonkey();
-                        break;
-                }
-                break;
-            }
-        }
-    }
-
-
-
     private void determineSize()
     {
         DisplayMetrics dm = new DisplayMetrics();
@@ -420,10 +380,7 @@ public class FieldView extends FrameLayout
         fieldSizePixels = heightPixels;
     }
 
-    public int getSize()
-    {
-        return fieldSizePixels;
-    }
+
 
 
 }

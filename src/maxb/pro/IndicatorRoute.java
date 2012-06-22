@@ -30,13 +30,13 @@ public class IndicatorRoute
     {
         float x = orientation.getX();
         float y = orientation.getY();
-        if(orientation.getX()>3)
+        if(orientation.getX()>1)
            return Route.LEFT;
-        if(orientation.getX()<-3)
+        if(orientation.getX()<-1)
             return  Route.RIGHT;
-        if(orientation.getY()>3)
+        if(orientation.getY()>1)
             return Route.BOTTOM;
-        if(orientation.getY()<-3)
+        if(orientation.getY()<-1)
             return Route.TOP;
         return null;
     }

@@ -44,6 +44,29 @@ public class SceneActivity extends Activity
         initAndShowTouchMeDialog();
     }
 
+    public void activate()
+    {
+        thread.start();
+    }
+
+    public void pause()
+    {
+        isPauseThread = true;
+    }
+
+    public void start()
+    {
+        isPauseThread = false;
+    }
+
+
+    public int getScore()
+    {
+        return mGameModel.getUser_level().get_scores();
+    }
+
+
+    // Database interact
 
     private void initVariablesForDataBase()
     {
@@ -86,32 +109,137 @@ public class SceneActivity extends Activity
         return activated;
     }
 
-    public void activate()
+    private void SaveResultToDB()
     {
-        thread.start();
+        UserDataBaseAdapter adapter = new UserDataBaseAdapter(this);
+        adapter.open();
+        adapter.insertEntryLevel(mGameModel.getUser_level(), mGameModel.getActivated());
+        adapter.close();
     }
 
-    public void pause()
+
+
+
+
+
+
+    // Movements
+
+    private void initBtnJump()
     {
-         isPauseThread = true;
+        mGameView.getIndicator().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mGameView.getIndicator().switchSmile(IndicatorView.Smiles.SURPRISE);
+                        mGameView.getIndicator().update();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        MoveMonkeyAndCheck(mRoute.getRoute());
+                        //UpdateUI();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
-    public void start()
+    private void MoveMonkeyAndCheck(IndicatorRoute.Route route)
     {
-        isPauseThread = false;
+        if(route != null)
+        {
+            IndicatorView.Smiles smile = mGameView.getField().moveMonkey(route);
+            switch (smile)
+            {
+                case IN_LOVE:
+                    mGameModel.getUser_level().Bananas_increment();
+                    mGameView.txt_bananas_scale();
+                    break;
+                case WINK:
+                    mGameView.getIndicator().setEnable();
+                    break;
+            }
+
+            mGameView.getIndicator().switchSmile(smile);
+
+            boolean isContinues  = true;
+            if(mGameModel.getUser_level().get_scores()<0)
+                isContinues = false;
+            if(!isContinues)
+                isLostLevel();
+            else
+                isFinishLevel();
+        }
+    }
+
+
+
+
+    private void initTimer()
+    {
+        final Handler handler = new Handler();
+        Runnable RecurringTask = new Runnable()
+        {
+            public void run()
+            {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(isPauseThread == false)
+                        {
+
+                            UpdateUI();
+                            handler.postDelayed(this, mGameModel.getDelay());
+                        }
+                    }
+                }, mGameModel.getDelay());
+            }
+        };
+
+        thread = new Thread(null,RecurringTask);
+
+    }
+
+
+    private void UpdateUI()
+    {
+        mGameView.getIndicator().update();
+        mGameView.getTxt_bananas().setText(mGameModel.getUser_level().get_bananas() + " / " + mGameModel.getBananasCount());
+        Integer score = mGameModel.getUser_level().get_scores();
+        mGameView.getTxt_score().setText(score.toString());
+        mGameModel.getUser_level().set_time(mGameModel.getUser_level().get_time_like_integer()
+                + mGameModel.getDelay());
+        String time = mGameModel.getUser_level().get_time_like_string();
+        mGameView.getTxt_time().setText(time);
+
+    }
+
+
+    // windows
+
+    private void initAndShowTouchMeDialog()
+    {
+        TouchMeDialog dialog = new TouchMeDialog(this, R.style.DialogTheme);
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                activate();
+            }
+        });
+        dialog.show();
     }
 
     private void isLostLevel()
     {
-        // exit from the level like fail
         final LostDialog dialog = new LostDialog(this, R.style.DialogTheme);
         pause();
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialogInterface) {
-                    //if(dialog.getResult()==LostDialog.Result.REFRESH)
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //if(dialog.getResult()==LostDialog.Result.REFRESH)
 
-                }
+            }
         });
         dialog.show();
 
@@ -142,103 +270,5 @@ public class SceneActivity extends Activity
 
     }
 
-    public void CurrentBananasCountIncrement()
-    {
-        mGameModel.getUser_level().Bananas_increment();
-    }
-
-    public int getScore()
-    {
-        return mGameModel.getUser_level().get_scores();
-    }
-
-    private void SaveResultToDB()
-    {
-        UserDataBaseAdapter adapter = new UserDataBaseAdapter(this);
-        adapter.open();
-        adapter.insertEntryLevel(mGameModel.getUser_level(), mGameModel.getActivated());
-        adapter.close();
-    }
-
-    private void MoveMonkeyAndCheck(IndicatorRoute.Route route)
-    {
-        if(route != null)
-        {
-           mGameView.getField().moveMonkey(route);
-           boolean isContinues  = true;
-           if(mGameModel.getUser_level().get_scores()<0)
-               isContinues = false;
-
-           if(!isContinues)
-               isLostLevel();
-           else
-               isFinishLevel();
-        }
-    }
-
-    private void UpdateUI()
-    {
-        mGameView.getIndicator().updateIndicator();
-        mGameView.getTxt_bananas().setText(mGameModel.getUser_level().get_bananas() + " / " + mGameModel.getBananasCount());
-        Integer score = mGameModel.getUser_level().get_scores();
-        mGameView.getTxt_score().setText(score.toString());
-    }
-
-    private void initAndShowTouchMeDialog()
-    {
-        TouchMeDialog dialog = new TouchMeDialog(this, R.style.DialogTheme);
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                activate();
-            }
-        });
-        dialog.show();
-    }
-
-    private void initBtnJump()
-    {
-        mGameView.getIndicator().setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch(motionEvent.getAction())
-                {
-                    case MotionEvent.ACTION_UP:
-                        IndicatorRoute.Route route = mRoute.getRoute();
-                        MoveMonkeyAndCheck(route);
-                        UpdateUI();
-                        break;
-                }
-                return true;
-            }
-        });
-    }
-
-    private void initTimer()
-    {
-        final Handler handler = new Handler();
-        Runnable RecurringTask = new Runnable()
-        {
-            public void run()
-            {
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(isPauseThread == false)
-                        {
-                            mGameModel.getUser_level().set_time(mGameModel.getUser_level().get_time_like_integer()
-                                    + mGameModel.getDelay());
-                            String time = mGameModel.getUser_level().get_time_like_string();
-                            mGameView.getTxt_time().setText(time);
-                            handler.postDelayed(this, mGameModel.getDelay());
-                        }
-                    }
-                }, mGameModel.getDelay());
-            }
-        };
-
-        thread = new Thread(null,RecurringTask);
-
-    }
 }
 
