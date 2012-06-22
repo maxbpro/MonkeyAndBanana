@@ -43,9 +43,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             //By calling this method and empty database will be created into the default system path
             //of your application so we are gonna be able to overwrite that database with our database.
+            //this.getReadableDatabase();
             this.getReadableDatabase();
+            this.close();
             try
             {
+                this.close();
                 copyDataBase();
             }
             catch (IOException e)
@@ -64,6 +67,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         {
             String myPath = DB_PATH + db_name;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+            checkDB.close();
         }
         catch(SQLiteException e)
         {

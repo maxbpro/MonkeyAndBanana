@@ -56,8 +56,9 @@
 
         <maxb.pro.IndicatorView android:layout_height="wrap_content"
                android:layout_width="wrap_content"
-               android:layout_alignParentBottom="true"
-               android:id="@+id/indicator"/>
+               android:layout_below="@id/scene_bananas_pic"
+               android:id="@+id/indicator"
+               android:background="@android:color/white"/>
     </RelativeLayout>
 </LinearLayout>
 </FrameLayout>

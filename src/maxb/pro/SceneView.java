@@ -64,7 +64,7 @@ public class SceneView
         if(panel_width > dm.heightPixels/2)
             panel_width = dm.heightPixels/2;
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(panel_width, panel_width);
-        params.setMargins(0,200,0,0);
+        params.addRule(RelativeLayout.BELOW, txt_bananas.getId());
         indicator.setLayoutParams(params);
         //indicator.getBackground().setAlpha(50);
     }
@@ -97,6 +97,14 @@ public class SceneView
     public TextView getTxt_time()
     {
         return txt_time;
+    }
+
+
+
+    private int DpToPx(int dp)
+    {
+       float density = scene.getResources().getDisplayMetrics().density;
+       return Math.round(dp * density);
     }
 
 }

@@ -43,6 +43,11 @@ public class GameDataBaseAdapter
 
     public GameDataBaseAdapter open() throws SQLException
     {
+        try{
+           dbHelper.createDataBase();
+        }
+        catch (Exception ex){}
+        dbHelper.openDataBase();
         db = dbHelper.getReadableDatabase();
         return this;
     }
@@ -61,7 +66,7 @@ public class GameDataBaseAdapter
     public ArrayList<Row_Game_Actors> getAllEntriesByLevelAndByMode(int level, int mode)
     {
         Cursor cursor_level = db.query(LEVELS_TABLE, new String[]{KEY_ID, LEVEL_COL, MODE_COL, BANANAS_COL},
-                LEVEL_COL + "=" + level + " and " + MODE_COL + "=" + mode,null, null, null, null,"1" );
+                LEVEL_COL + "=" + level + " AND " + MODE_COL + "=" + mode,null, null, null, null,"1" );
         cursor_level.moveToFirst();
         Row_Game_Levels row_level = new Row_Game_Levels(cursor_level.getInt(KEY_ID_INT),
                 cursor_level.getInt(LEVEL_COL_INT),

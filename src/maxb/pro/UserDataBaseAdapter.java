@@ -133,10 +133,14 @@ public class UserDataBaseAdapter
     {
         ArrayList<Integer> list = new ArrayList<Integer>();
         Cursor cursor_levels = db.query(LEVELS_TABLE, new String[]{LEVEL_COL},"mode=" + mode, null, null,null,null);
+        cursor_levels.moveToFirst();
         while (!cursor_levels.isAfterLast())
         {
-            list.add(cursor_levels.getInt(LEVEL_COL_INT));
+            list.add(cursor_levels.getInt(0));
+            cursor_levels.moveToNext();
         }
         return list;
+
+
     }
 }

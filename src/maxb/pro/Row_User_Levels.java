@@ -1,6 +1,10 @@
 package maxb.pro;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Row_User_Levels
 {
@@ -71,9 +75,7 @@ public class Row_User_Levels
 
     public String get_time_like_string()
     {
-        String t = "0:00:00";
-        //Time time = Time.valueOf(t);
-        return t;
+        return formatIntoMMSSMS(time);
     }
 
     public Integer get_scores()
@@ -85,5 +87,19 @@ public class Row_User_Levels
     {
         bananas++;
     }
+
+    private String formatIntoMMSSMS(long msIn)
+    {
+        long ms = msIn % 100;
+        long s = msIn / 100;
+        long minutes = s / 60;
+        long seconds = s % 60;
+
+        String st =  (minutes < 10 ? "0" : "") + minutes
+                + ":" + (seconds < 10 ? "0" : "") + seconds
+                + ":" + (ms < 10 ? "0" : "") + ms ;
+        return st;
+    }
+
 
 }

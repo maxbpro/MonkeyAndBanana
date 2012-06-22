@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.widget.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class FieldView extends FrameLayout
@@ -29,9 +31,11 @@ public class FieldView extends FrameLayout
 
     private Cell monkeyCell = null;
     private Cell boxCell = null;
-    //private ArrayList<Cell> mBananasCells = null;
     private ArrayList<Point> pointsBananas = null;
-    private ArrayList<Point> pointsActors = null;
+    private Map<Point, IActivate> actorsMap = null;
+
+    public static final String SNAKE = "SNAKE";
+    public static final String TELEPORT = "TELEPORT";
 
     public FieldView(Context context, AttributeSet attr)
     {
@@ -65,6 +69,15 @@ public class FieldView extends FrameLayout
                     boxCell = cell;
                 if(pointsBananas.contains(currentPoint))
                     cell.updateState(new Banana());
+                if(actorsMap.containsKey(currentPoint))
+                {
+                    IActivate activeted = actorsMap.get(currentPoint);
+                    if(activeted instanceof Snake)
+                        cell.updateState(new Snake());
+                    else
+                        if (activeted instanceof Teleport)
+                            cell.updateState(new Teleport());
+                }
             }
             field.addView(row);
         }
@@ -82,14 +95,12 @@ public class FieldView extends FrameLayout
             Point point = rn.getPoint();
             pointsBananas.add(point);
         }
-        pointsActors = new ArrayList<Point>();
-        //for(IActivate actor : actors)
-        //{
-             //switch (actor.getClassName())
-             //{
-
-             //}
-        //}
+        actorsMap = new LinkedHashMap<Point, IActivate>();
+        for(IActivate actor : actors)
+        {
+            Point point = rn.getPoint();
+            actorsMap.put(point, actor);
+        }
     }
 
 
@@ -255,93 +266,105 @@ public class FieldView extends FrameLayout
 
 
 
-    public void moveMonkey()
+    public void moveMonkey(IndicatorRoute.Route route)
     {
-        Random rn = new Random();
         switch (monkeyCell.getPosition())
         {
             case LEFTTOP:
             {
-                int num = rn.nextInt(2);
-                if(num==0)
-                    toRigthMonkey();
-                else
-                    toDownMonkey();
+                switch (route)
+                {
+                    case RIGHT:
+                        toRigthMonkey();
+                        break;
+                    case BOTTOM:
+                        toDownMonkey();
+                        break;
+                }
                 break;
             }
             case LEFTBOTTOM:
             {
-                int num = rn.nextInt(2);
-                if(num==0)
-                    toRigthMonkey();
-                else
-                    toUpMonkey();
+                switch (route)
+                {
+                    case RIGHT:
+                        toRigthMonkey();
+                        break;
+                    case TOP:
+                        toUpMonkey();
+                        break;
+                }
                 break;
             }
             case RIGTHTOP:
             {
-                int num = rn.nextInt(2);
-                if (num==0)
-                    toLeftMonkey();
-                else
-                    toDownMonkey();
+                switch (route)
+                {
+                    case LEFT:
+                        toLeftMonkey();
+                        break;
+                    case BOTTOM:
+                        toDownMonkey();
+                        break;
+                }
                 break;
             }
             case RIGTHBOTTOM:
             {
-                int num = rn.nextInt(2);
-                if (num==0)
-                    toLeftMonkey();
-                else
-                    toUpMonkey();
+                switch (route)
+                {
+                    case LEFT:
+                        toLeftMonkey();
+                        break;
+                    case TOP:
+                        toUpMonkey();
+                        break;
+                }
                 break;
             }
             case LEFT:
             {
-                int num = rn.nextInt(3);
-                switch (num)
+                switch (route)
                 {
-                    case 0:
-                        toUpMonkey();
-                        break;
-                    case 1:
+                    case RIGHT:
                         toRigthMonkey();
                         break;
-                    case 2:
+                    case BOTTOM:
                         toDownMonkey();
+                        break;
+                    case TOP:
+                        toUpMonkey();
                         break;
                 }
                 break;
             }
             case RIGHT:
             {
-                int num = rn.nextInt(3);
-                switch (num)
+                switch (route)
                 {
-                    case 0:
-                        toUpMonkey();
+                    case LEFT:
+                        toLeftMonkey();
                         break;
-                    case 1:
+                    case BOTTOM:
                         toDownMonkey();
                         break;
-                    case 2:
-                        toLeftMonkey();
+                    case TOP:
+                        toUpMonkey();
                         break;
                 }
                 break;
             }
             case TOP:
             {
-                int num = rn.nextInt(3);
-                switch (num)
+                switch (route)
                 {
-                    case 0:
-                        toDownMonkey();
-                        break;
-                    case 1:
+                    case RIGHT:
                         toRigthMonkey();
                         break;
-                    case 2:
+                    case BOTTOM:
+                        toDownMonkey();
+                        break;
+                    case LEFT:
                         toLeftMonkey();
                         break;
                 }
@@ -349,37 +372,35 @@ public class FieldView extends FrameLayout
             }
             case BOTTOM:
             {
-                int num = rn.nextInt(3);
-                switch (num)
+                switch (route)
                 {
-                    case 0:
-                        toUpMonkey();
-                        break;
-                    case 1:
+                    case RIGHT:
                         toRigthMonkey();
                         break;
-                    case 2:
+                    case LEFT:
                         toLeftMonkey();
+                        break;
+                    case TOP:
+                        toUpMonkey();
                         break;
                 }
                 break;
             }
             case CENTER:
             {
-                int num = rn.nextInt(4);
-                switch (num)
+                switch (route)
                 {
-                    case 0:
-                        toLeftMonkey();
-                        break;
-                    case 1:
-                        toUpMonkey();
-                        break;
-                    case 2:
+                    case RIGHT:
                         toRigthMonkey();
                         break;
-                    case 3:
+                    case BOTTOM:
                         toDownMonkey();
+                        break;
+                    case TOP:
+                        toUpMonkey();
+                        break;
+                    case LEFT:
+                        toLeftMonkey();
                         break;
                 }
                 break;
