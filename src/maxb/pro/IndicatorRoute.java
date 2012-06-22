@@ -1,5 +1,7 @@
 package maxb.pro;
 
+import android.content.Context;
+
 /**
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +19,25 @@ package maxb.pro;
 public class IndicatorRoute
 {
     public enum Route{LEFT, TOP, RIGHT, BOTTOM}
+    private OrientationInfo orientation = null;
 
-
-    public static Route getRoute()
+    public IndicatorRoute(Context context)
     {
-         return Route.RIGHT;
+        this.orientation = new OrientationInfo(context);
+    }
+
+    public Route getRoute()
+    {
+        float x = orientation.getX();
+        float y = orientation.getY();
+        if(orientation.getX()>3)
+           return Route.LEFT;
+        if(orientation.getX()<-3)
+            return  Route.RIGHT;
+        if(orientation.getY()>3)
+            return Route.BOTTOM;
+        if(orientation.getY()<-3)
+            return Route.TOP;
+        return null;
     }
 }

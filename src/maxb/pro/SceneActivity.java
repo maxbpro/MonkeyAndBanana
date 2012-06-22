@@ -25,6 +25,7 @@ public class SceneActivity extends Activity
     private int mLevel = 0;
     private SceneModel mGameModel = null;
     private SceneView mGameView = null;
+    private IndicatorRoute mRoute = null;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -36,6 +37,7 @@ public class SceneActivity extends Activity
         ArrayList<IActivate> activeted = getActivated(actors);
         mGameModel = new SceneModel(actors, 1);
         mGameView = new SceneView(this, 10, mGameModel.getBananasCount(), activeted);
+        mRoute = new IndicatorRoute(this);
 
         initTimer();
         initBtnJump();
@@ -160,16 +162,18 @@ public class SceneActivity extends Activity
 
     private void MoveMonkeyAndCheck(IndicatorRoute.Route route)
     {
-        mGameView.getField().moveMonkey(route);
-        boolean isContinues  = true;
-        if(mGameModel.getUser_level().get_scores()<0)
-            isContinues = false;
+        if(route != null)
+        {
+           mGameView.getField().moveMonkey(route);
+           boolean isContinues  = true;
+           if(mGameModel.getUser_level().get_scores()<0)
+               isContinues = false;
 
-        if(!isContinues)
-            isLostLevel();
-        else
-            isFinishLevel();
-
+           if(!isContinues)
+               isLostLevel();
+           else
+               isFinishLevel();
+        }
     }
 
     private void UpdateUI()
@@ -199,13 +203,13 @@ public class SceneActivity extends Activity
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch(motionEvent.getAction())
                 {
-                    case MotionEvent.ACTION_DOWN:
-                        IndicatorRoute.Route route = IndicatorRoute.getRoute();
+                    case MotionEvent.ACTION_UP:
+                        IndicatorRoute.Route route = mRoute.getRoute();
                         MoveMonkeyAndCheck(route);
                         UpdateUI();
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
