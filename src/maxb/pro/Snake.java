@@ -23,7 +23,8 @@ public class Snake extends Actor implements IActivate
 
     @Override
     public Drawable getImage(Resources resources) {
-        return resources.getDrawable(R.drawable.sad);
+        //return resources.getDrawable(R.drawable.sad);
+        return null;
     }
 
     @Override

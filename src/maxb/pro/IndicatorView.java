@@ -2,6 +2,7 @@ package maxb.pro;
 
 import android.content.Context;
 import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -12,7 +13,7 @@ public class IndicatorView extends View
     private int mStep = 0;
     private int mWidth = 0;
     private int mCenter = 0;
-    private int SMILE_WIDTH = 64;
+    private int SMILE_WIDTH = 64; // in dp
     public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY,
         CRY_MUCH, IN_LOVE, FEAR }
     private Bitmap bmp_current = null;
@@ -31,9 +32,9 @@ public class IndicatorView extends View
     {
         super(context, attr);
         orientation = new OrientationInfo(context);
+        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
         initAllBitmap();
         switchSmile(Smiles.NORMAL);
-        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
     }
 
     public void setWidth(int width)
@@ -123,16 +124,32 @@ public class IndicatorView extends View
 
     private void initAllBitmap()
     {
-        bmp_angry = BitmapFactory.decodeResource(getResources(), R.drawable.angry);
-        bmp_happy = BitmapFactory.decodeResource(getResources(), R.drawable.happy);
-        bmp_sad = BitmapFactory.decodeResource(getResources(), R.drawable.sad);
-        bmp_cry = BitmapFactory.decodeResource(getResources(), R.drawable.cry);
-        bmp_cry_much = BitmapFactory.decodeResource(getResources(), R.drawable.cry_much);
-        bmp_fear = BitmapFactory.decodeResource(getResources(), R.drawable.fear);
-        bmp_surprise = BitmapFactory.decodeResource(getResources(), R.drawable.surprise);
-        bmp_normal = BitmapFactory.decodeResource(getResources(), R.drawable.normal);
-        bmp_in_love = BitmapFactory.decodeResource(getResources(), R.drawable.in_love);
-        bmp_wink = BitmapFactory.decodeResource(getResources(), R.drawable.wink);
+        bmp_angry  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.angry));
+        bmp_happy  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.happy));
+        bmp_sad  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.sad));
+        bmp_cry  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.cry));
+        bmp_cry_much  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.cry_much));
+        bmp_fear  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.fear));
+        bmp_surprise  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.surprise));
+        bmp_normal = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.normal));
+        bmp_in_love  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.in_love));
+        bmp_wink  = getResizeBitmap((BitmapDrawable)getResources().getDrawable(R.drawable.wink));
+    }
+
+    private Bitmap getResizeBitmap(BitmapDrawable bd)
+    {
+        Bitmap bmp = bd.getBitmap();
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+        int newWidth = SMILE_WIDTH;
+        int newHeight = SMILE_WIDTH;
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap new_bmp = Bitmap.createBitmap(bmp, 0, 0,
+                width, height, matrix, true);
+        return new_bmp;
     }
 
     private int dpToPx(int dp)
