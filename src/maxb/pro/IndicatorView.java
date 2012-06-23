@@ -12,7 +12,7 @@ public class IndicatorView extends View
     private int mStep = 0;
     private int mWidth = 0;
     private int mCenter = 0;
-    private int SMILE_WIDTH = 50;// in px
+    private int SMILE_WIDTH = 64;
     public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY,
         CRY_MUCH, IN_LOVE, FEAR }
     private Bitmap bmp_current = null;
@@ -33,6 +33,7 @@ public class IndicatorView extends View
         orientation = new OrientationInfo(context);
         initAllBitmap();
         switchSmile(Smiles.NORMAL);
+        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
     }
 
     public void setWidth(int width)
@@ -132,10 +133,13 @@ public class IndicatorView extends View
         bmp_normal = BitmapFactory.decodeResource(getResources(), R.drawable.normal);
         bmp_in_love = BitmapFactory.decodeResource(getResources(), R.drawable.in_love);
         bmp_wink = BitmapFactory.decodeResource(getResources(), R.drawable.wink);
-        SMILE_WIDTH = bmp_normal.getWidth();
     }
 
-
+    private int dpToPx(int dp)
+    {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp*density);
+    }
 
 }
 
