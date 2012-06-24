@@ -4,7 +4,8 @@
                 xmlns:mb="http://schemas.android.com/apk/res/maxb.pro"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:background="@drawable/main_background">
     <maxb.pro.myButton android:layout_height="100dp"
             android:layout_width="100dp"
             android:id="@+id/btn_settings"
@@ -18,10 +19,22 @@
             mb:image="@drawable/forward"
             android:id="@+id/btn_forward"
             mb:animMode="RIGHT"/>
-    <ImageView android:layout_height="wrap_content"
-               android:layout_width="wrap_content"
-               android:layout_centerInParent="true"
-               android:src="@drawable/monkey_main"/>
+    <LinearLayout android:layout_height="500dp"
+                  android:layout_width="400dp"
+                  android:layout_centerInParent="true"
+                  android:orientation="vertical"
+                  android:background="@android:color/transparent">
+        <ImageView android:layout_height="400dp"
+                android:layout_width="400dp"
+                android:src="@drawable/monkey"
+                android:layout_gravity="center_horizontal"/>
+        <TextView android:layout_height="100dp"
+                  android:layout_width="400dp"
+                  android:id="@+id/main_game_title"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center_horizontal"
+                  android:text="@string/game_title"/>
+    </LinearLayout>
 
 
 </RelativeLayout>

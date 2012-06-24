@@ -23,7 +23,8 @@ public class FieldView extends FrameLayout
     private int NUM = 0;
     private int cellSizePixels = 0;
     private int fieldSizePixels = 0;
-
+    private boolean isBoxFound = false;
+    private Thing isThingReturn = null;
 
     private Cell monkeyCell = null;
     private Cell boxCell = null;
@@ -208,17 +209,53 @@ public class FieldView extends FrameLayout
 
     private IndicatorView.Smiles toMoveMonkey(Cell newCell)
     {
-        monkeyCell.updateState(new EmptyActor());
-        if (newCell.getState() instanceof IActivate)
-            ((IActivate) newCell.getState()).activate(scene.getScore());
-
         IndicatorView.Smiles smile = IndicatorView.Smiles.NORMAL;
-        if(newCell.getState() instanceof Banana)
-            smile = IndicatorView.Smiles.IN_LOVE;
-        else
-            if (newCell.getState() instanceof BoxSingleton)
-                smile = IndicatorView.Smiles.WINK;
 
+        if (isThingReturn != null)
+        {
+            if(isThingReturn instanceof Banana)
+               monkeyCell.updateState(new Banana());
+            else
+               if(isThingReturn instanceof Teleport)
+                   monkeyCell.updateState(new Teleport());
+            isThingReturn = null;
+        }
+        else
+            monkeyCell.updateState(new EmptyActor());
+
+        // Essential block
+
+        if(isBoxFound)
+        {
+           if (newCell.getState() instanceof IActivate)
+               ((IActivate) newCell.getState()).activate(scene.getScore());
+
+           if(newCell.getState() instanceof Banana)
+               smile = IndicatorView.Smiles.IN_LOVE;
+        }
+        else
+        {
+
+            if (newCell.getState() instanceof BoxSingleton)
+            {
+                smile = IndicatorView.Smiles.WINK;
+                isBoxFound = true;
+            }
+            else
+            {
+                if (newCell.getState() instanceof IActivate)
+                    ((IActivate) newCell.getState()).activate(scene.getScore());
+                else
+                {
+                    if (newCell.getState() instanceof Thing)
+                        isThingReturn = (Thing)newCell.getState();
+                }
+                smile = IndicatorView.Smiles.ANRGY;
+
+            }
+
+
+        }
         newCell.updateState(MonkeySingleton.getInstance());
         monkeyCell = newCell;
 

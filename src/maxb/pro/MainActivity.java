@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.*;
-
-import java.io.IOException;
-import java.util.ArrayList;
+import android.widget.TextView;
+import android.view.animation.*;
 
 public class MainActivity extends Activity
 {
@@ -27,7 +24,7 @@ public class MainActivity extends Activity
         mContext = this;
         final myButton btn_forward = (myButton)findViewById(R.id.btn_forward);
         final myButton btn_settings = (myButton)findViewById(R.id.btn_settings);
-
+        startAnimation();
         btn_forward.getImageView().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -100,5 +97,12 @@ public class MainActivity extends Activity
         });
         dialog.show();
 
+    }
+
+    private void startAnimation()
+    {
+        final TextView txt_title = (TextView)findViewById(R.id.main_game_title);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.scale_in);
+        txt_title.startAnimation(animation);
     }
 }

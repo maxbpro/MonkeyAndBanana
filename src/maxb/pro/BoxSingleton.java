@@ -5,7 +5,7 @@ package maxb.pro;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-public class BoxSingleton extends Actor implements IActivate
+public class BoxSingleton extends Actor
 {
     private static BoxSingleton instance = new BoxSingleton();
     private BoxSingleton(){}
@@ -20,15 +20,4 @@ public class BoxSingleton extends Actor implements IActivate
         return resources.getDrawable(R.drawable.box);
     }
 
-
-    @Override
-    public void activate(Integer score)
-    {
-
-    }
-
-    @Override
-    public String getClassName() {
-        return "Box";
-    }
 }

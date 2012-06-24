@@ -17,7 +17,7 @@ import android.graphics.drawable.Drawable;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-public class Teleport extends Actor implements IActivate
+public class Teleport extends Thing implements IActivate
 {
     @Override
     public Drawable getImage(Resources resources) {

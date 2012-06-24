@@ -18,21 +18,8 @@ import android.graphics.drawable.Drawable;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class Snake extends Enemy implements IActivate
+abstract class Thing extends Actor
 {
-
     @Override
-    public Drawable getImage(Resources resources) {
-        //return resources.getDrawable(R.drawable.sad);
-        return null;
-    }
-
-    @Override
-    public void activate(Integer score) {
-    }
-
-    @Override
-    public String getClassName() {
-        return "SNAKE";
-    }
+    public abstract Drawable getImage(Resources resources);
 }

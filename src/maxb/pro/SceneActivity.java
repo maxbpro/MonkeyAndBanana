@@ -154,10 +154,18 @@ public class SceneActivity extends Activity
             {
                 case IN_LOVE:
                     mGameModel.getUser_level().Bananas_increment();
+                    mGameView.getScene_text().setText("Banana has found!");
+                    mGameView.txt_scene_text_scale();
                     mGameView.txt_bananas_scale();
                     break;
                 case WINK:
                     mGameView.getIndicator().setEnable();
+                    mGameView.getScene_text().setText("Box has found!");
+                    mGameView.txt_scene_text_scale();
+                    break;
+                case ANRGY:
+                    mGameView.getScene_text().setText("Take the Box!");
+                    mGameView.txt_scene_text_scale();
                     break;
             }
 

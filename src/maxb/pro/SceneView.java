@@ -2,10 +2,7 @@ package maxb.pro;
 
 import android.view.animation.*;
 import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.util.ArrayList;
 
@@ -21,6 +18,8 @@ public class SceneView
     private final TextView txt_time;
     private final ImageView pic_bananas;
     private final ImageView pic_scores;
+    private final TextView scene_text;
+    private final Gallery gallery_activated;
     private Animation animation = null;
 
     public SceneView(SceneActivity scene, int size, int bananasCount,
@@ -34,10 +33,13 @@ public class SceneView
         txt_time = (TextView)scene.findViewById(R.id.scene_time);
         pic_bananas = (ImageView)scene.findViewById(R.id.scene_bananas_pic);
         pic_scores = (ImageView)scene.findViewById(R.id.scene_scores_pic);
+        scene_text = (TextView)scene.findViewById(R.id.scene_text);
+        gallery_activated = (Gallery)scene.findViewById(R.id.scene_gallery_activated);
         field.initField(size, bananasCount, actors);
         initField();
         initIndicator();
         initPanel();
+        initScroll();
         initTexts(bananasCount);
         initAnimation();
     }
@@ -73,6 +75,14 @@ public class SceneView
         panel.getBackground().setAlpha(80);
     }
 
+    private void initScroll()
+    {
+        ScrollView scroll = (ScrollView)scene.findViewById(R.id.scene_scroll);
+        int height = field.getSize() - panel_width;
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(panel_width, height);
+        scroll.setLayoutParams(params);
+    }
+
 
 
     public FieldView getField()
@@ -100,6 +110,16 @@ public class SceneView
         return txt_time;
     }
 
+    public Gallery getGallery_activated()
+    {
+        return gallery_activated;
+    }
+
+    public TextView getScene_text()
+    {
+        return scene_text;
+    }
+
 
 
     public void txt_bananas_scale()
@@ -113,6 +133,16 @@ public class SceneView
     {
         pic_scores.startAnimation(animation);
         txt_score.startAnimation(animation);
+    }
+
+    public void txt_scene_text_scale()
+    {
+        scene_text.startAnimation(animation);
+    }
+
+    public void setText(String text)
+    {
+        scene_text.setText(text);
     }
 
     private void initAnimation()

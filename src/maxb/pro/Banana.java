@@ -4,7 +4,7 @@ package maxb.pro;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-public class Banana extends Actor implements IActivate
+public class Banana extends Thing
 {
 
 
@@ -14,14 +14,4 @@ public class Banana extends Actor implements IActivate
          return resources.getDrawable(R.drawable.banana);
     }
 
-    @Override
-    public void activate(Integer score)
-    {
-          // TODO changing score
-    }
-
-    @Override
-    public String getClassName() {
-        return "Banana";
-    }
 }
