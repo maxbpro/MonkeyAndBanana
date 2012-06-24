@@ -30,7 +30,7 @@
             </TableRow>
         </TableLayout>
     </ScrollView>
-    <maxb.pro.myButton android:layout_width="100dp"
+    <maxb.pro.Views.myButton android:layout_width="100dp"
                        android:layout_height="100dp"
                        mb:image="@drawable/back"
                        mb:animMode="LEFT"

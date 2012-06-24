@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
+import maxb.pro.Views.myButton;
 
 
 public class SettingsActivity extends Activity

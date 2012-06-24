@@ -2,23 +2,26 @@ package maxb.pro;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import maxb.pro.Actors.*;
+import maxb.pro.DataBaseInteract.*;
+import maxb.pro.Dialogs.LostDialog;
+import maxb.pro.Dialogs.ResultDialog;
+import maxb.pro.Dialogs.TouchMeDialog;
+import maxb.pro.Specials.IndicatorRoute;
+import maxb.pro.Views.FieldView;
+import maxb.pro.Views.IndicatorView;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class SceneActivity extends Activity
 {
+    private static final int DELAY = 1;
     private Thread thread = null;
     private boolean isPauseThread = false;
     private int mMode = 0;
@@ -33,10 +36,10 @@ public class SceneActivity extends Activity
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.scene);
         initVariablesForDataBase();
-        ArrayList<Row_Game_Actors> actors = getActorsInfo();
-        ArrayList<IActivate> activeted = getActivated(actors);
-        mGameModel = new SceneModel(actors, 1);
-        mGameView = new SceneView(this, 10, mGameModel.getBananasCount(), activeted);
+        Row_Game_Levels level = new Row_Game_Levels(0,0,0,0);
+        ArrayList<IHasName> actors = getActorsInfoAndInitLevelInfo(level);
+        mGameModel = new SceneModel(actors, level);
+        mGameView = new SceneView(this, 10, mGameModel.getBananasCount(), actors);
         mRoute = new IndicatorRoute(this);
 
         initTimer();
@@ -60,11 +63,6 @@ public class SceneActivity extends Activity
     }
 
 
-    public int getScore()
-    {
-        return mGameModel.getUser_level().get_scores();
-    }
-
 
     // Database interact
 
@@ -74,46 +72,61 @@ public class SceneActivity extends Activity
         mLevel = getIntent().getIntExtra("LEVEL", 0);
     }
 
-    private ArrayList<Row_Game_Actors> getActorsInfo()
+    private ArrayList<IHasName> getActorsInfoAndInitLevelInfo(Row_Game_Levels level)
     {
+        ArrayList<IHasName> actors = new ArrayList<IHasName>();
+
         GameDataBaseAdapter adapter = new GameDataBaseAdapter(this);
         adapter = adapter.open();
-        ArrayList<Row_Game_Actors> actors =
+        ArrayList<Row_Game_Actors> rows_actors =
                 adapter.getAllEntriesByLevelAndByMode(mLevel, mMode);
         adapter.close();
-        return actors;
-    }
 
-    private ArrayList<IActivate> getActivated(ArrayList<Row_Game_Actors> actors)
-    {
-        ArrayList<IActivate> activated = new ArrayList<IActivate>();
-        for(Row_Game_Actors actor : actors)
+        for(Row_Game_Actors row_actor : rows_actors)
         {
             try
             {
-               Object object = Class.forName(actor.get_name()).newInstance();
-               if(actor.get_name().equals(FieldView.SNAKE)){
-                   Snake instance = (Snake)object;
-                   activated.add(instance);
-               }
-                else if (actor.get_name().equals(FieldView.TELEPORT)){
-                   Teleport instance = (Teleport)object;
-                   activated.add(instance);
-               }
-            }
-            catch (Exception ex)
-            {
+                Object object = Class.forName(row_actor.get_name()).newInstance();
+                if(row_actor.get_name().equals(FieldView.SNAKE)){
+                    Snake instance = (Snake)object;
+                    actors.add(instance);
+                }
+                else if (row_actor.get_name().equals(FieldView.TELEPORT)){
+                    Teleport instance = (Teleport)object;
+                    actors.add(instance);
+                }
+                else if(row_actor.get_name().equals(FieldView.LIME))
+                {
+                    Lime instance = (Lime)object;
+                    actors.add(instance);
+                }
 
             }
+            catch (Exception ex){}
         }
-        return activated;
+
+        Row_Game_Levels l = rows_actors.get(0).get_level();
+        level.set_bananas(l.get_bananas());
+        level.set_id(l.get_id());
+        level.set_level(l.get_level());
+        level.set_mode(l.get_mode());
+        return actors;
     }
+
+
 
     private void SaveResultToDB()
     {
+        ArrayList<Row_User_Enemy> rows_enemies = new ArrayList<Row_User_Enemy>();
+        Map<Enemy, Integer> enemies = mGameModel.getEnemiesMap();
+        for (Enemy enemy : enemies.keySet())
+        {
+            rows_enemies.add(new Row_User_Enemy(
+                    enemy.getClassName(), enemies.get(enemy), mGameModel.getUser_level()));
+        }
         UserDataBaseAdapter adapter = new UserDataBaseAdapter(this);
         adapter.open();
-        adapter.insertEntryLevel(mGameModel.getUser_level(), mGameModel.getActivated());
+        adapter.insertEntryLevel(mGameModel.getUser_level(), rows_enemies);
         adapter.close();
     }
 
@@ -198,10 +211,10 @@ public class SceneActivity extends Activity
                         {
 
                             UpdateUI();
-                            handler.postDelayed(this, mGameModel.getDelay());
+                            handler.postDelayed(this, DELAY);
                         }
                     }
-                }, mGameModel.getDelay());
+                }, DELAY);
             }
         };
 
@@ -217,7 +230,7 @@ public class SceneActivity extends Activity
         Integer score = mGameModel.getUser_level().get_scores();
         mGameView.getTxt_score().setText(score.toString());
         mGameModel.getUser_level().set_time(mGameModel.getUser_level().get_time_like_integer()
-                + mGameModel.getDelay());
+                + DELAY);
         String time = mGameModel.getUser_level().get_time_like_string();
         mGameView.getTxt_time().setText(time);
 

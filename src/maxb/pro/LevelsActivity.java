@@ -2,13 +2,12 @@ package maxb.pro;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
+import maxb.pro.Adapters.LevelsAdapter;
+import maxb.pro.Views.myButton;
 
 
 public class LevelsActivity extends Activity

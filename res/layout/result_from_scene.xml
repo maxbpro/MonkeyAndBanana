@@ -30,13 +30,13 @@
                   </TableRow>
            </TableLayout>
     </ScrollView>
-    <maxb.pro.myButton android:layout_width="100dp"
+    <maxb.pro.Views.myButton android:layout_width="100dp"
                        android:layout_height="100dp"
                        mb:image="@drawable/refresh"
                        mb:animMode="ROTATE_SLOW"
                        android:layout_alignParentBottom="true"
                        android:id="@+id/result_refresh"/>
-    <maxb.pro.myButton android:layout_width="100dp"
+    <maxb.pro.Views.myButton android:layout_width="100dp"
                        android:layout_height="100dp"
                        android:id="@+id/result_next_level"
                        mb:image="@drawable/forward"

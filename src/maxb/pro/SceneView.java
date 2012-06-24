@@ -3,6 +3,10 @@ package maxb.pro;
 import android.view.animation.*;
 import android.util.DisplayMetrics;
 import android.widget.*;
+import maxb.pro.Actors.IActivate;
+import maxb.pro.Actors.IHasName;
+import maxb.pro.Views.FieldView;
+import maxb.pro.Views.IndicatorView;
 
 import java.util.ArrayList;
 
@@ -23,7 +27,7 @@ public class SceneView
     private Animation animation = null;
 
     public SceneView(SceneActivity scene, int size, int bananasCount,
-                     ArrayList<IActivate> actors)
+                     ArrayList<IHasName> actors)
     {
         this.scene = scene;
         field = (FieldView)scene.findViewById(R.id.field);

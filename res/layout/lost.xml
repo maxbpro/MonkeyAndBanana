@@ -19,13 +19,13 @@
                   android:text="@string/you_are_lost"
                   android:layout_centerHorizontal="true"
                   android:layout_below="@id/lost_image"/>
-        <maxb.pro.myButton android:layout_width="100dp"
+        <maxb.pro.Views.myButton android:layout_width="100dp"
                            android:layout_height="100dp"
                            mb:image="@drawable/back"
                            mb:animMode="LEFT"
                            android:layout_alignParentBottom="true"
                            android:id="@+id/lost_back"/>
-        <maxb.pro.myButton android:layout_width="100dp"
+        <maxb.pro.Views.myButton android:layout_width="100dp"
                           android:layout_height="100dp"
                           android:id="@+id/lost_refresh"
                           mb:image="@drawable/refresh"

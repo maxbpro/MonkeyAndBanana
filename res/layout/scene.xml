@@ -7,7 +7,7 @@
  <LinearLayout android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:gravity="center_horizontal">
-    <maxb.pro.FieldView android:layout_height="wrap_content"
+    <maxb.pro.Views.FieldView android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:id="@+id/field"/>
     <RelativeLayout android:layout_width="fill_parent"
@@ -71,7 +71,7 @@
                          android:id="@+id/scene_gallery_activated"/>
             </RelativeLayout>
         </ScrollView>
-        <maxb.pro.IndicatorView android:layout_height="wrap_content"
+        <maxb.pro.Views.IndicatorView android:layout_height="wrap_content"
                android:layout_width="wrap_content"
                android:layout_alignParentBottom="true"
                android:id="@+id/indicator"

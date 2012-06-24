@@ -6,13 +6,13 @@
                 android:layout_height="fill_parent"
                 android:padding="10dp"
                 android:background="@drawable/main_background">
-    <maxb.pro.myButton android:layout_height="100dp"
+    <maxb.pro.Views.myButton android:layout_height="100dp"
             android:layout_width="100dp"
             android:id="@+id/btn_settings"
             mb:image="@drawable/settings"
             android:layout_alignParentBottom="true"
             mb:animMode="ROTATE"/>
-    <maxb.pro.myButton android:layout_height="100dp"
+    <maxb.pro.Views.myButton android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"

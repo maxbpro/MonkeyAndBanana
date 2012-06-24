@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Gallery;
+import maxb.pro.Adapters.ModesAdapter;
+import maxb.pro.Views.myButton;
 
 
 public class ModesActivity extends Activity

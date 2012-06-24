@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.*;
 import android.widget.TextView;
 import android.view.animation.*;
+import maxb.pro.Dialogs.ResultDialog;
+import maxb.pro.Views.myButton;
 
 public class MainActivity extends Activity
 {
