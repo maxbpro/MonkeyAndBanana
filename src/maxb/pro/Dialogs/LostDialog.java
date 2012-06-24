@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import maxb.pro.R;
 import maxb.pro.Views.myButton;
 
@@ -16,6 +17,7 @@ public class LostDialog extends Dialog
     public LostDialog(Context context, int theme)
     {
        super(context, theme);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
        setContentView(R.layout.lost);
        final myButton btn_refresh = (myButton)findViewById(R.id.lost_refresh);
        final myButton btn_back = (myButton)findViewById(R.id.lost_back);

@@ -52,6 +52,11 @@ public class SceneModel
         return map;
     }
 
+    public ArrayList<Enemy> getEnemies()
+    {
+        return enemies;
+    }
+
     public void addActivated(IActivate actor)
     {
         activeted.add(actor);

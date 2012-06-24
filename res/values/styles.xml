@@ -29,8 +29,12 @@
 
     <style name="DialogTheme" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:title">@style/PauseDialogTitle</item>
     </style>
 
+    <style name="PauseDialogTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:visibility">gone</item>
+    </style>
 
 
 </resources>

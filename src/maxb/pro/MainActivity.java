@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.*;
 import android.widget.TextView;
 import android.view.animation.*;
+import maxb.pro.Dialogs.AttentionDialog;
 import maxb.pro.Dialogs.ResultDialog;
 import maxb.pro.Views.myButton;
 
@@ -68,7 +69,7 @@ public class MainActivity extends Activity
     public void onBackPressed()
     {
 
-        /*final AttentionDialog dialog = new AttentionDialog(this, R.style.DialogTheme,
+        final AttentionDialog dialog = new AttentionDialog(this, R.style.DialogTheme,
                 getResources().getString(R.string.question_about_exit));
 
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -79,24 +80,6 @@ public class MainActivity extends Activity
             }
         });
 
-        dialog.show();
-        */
-
-        final ResultDialog dialog = new ResultDialog(this, R.style.DialogTheme,
-                ResultDialog.Mode.FROM_GAME, null);
-        // pause
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                switch (dialog.getResult())
-                {
-                    case  REFRESH:
-                        break;
-                    case NEXT_LEVEL:
-                        break;
-                }
-            }
-        });
         dialog.show();
 
     }

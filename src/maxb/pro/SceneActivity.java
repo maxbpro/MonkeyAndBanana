@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import maxb.pro.Actors.*;
 import maxb.pro.DataBaseInteract.*;
 import maxb.pro.Dialogs.LostDialog;
@@ -263,7 +263,6 @@ public class SceneActivity extends Activity
             }
         });
         dialog.show();
-
     }
 
     private void isFinishLevel()
@@ -272,7 +271,7 @@ public class SceneActivity extends Activity
         {
             pause();
             final ResultDialog dialog = new ResultDialog(this, R.style.DialogTheme,
-                    ResultDialog.Mode.FROM_GAME, null);
+                    ResultDialog.Mode.FROM_GAME, mGameModel.getEnemies());
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialogInterface) {
@@ -288,7 +287,6 @@ public class SceneActivity extends Activity
             });
             dialog.show();
         }
-
     }
 
 }

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.animation.*;
@@ -19,6 +20,7 @@ public class AttentionDialog extends Dialog
     public AttentionDialog(Context context, int theme, String text)
     {
         super(context, theme);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         final Dialog dialog = this;
         animation = AnimationUtils.loadAnimation(context, R.anim.scale_in);
         setContentView(R.layout.attention);

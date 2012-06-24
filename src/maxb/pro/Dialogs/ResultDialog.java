@@ -1,13 +1,18 @@
 package maxb.pro.Dialogs;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.view.animation.*;
+import android.view.*;
 import maxb.pro.Actors.Actor;
+import maxb.pro.Actors.Enemy;
 import maxb.pro.R;
 import maxb.pro.Views.myButton;
 
@@ -20,14 +25,15 @@ public class ResultDialog extends Dialog
     private Mode mMode = Mode.FROM_GAME;
     public enum Result {REFRESH, BACK, NEXT_LEVEL}
     private Result mResult = Result.REFRESH;
-    private ArrayList<Actor> actors = null;
+    private ArrayList<Enemy> enemies = null;
 
-    public ResultDialog(Context context, int theme, Mode mMode, ArrayList<Actor> actors )
+    public ResultDialog(Context context, int theme, Mode mMode, ArrayList<Enemy> enemies )
     {
         super(context, theme);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.mContext = context;
         this.mMode = mMode;
-        this.actors = actors;
+        this.enemies = enemies;
         switch (mMode)
         {
             case FROM_GAME:
@@ -40,6 +46,12 @@ public class ResultDialog extends Dialog
                 break;
         }
         initImageAnimation();
+
+        Gallery gallery = (Gallery)findViewById(R.id.result_gallery);
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+
     }
 
     private void initFROM_GAME_widgets()
