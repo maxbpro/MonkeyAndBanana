@@ -3,6 +3,7 @@ package maxb.pro;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,7 @@ public class SceneActivity extends Activity
     private IndicatorRoute mRoute = null;
     private  Row_Game_Levels level = null;
     private ArrayList<IHasName> actors = null;
+    private Intent resultIntent = null;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -40,6 +42,7 @@ public class SceneActivity extends Activity
         this.mContext = this;
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.scene);
+        resultIntent = new Intent();
         new AsyncLoadingLevel().execute();
     }
 
@@ -259,11 +262,16 @@ public class SceneActivity extends Activity
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
-                //if(dialog.getResult()==LostDialog.Result.REFRESH)
+                if(dialog.getResult()==LostDialog.Result.REFRESH)
+                {
+                    resultIntent.putExtra("RESULT", mGameModel.getUser_level().get_level());
+                    setResult(0, resultIntent);
+                }
 
             }
         });
         dialog.show();
+
     }
 
     private void isFinishLevel()
@@ -280,14 +288,21 @@ public class SceneActivity extends Activity
                     switch (dialog.getResult())
                     {
                         case  REFRESH:
+                            resultIntent.putExtra("RESULT", mGameModel.getUser_level().get_level());
                             break;
                         case NEXT_LEVEL:
+                            // check last level
+                            resultIntent.putExtra("RESULT", mGameModel.getUser_level().get_level()+1);
                             break;
                     }
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
                 }
             });
             dialog.show();
             SaveResultToDB();
+            resultIntent.putExtra("RESULT", -1);
+            setResult(RESULT_OK, resultIntent);
         }
     }
 

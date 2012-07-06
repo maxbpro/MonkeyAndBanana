@@ -2,6 +2,7 @@ package maxb.pro;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,6 +54,42 @@ public class LevelsActivity extends Activity
 
         new AsyncManager().execute();
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch (requestCode)
+        {
+            case 0:
+                if(resultCode==Activity.RESULT_OK)
+                {
+                    int value = intent.getIntExtra("RESULT", -2);
+                    switch (value)
+                    {
+                        case -2:
+                            // nothing
+                            break;
+                        case -1:
+                            // update
+                            onCreate(null);
+                            break;
+                        default:
+                            // new intent
+                            Intent activity = new Intent(mContext, SceneActivity.class);
+                            activity.putExtra("MODE", mode);
+                            activity.putExtra("LEVEL", value);
+                            ((Activity)mContext).startActivityForResult(activity, 0);
+                            break;
+                    }
+                }
+                else
+                {
+                    // nothing
+                }
+                break;
+        }
     }
 
     class AsyncManager extends AsyncTask<Void, Void, ArrayList<Integer>>

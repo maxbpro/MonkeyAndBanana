@@ -1,6 +1,7 @@
 package maxb.pro.Views;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -73,11 +74,12 @@ public class LevelView extends FrameLayout
                 Intent intent = new Intent(mContext, SceneActivity.class);
                 intent.putExtra(MODE, mMode);
                 intent.putExtra(LEVEL, mLevel);
-                mContext.startActivity(intent);
+                ((Activity)mContext).startActivityForResult(intent, 0);
             }
         });
 
     }
+
 
     private void initCloseModeLevel()
     {
