@@ -1,18 +1,18 @@
 package maxb.pro.Dialogs;
 
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.view.animation.*;
 import android.view.*;
-import maxb.pro.Actors.Actor;
+import android.widget.TextView;
 import maxb.pro.Actors.Enemy;
+import maxb.pro.Adapters.EnemiesAdapter;
+import maxb.pro.DataBaseInteract.Row_User_Levels;
 import maxb.pro.R;
 import maxb.pro.Views.myButton;
 
@@ -21,79 +21,32 @@ import java.util.ArrayList;
 public class ResultDialog extends Dialog
 {
     private Context mContext = null;
-    public enum Mode {FROM_GAME, FROM_MENU}
-    private Mode mMode = Mode.FROM_GAME;
-    public enum Result {REFRESH, BACK, NEXT_LEVEL}
-    private Result mResult = Result.REFRESH;
     private ArrayList<Enemy> enemies = null;
+    private Row_User_Levels level = null;
 
-    public ResultDialog(Context context, int theme, Mode mMode, ArrayList<Enemy> enemies )
+    public ResultDialog(Context context, int theme)
     {
         super(context, theme);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.mContext = context;
-        this.mMode = mMode;
-        this.enemies = enemies;
-        switch (mMode)
-        {
-            case FROM_GAME:
-                setContentView(R.layout.result_from_scene);
-                initFROM_GAME_widgets();
-                break;
-            case FROM_MENU:
-                setContentView(R.layout.result_from_levels);
-                initFROM_MENU_widgets();
-                break;
-        }
-        initImageAnimation();
+        setContentView(R.layout.result_loading);
+        initAnimationLoadingFinish();
 
-        Gallery gallery = (Gallery)findViewById(R.id.result_gallery);
-    }
-
-    protected void onCreate(Bundle savedInstanceState) {
 
     }
 
-    private void initFROM_GAME_widgets()
+    public void transformDialog(Row_User_Levels level, ArrayList<Enemy> enemies)
     {
-        final myButton btn_next_level = (myButton)findViewById(R.id.result_next_level);
-        final myButton btn_refresh = (myButton)findViewById(R.id.result_refresh);
-        btn_next_level.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch(motionEvent.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        btn_next_level.startAnimation();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        mResult = Result.NEXT_LEVEL;
-                        dismiss();
-                        break;
-                }
-                return true;
-            }
-        });
-        btn_refresh.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch(motionEvent.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        btn_refresh.startAnimation();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        mResult = Result.REFRESH;
-                        dismiss();
-                        break;
-                }
-                return true;
-            }
-        });
-
+        this.enemies = enemies;
+        this.level = level;
+        setContentView(R.layout.result_loading_finish);
+        initAnimationLoading();
+        initButtons();
+        initText();
+        initGallery();
     }
 
-    private void initFROM_MENU_widgets()
+    private void initButtons()
     {
         final myButton btn_back = (myButton)findViewById(R.id.result_back);
         btn_back.setOnTouchListener(new View.OnTouchListener() {
@@ -105,7 +58,6 @@ public class ResultDialog extends Dialog
                         btn_back.startAnimation();
                         break;
                     case MotionEvent.ACTION_UP:
-                        mResult = Result.BACK;
                         dismiss();
                         break;
                 }
@@ -114,15 +66,35 @@ public class ResultDialog extends Dialog
         });
     }
 
-    public Result getResult()
+    private void initText()
     {
-        return mResult;
+        TextView txt_time = (TextView)findViewById(R.id.result_text_time);
+        TextView txt_scores = (TextView)findViewById(R.id.result_text_score);
+        txt_time.setText(level.get_time_like_string());
+        txt_scores.setText(String.valueOf(level.get_scores()));
     }
 
-    private void initImageAnimation()
+    private void initGallery()
+    {
+        Gallery gallery = (Gallery)findViewById(R.id.result_gallery);
+        EnemiesAdapter adapter = new EnemiesAdapter(mContext, enemies);
+        gallery.setAdapter(adapter);
+    }
+
+    private void initAnimationLoading()
     {
         ImageView image = (ImageView)findViewById(R.id.result_image);
         Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.scale_in);
         image.startAnimation(animation);
     }
+
+    private void initAnimationLoadingFinish()
+    {
+        Animation animation  = AnimationUtils.loadAnimation(mContext, R.anim.scale_in_repeat);
+        ImageView image = (ImageView)findViewById(R.id.result_loading_image);
+        image.startAnimation(animation);
+
+    }
+
+
 }

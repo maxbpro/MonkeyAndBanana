@@ -1,9 +1,11 @@
-package maxb.pro.Actors;
+package maxb.pro.Dialogs;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import maxb.pro.Actors.Enemy;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.Window;
+import android.widget.ImageView;
 import maxb.pro.R;
+import android.view.animation.*;
 
 /**
  * This program is free software: you can redistribute it and/or modify
@@ -19,23 +21,16 @@ import maxb.pro.R;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-public class Snake extends Enemy
+public class LoadingDialog extends Dialog
 {
-    private static final String NAME = "SNAKE";
 
-    @Override
-    public Drawable getImage(Resources resources) {
-        return resources.getDrawable(R.drawable.hippopotamus);
-    }
-
-    @Override
-    public int activate() {
-        return 120;
-    }
-
-    @Override
-    public String getClassName() {
-        return NAME;
+    public LoadingDialog(Context context, int styleDef)
+    {
+        super(context, styleDef);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.loading_levels);
+        ImageView image = (ImageView)findViewById(R.id.loading_image);
+        Animation animation = AnimationUtils.loadAnimation(context,R.anim.scale_in_repeat);
+        image.startAnimation(animation);
     }
 }

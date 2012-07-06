@@ -72,10 +72,10 @@ public class UserDataBaseAdapter
 
     public ArrayList<Row_User_Enemy> getAllEntriesByLevelAndByMode(int level, int mode)
     {
-        Cursor cursor_level = db.query(LEVELS_TABLE, new String[]{KEY_ID, LEVEL_COL, MODE_COL, BANANAS_COL},
+        Cursor cursor_level = db.query(LEVELS_TABLE, new String[]{KEY_ID,LEVEL_COL, MODE_COL, BANANAS_COL, TIME_COL, SCORES_COL},
                 LEVEL_COL + "=" + level + " and " + MODE_COL + "=" + mode,null, null, null, null,"1" );
         cursor_level.moveToFirst();
-        Row_User_Levels row_level = new Row_User_Levels(cursor_level.getInt(KEY_ID_INT),
+        Row_User_Levels row_level = new Row_User_Levels(
                 cursor_level.getInt(LEVEL_COL_INT),
                 cursor_level.getInt(MODE_COL_INT),
                 cursor_level.getInt(BANANAS_COL_INT),
@@ -83,8 +83,8 @@ public class UserDataBaseAdapter
                 cursor_level.getInt(SCORES_COL_INT)
                 );
         ArrayList<Row_User_Enemy> listActors = new ArrayList<Row_User_Enemy>();
-        Cursor cursor_actors = db.query(ACTORS_TABLE, new String[]{KEY_ID, NAME_COL, NUMBER_COL, LEVEL_ID_COL},
-                LEVEL_ID_COL + "=" + row_level.get_id(),null, null, null, null );
+        Cursor cursor_actors = db.query(ACTORS_TABLE, new String[]{NAME_COL, NUMBER_COL, LEVEL_ID_COL},
+                LEVEL_ID_COL + "=" + row_level.get_level(),null, null, null, null );
         cursor_actors.moveToFirst();
         while (!cursor_actors.isAfterLast())
         {
@@ -99,23 +99,19 @@ public class UserDataBaseAdapter
         return listActors;
     }
 
-    public void removeEntryFromLevelsTable(int index)
-    {
-        db.delete(LEVELS_TABLE, KEY_ID + "=" + index, null);
-        // TODO deleting in ActorsTable by _id
-        db.delete(ACTORS_TABLE, LEVEL_ID_COL + "=" + index, null);
-    }
 
     public void insertEntryLevel(Row_User_Levels level, ArrayList<Row_User_Enemy> actors)
     {
-        int id = level.get_id();
+        removingOldLevelInfo(level);
+
+        int level_id = level.get_level();
         ContentValues row_level = new ContentValues();
         row_level.put(LEVEL_COL, level.get_level());
         row_level.put(MODE_COL, level.get_mode());
         row_level.put(TIME_COL, level.get_time_like_integer());
         row_level.put(SCORES_COL, level.get_scores());
         row_level.put(BANANAS_COL, level.get_bananas());
-        db.insert(LEVELS_TABLE,null, row_level);
+        db.insert(LEVELS_TABLE, null, row_level);
         if(actors != null)
         {
            for(Row_User_Enemy actor : actors)
@@ -123,7 +119,7 @@ public class UserDataBaseAdapter
                ContentValues row_actor = new ContentValues();
                row_actor.put(NAME_COL, actor.get_name());
                row_actor.put(NUMBER_COL, actor.get_number());
-               row_actor.put(LEVEL_ID_COL, id );
+               row_actor.put(LEVEL_ID_COL, level_id );
                db.insert(ACTORS_TABLE, null, row_actor);
            }
         }
@@ -142,5 +138,11 @@ public class UserDataBaseAdapter
         return list;
 
 
+    }
+
+    private void removingOldLevelInfo(Row_User_Levels level)
+    {
+        db.delete(LEVELS_TABLE, LEVEL_COL + "=" + level.get_level(), null);
+        db.delete(ACTORS_TABLE, LEVEL_ID_COL + "=" + level.get_level(), null);
     }
 }

@@ -18,14 +18,11 @@ public class LevelsAdapter extends BaseAdapter
     private final int mode;
     private final ArrayList<Integer> list_open_levels;
 
-    public LevelsAdapter(Context context, int mode)
+    public LevelsAdapter(Context context, int mode, ArrayList<Integer> list_open_levels)
     {
         mContext = context;
         this.mode = mode;
-        UserDataBaseAdapter dbAdapter = new UserDataBaseAdapter(context);
-        dbAdapter.open();
-        list_open_levels = dbAdapter.getAllLevelsName(mode);
-        dbAdapter.close();
+        this.list_open_levels = list_open_levels;
     }
 
     @Override
@@ -67,4 +64,6 @@ public class LevelsAdapter extends BaseAdapter
         float density = mContext.getResources().getDisplayMetrics().density;
         return Math.round(dp * density);
     }
+
+
 }

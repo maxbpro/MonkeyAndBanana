@@ -3,15 +3,24 @@ package maxb.pro.Views;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.widget.FrameLayout;
 import android.view.*;
 import android.widget.ImageView;
 import android.widget.TextView;
+import maxb.pro.Actors.*;
+import maxb.pro.Adapters.LevelsAdapter;
+import maxb.pro.DataBaseInteract.*;
+import maxb.pro.Dialogs.LoadingDialog;
+import maxb.pro.Dialogs.ResultDialog;
 import maxb.pro.R;
 import maxb.pro.SceneActivity;
 
+import java.util.ArrayList;
+
 public class LevelView extends FrameLayout
 {
+
     public enum State{OPEN, CLOSE, FINISH}
     private State mState = State.CLOSE;
     private static final String MODE = "MODE";
@@ -54,6 +63,7 @@ public class LevelView extends FrameLayout
         setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                new AsyncLoading().execute();
                 return true;
             }
         });
@@ -94,5 +104,52 @@ public class LevelView extends FrameLayout
         return mState;
     }
 
+    class AsyncLoading extends AsyncTask<Void, Void, Void>
+    {
+        private ResultDialog dialog = null;
+        private Row_User_Levels level = null;
+        private ArrayList<Enemy> enemies = null;
 
+        @Override
+        protected void onPreExecute()
+        {
+            dialog = new ResultDialog(mContext, R.style.DialogTheme);
+            dialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids)
+        {
+            level = new Row_User_Levels(0,0,0,0,0);
+            ArrayList<Row_User_Enemy> row_enemies = getEnemiesInfoAndInitLevelInfo(level);
+            //transform in classes
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void vd)
+        {
+            super.onPostExecute(null);
+            dialog.transformDialog(level, enemies);
+        }
+
+        private ArrayList<Row_User_Enemy> getEnemiesInfoAndInitLevelInfo(Row_User_Levels level)
+        {
+            UserDataBaseAdapter adapter = new UserDataBaseAdapter(mContext);
+            adapter = adapter.open();
+            ArrayList<Row_User_Enemy> enemies =
+                    adapter.getAllEntriesByLevelAndByMode(mLevel, mMode);
+            adapter.close();
+
+
+            Row_User_Levels l = enemies.get(0).get_level();
+            level.set_bananas(l.get_bananas());
+            level.set_time(l.get_time_like_integer());
+            level.set_level((l.get_level()));
+            level.set_mode(l.get_mode());
+            level.set_scores(l.get_scores());
+
+            return enemies;
+        }
+    }
 }

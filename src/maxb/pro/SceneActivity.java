@@ -1,16 +1,17 @@
 package maxb.pro;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.*;
 import maxb.pro.Actors.*;
+import maxb.pro.Adapters.LevelsAdapter;
 import maxb.pro.DataBaseInteract.*;
-import maxb.pro.Dialogs.LostDialog;
-import maxb.pro.Dialogs.ResultDialog;
-import maxb.pro.Dialogs.TouchMeDialog;
+import maxb.pro.Dialogs.*;
 import maxb.pro.Specials.IndicatorRoute;
 import maxb.pro.Views.FieldView;
 import maxb.pro.Views.IndicatorView;
@@ -21,6 +22,7 @@ import java.util.Map;
 
 public class SceneActivity extends Activity
 {
+    private Context mContext = null;
     private static final int DELAY = 1;
     private Thread thread = null;
     private boolean isPauseThread = false;
@@ -29,22 +31,16 @@ public class SceneActivity extends Activity
     private SceneModel mGameModel = null;
     private SceneView mGameView = null;
     private IndicatorRoute mRoute = null;
+    private  Row_Game_Levels level = null;
+    private ArrayList<IHasName> actors = null;
 
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.mContext = this;
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.scene);
-        initVariablesForDataBase();
-        Row_Game_Levels level = new Row_Game_Levels(0,0,0,0);
-        ArrayList<IHasName> actors = getActorsInfoAndInitLevelInfo(level);
-        mGameModel = new SceneModel(actors, level);
-        mGameView = new SceneView(this, 10, mGameModel.getBananasCount(), actors);
-        mRoute = new IndicatorRoute(this);
-
-        initTimer();
-        initBtnJump();
-        initAndShowTouchMeDialog();
+        new AsyncLoadingLevel().execute();
     }
 
     public void activate()
@@ -86,7 +82,12 @@ public class SceneActivity extends Activity
         {
             try
             {
-                Object object = Class.forName(row_actor.get_name()).newInstance();
+                String name = row_actor.get_name();
+                name = name.toLowerCase();
+                char first = name.charAt(0);
+                name = name.replace(first, Character.toUpperCase(first));
+                Object object = Class.forName("maxb.pro.Actors." + name).newInstance();
+
                 if(row_actor.get_name().equals(FieldView.SNAKE)){
                     Snake instance = (Snake)object;
                     actors.add(instance);
@@ -102,7 +103,9 @@ public class SceneActivity extends Activity
                 }
 
             }
-            catch (Exception ex){}
+            catch (Exception ex){
+                String t = ex.getMessage();
+            }
         }
 
         Row_Game_Levels l = rows_actors.get(0).get_level();
@@ -163,6 +166,7 @@ public class SceneActivity extends Activity
         if(route != null)
         {
             IndicatorView.Smiles smile = mGameView.getField().moveMonkey(route);
+            mGameView.getIndicator().cleatScore();
             switch (smile)
             {
                 case IN_LOVE:
@@ -179,6 +183,14 @@ public class SceneActivity extends Activity
                 case ANRGY:
                     mGameView.getScene_text().setText("Take the Box!");
                     mGameView.txt_scene_text_scale();
+                    break;
+                case CRY:
+                    mGameView.getScene_text().setText("ENEMY!");
+                    mGameView.txt_scene_text_scale();
+                    mGameView.getIndicator().setScore(mGameView.getField().getDeltaScores());
+                    mGameModel.getUser_level().add_to_scores(mGameView.getField().getDeltaScores());
+                    mGameView.txt_scores_scale();
+                    //mGameView.getIndicator().
                     break;
             }
 
@@ -209,7 +221,6 @@ public class SceneActivity extends Activity
                     public void run() {
                         if(isPauseThread == false)
                         {
-
                             UpdateUI();
                             handler.postDelayed(this, DELAY);
                         }
@@ -239,17 +250,7 @@ public class SceneActivity extends Activity
 
     // windows
 
-    private void initAndShowTouchMeDialog()
-    {
-        TouchMeDialog dialog = new TouchMeDialog(this, R.style.DialogTheme);
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                activate();
-            }
-        });
-        dialog.show();
-    }
+
 
     private void isLostLevel()
     {
@@ -269,9 +270,10 @@ public class SceneActivity extends Activity
     {
         if (mGameModel.getUser_level().get_bananas() == mGameModel.getBananasCount())
         {
+            // updateUI  ????
             pause();
-            final ResultDialog dialog = new ResultDialog(this, R.style.DialogTheme,
-                    ResultDialog.Mode.FROM_GAME, mGameModel.getEnemies());
+            final SuccessDialog dialog = new SuccessDialog(this, R.style.DialogTheme,
+                    mGameModel.getUser_level(), mGameModel.getEnemies());
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialogInterface) {
@@ -282,10 +284,55 @@ public class SceneActivity extends Activity
                         case NEXT_LEVEL:
                             break;
                     }
-                    SaveResultToDB();
                 }
             });
             dialog.show();
+            SaveResultToDB();
+        }
+    }
+
+    class AsyncLoadingLevel extends AsyncTask<Void, Void, Void>
+    {
+        private TouchMeDialog dialog = null;
+
+        @Override
+        protected void onPreExecute()
+        {
+            dialog = new TouchMeDialog(mContext, R.style.DialogTheme);
+            dialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids)
+        {
+            initVariablesForDataBase();
+            level = new Row_Game_Levels(0,0,0,0);
+            actors = getActorsInfoAndInitLevelInfo(level);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void voids)
+        {
+            super.onPostExecute(null);
+            transformDialog();
+            mGameModel = new SceneModel(actors, level);
+            mGameView = new SceneView((SceneActivity)mContext, 10, mGameModel.getBananasCount(), actors);
+            mRoute = new IndicatorRoute(mContext);
+            initTimer();
+            initBtnJump();
+        }
+
+        private void transformDialog()
+        {
+
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    activate();
+                }
+            });
+            dialog.transform();
         }
     }
 

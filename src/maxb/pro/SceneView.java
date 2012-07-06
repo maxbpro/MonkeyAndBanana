@@ -1,5 +1,7 @@
 package maxb.pro;
 
+import android.graphics.Color;
+import android.view.View;
 import android.view.animation.*;
 import android.util.DisplayMetrics;
 import android.widget.*;
@@ -158,4 +160,5 @@ public class SceneView
     {
         txt_bananas.setText("0 / " + count);
     }
+
 }

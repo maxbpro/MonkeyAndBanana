@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro"
+                android:layout_width="400dp"
+                android:layout_height="320dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle">
+    <ImageView android:layout_height="64dp"
+               android:layout_width="64dp"
+               android:src="@drawable/happy"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="20dp"
+               android:id="@+id/result_image"/>
+    <ScrollView android:layout_height="120dp"
+                android:layout_width="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/result_image">
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:orientation="vertical">
+            <TableLayout android:layout_height="fill_parent"
+                         android:layout_width="fill_parent"
+                         android:stretchColumns="*">
+                <TableRow>
+                    <TextView android:id="@+id/result_text_time"
+                              android:text="45:43:12"
+                              android:textSize="25sp"
+                              android:layout_gravity="center"
+                              android:textColor="@android:color/white"/>
+                    <ImageView android:src="@drawable/timer"
+                               android:layout_width="80dp"
+                               android:layout_height="80dp"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:id="@+id/result_text_score"
+                              android:textSize="20sp"
+                              android:text="459"
+                              android:layout_gravity="center"
+                              android:textColor="@android:color/white"/>
+                    <ImageView android:src="@drawable/star"
+                               android:layout_height="50dp"
+                               android:layout_width="50dp"
+                               android:layout_marginLeft="2dp"/>
+                </TableRow>
+            </TableLayout>
+            <Gallery android:layout_width="fill_parent"
+                     android:layout_height="50dp"
+                     android:id="@+id/result_gallery"/>
+        </LinearLayout>
+    </ScrollView>
+    <maxb.pro.Views.myButton android:layout_width="100dp"
+                             android:layout_height="100dp"
+                             mb:image="@drawable/refresh"
+                             mb:animMode="ROTATE_SLOW"
+                             android:layout_alignParentBottom="true"
+                             android:id="@+id/result_refresh"/>
+    <maxb.pro.Views.myButton android:layout_width="100dp"
+                             android:layout_height="100dp"
+                             android:id="@+id/result_next_level"
+                             mb:image="@drawable/forward"
+                             mb:animMode="RIGHT"
+                             android:layout_alignParentBottom="true"
+                             android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

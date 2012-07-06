@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:id="@+id/touch_me_frame">
-          <TextView android:layout_height="fill_parent"
-                    android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+          <ImageView android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:src="@drawable/banana"
+                     android:id="@+id/touch_me_image"
+                     android:layout_centerInParent="true"/>
+          <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     style="@style/smallTextView"
-                    android:layout_gravity="center"
-                    android:text="@string/touch_me"
-                  />
-</FrameLayout>
+                    android:layout_below="@id/touch_me_image"
+                    android:id="@+id/touch_me_txt"
+                    android:text="@string/loading"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"/>
+</RelativeLayout>

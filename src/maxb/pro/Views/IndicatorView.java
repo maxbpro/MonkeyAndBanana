@@ -15,6 +15,9 @@ public class IndicatorView extends View
     private int mStep = 0;
     private int mWidth = 0;
     private int mCenter = 0;
+    private Paint paint_red = null;
+    private Paint paint_green = null;
+    private int score = 0;
     private int SMILE_WIDTH = 64; // in dp
     public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY,
         CRY_MUCH, IN_LOVE, FEAR }
@@ -35,6 +38,14 @@ public class IndicatorView extends View
         super(context, attr);
         orientation = new OrientationInfo(context);
         SMILE_WIDTH = dpToPx(SMILE_WIDTH);
+        paint_red = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint_red.setColor(Color.RED);
+        paint_red.setTextSize(20);
+        paint_green = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint_green.setColor(Color.GREEN);
+        paint_green.setTextSize(20);
+        paint_green.setStyle(Paint.Style.FILL);
+        //paint_red.set;
         initAllBitmap();
         switchSmile(Smiles.NORMAL);
     }
@@ -96,6 +107,17 @@ public class IndicatorView extends View
         invalidate();
     }
 
+    public void setScore(int score)
+    {
+        this.score = score;
+    }
+
+    public void cleatScore()
+    {
+        score = 0;
+    }
+
+
     @Override
     protected void onDraw(Canvas canvas)
     {
@@ -109,6 +131,10 @@ public class IndicatorView extends View
         else
         {
             canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
+            if(score>0)
+               canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
+            else if (score<0)
+               canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
         }
 
     }
