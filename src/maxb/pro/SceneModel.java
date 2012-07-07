@@ -24,10 +24,10 @@ public class SceneModel
     {
         this.mActorsInfo = mActorsInfo;
         this.mLevelInfo = mLevelInfo;
-        mBananasCount = mLevelInfo.get_bananas();
-        activeted = new ArrayList<IActivate>();
-        enemies = new ArrayList<Enemy>();
-        user_level = new Row_User_Levels(mLevelInfo.get_level(), mLevelInfo.get_mode());
+        this.mBananasCount = mLevelInfo.get_bananas();
+        this.activeted = new ArrayList<IActivate>();
+        this.enemies = new ArrayList<Enemy>();
+        this.user_level = new Row_User_Levels(mLevelInfo.get_level(), mLevelInfo.get_mode());
     }
 
     public int getBananasCount()

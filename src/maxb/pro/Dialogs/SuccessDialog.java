@@ -31,8 +31,8 @@ import java.util.ArrayList;
 public class SuccessDialog extends Dialog
 {
     private Context mContext = null;
-    public enum Result {NOTHING,REFRESH, NEXT_LEVEL}
-    private Result mResult = Result.NOTHING;
+    public enum Result {UPDATE,REFRESH, NEXT_LEVEL}
+    private Result mResult = Result.UPDATE;
     private Row_User_Levels level = null;
     private ArrayList<Enemy> enemies = null;
 

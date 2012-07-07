@@ -54,8 +54,7 @@ public class LevelsAdapter extends BaseAdapter
            if (level == list_open_levels.size()+1)
                state = LevelView.State.OPEN;
         LevelView view = new LevelView(mContext, state, mode, level);
-        int s = dpToPx(LEVEL_SIZE);
-        view.setLayoutParams(new GridView.LayoutParams(s, s));
+        view.setLayoutParams(new GridView.LayoutParams(dpToPx(LEVEL_SIZE), dpToPx(LEVEL_SIZE)));
         return view;
     }
 

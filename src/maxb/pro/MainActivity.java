@@ -25,6 +25,11 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;
+        initButtons();
+    }
+
+    private void initButtons()
+    {
         final myButton btn_forward = (myButton)findViewById(R.id.btn_forward);
         final myButton btn_settings = (myButton)findViewById(R.id.btn_settings);
         startAnimation();
@@ -83,6 +88,8 @@ public class MainActivity extends Activity
         dialog.show();
 
     }
+
+
 
     private void startAnimation()
     {

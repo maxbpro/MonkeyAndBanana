@@ -20,9 +20,6 @@ import java.util.ArrayList;
 public class LevelsActivity extends Activity
 {
     private Context mContext = null;
-    private UserDataBaseAdapter dbAdapter = null;
-    private LevelsAdapter adapter = null;
-    private GridView grid = null;
     private int mode = -1;
 
     public void onCreate(Bundle savedInstanceState)
@@ -30,10 +27,14 @@ public class LevelsActivity extends Activity
         super.onCreate(savedInstanceState);
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.levels);
-
         mContext = this;
-        grid = (GridView)findViewById(R.id.levelsGrid);
         mode = getIntent().getIntExtra("mode",0);
+        initButtons();
+        new AsyncManager().execute();
+    }
+
+    private void initButtons()
+    {
         final myButton btn_back = (myButton)findViewById(R.id.levels_back);
         btn_back.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -44,16 +45,13 @@ public class LevelsActivity extends Activity
                         btn_back.startAnimation();
                         break;
                     case MotionEvent.ACTION_UP:
-                        btn_back.stopAnimation();
+                        //btn_back.stopAnimation();
                         finish();
                         break;
                 }
                 return true;
             }
         });
-
-        new AsyncManager().execute();
-
     }
 
     @Override
@@ -101,12 +99,12 @@ public class LevelsActivity extends Activity
         {
             dialog = new LoadingDialog(mContext, R.style.DialogTheme);
             dialog.show();
-            dbAdapter = new UserDataBaseAdapter(mContext);
         }
 
         @Override
         protected ArrayList<Integer> doInBackground(Void... integers)
         {
+            UserDataBaseAdapter dbAdapter = new UserDataBaseAdapter(mContext);
             dbAdapter.open();
             ArrayList<Integer> list_open_levels = dbAdapter.getAllLevelsName(mode);
             dbAdapter.close();
@@ -117,7 +115,8 @@ public class LevelsActivity extends Activity
         protected void onPostExecute(ArrayList<Integer> list_open_levels)
         {
             super.onPostExecute(list_open_levels);
-            adapter = new LevelsAdapter(mContext, mode, list_open_levels);
+            GridView grid = (GridView)findViewById(R.id.levelsGrid);
+            LevelsAdapter adapter = new LevelsAdapter(mContext, mode, list_open_levels);
             grid.setAdapter(adapter);
             dialog.dismiss();
         }

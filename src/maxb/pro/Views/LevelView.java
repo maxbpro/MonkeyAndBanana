@@ -39,9 +39,14 @@ public class LevelView extends FrameLayout
         this.mLevel = level;
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.level_view, this, true);
+        initView();
+    }
+
+    private void initView()
+    {
         TextView title = (TextView)findViewById(R.id.level_text);
         ImageView image = (ImageView)findViewById(R.id.level_image);
-        title.setText(String.valueOf(level));
+        title.setText(String.valueOf(mLevel));
         switch (mState)
         {
             case OPEN:
@@ -80,7 +85,6 @@ public class LevelView extends FrameLayout
 
     }
 
-
     private void initCloseModeLevel()
     {
         setOnClickListener(new OnClickListener() {
@@ -96,15 +100,12 @@ public class LevelView extends FrameLayout
                 Intent intent = new Intent(mContext, SceneActivity.class);
                 intent.putExtra(MODE, mMode);
                 intent.putExtra(LEVEL, mLevel);
-                mContext.startActivity(intent);
+                ((Activity)mContext).startActivityForResult(intent, 0);
             }
         });
     }
 
-    public State getState()
-    {
-        return mState;
-    }
+
 
     class AsyncLoading extends AsyncTask<Void, Void, Void>
     {

@@ -22,9 +22,12 @@ public class ModesActivity extends Activity
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         mContext = this;
         setContentView(R.layout.modes);
-        Gallery gallery = (Gallery)findViewById(R.id.modes_gallery);
-        ModesAdapter adapter = new ModesAdapter(this);
-        gallery.setAdapter(adapter);
+        initButtons();
+        initGallery();
+    }
+
+    private void initButtons()
+    {
         final myButton btn_back = (myButton)findViewById(R.id.modes_back);
         btn_back.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -58,6 +61,14 @@ public class ModesActivity extends Activity
                 return true;
             }
         });
+    }
+
+    private void initGallery()
+    {
+        Gallery gallery = (Gallery)findViewById(R.id.modes_gallery);
+        ModesAdapter adapter = new ModesAdapter(this);
+        gallery.setAdapter(adapter);
+
         gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
