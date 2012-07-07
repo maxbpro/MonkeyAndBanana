@@ -1,15 +1,21 @@
 package maxb.pro.Views;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
+import android.view.Surface;
 import android.view.View;
 import maxb.pro.Specials.OrientationInfo;
 import maxb.pro.R;
 
 public class IndicatorView extends View
 {
+    private Context mContext = null;
+    private enum DefaultOrientations{LANDSCAPE, PORTRAIT}
+    private DefaultOrientations defaultOrientation = DefaultOrientations.LANDSCAPE;
     private boolean enabled = false;
     private OrientationInfo orientation = null;
     private int mStep = 0;
@@ -36,8 +42,31 @@ public class IndicatorView extends View
     public IndicatorView(Context context, AttributeSet attr)
     {
         super(context, attr);
+        mContext = context;
         orientation = new OrientationInfo(context);
-        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
+        determineOrientation();
+        initSmileSize();
+        initPaints();
+        initAllBitmap();
+        switchSmile(Smiles.NORMAL);
+    }
+
+    private void determineOrientation()
+    {
+        int default_orientation = (((Activity)mContext).getWindowManager().getDefaultDisplay().getOrientation());
+        switch (default_orientation)
+        {
+            case Surface.ROTATION_0:
+                defaultOrientation = DefaultOrientations.LANDSCAPE;
+                break;
+            case Surface.ROTATION_90:
+                defaultOrientation = DefaultOrientations.PORTRAIT;
+                break;
+        }
+    }
+
+    private void initPaints()
+    {
         paint_red = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint_red.setColor(Color.RED);
         paint_red.setTextSize(20);
@@ -45,9 +74,14 @@ public class IndicatorView extends View
         paint_green.setColor(Color.GREEN);
         paint_green.setTextSize(20);
         paint_green.setStyle(Paint.Style.FILL);
-        //paint_red.set;
-        initAllBitmap();
-        switchSmile(Smiles.NORMAL);
+    }
+
+    private void initSmileSize()
+    {
+        int screenLayout = getResources().getConfiguration().screenLayout;
+        if ((screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL)
+            SMILE_WIDTH = 32;
+        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
     }
 
     public void setWidth(int width)
@@ -121,20 +155,41 @@ public class IndicatorView extends View
     @Override
     protected void onDraw(Canvas canvas)
     {
-        if(enabled)
+        if (defaultOrientation == DefaultOrientations.LANDSCAPE)
         {
-           float X = orientation.getX();
-           float Y = orientation.getY();
-           //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
-           canvas.drawBitmap(bmp_current, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
+           if(enabled)
+           {
+              float X = orientation.getX();
+              float Y = orientation.getY();
+              //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
+              canvas.drawBitmap(bmp_current, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
+           }
+           else
+           {
+               canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
+               if(score>0)
+                  canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
+               else if (score<0)
+                  canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
+           }
         }
         else
         {
-            canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
-            if(score>0)
-               canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
-            else if (score<0)
-               canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
+            if(enabled)
+            {
+                float X = orientation.getY();
+                float Y = orientation.getX();
+                //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
+                canvas.drawBitmap(bmp_current, mCenter + mStep * X, mCenter + mStep * Y, new Paint());
+            }
+            else
+            {
+                canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
+                if(score>0)
+                    canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
+                else if (score<0)
+                    canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
+            }
         }
 
     }
