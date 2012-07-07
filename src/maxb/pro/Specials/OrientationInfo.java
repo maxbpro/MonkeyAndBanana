@@ -26,15 +26,15 @@ public class OrientationInfo
             @Override
             public void onSensorChanged(SensorEvent event)
             {
-                if(magneticFieldExists)
-                {
-                    if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-                        System.arraycopy(event.values,0,accelerometerValues,0, 3);
-                    if(event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
-                        System.arraycopy(event.values,0,magneticValues,0, 3);
-                    calculateOrientation();
-                }
-                else
+                //if(magneticFieldExists)
+                //{
+                  //  if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+                  //      System.arraycopy(event.values,0,accelerometerValues,0, 3);
+                  //  if(event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+                  //      System.arraycopy(event.values,0,magneticValues,0, 3);
+                  //  calculateOrientation();
+                //}
+                //else
                 {
                     if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
                         System.arraycopy(event.values,0,values,0, 3);
@@ -50,10 +50,10 @@ public class OrientationInfo
 
         if (mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) == null)
             magneticFieldExists = false;
-        else
-            mSensorManager.registerListener(SensorListener,
-                    mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
-                    SensorManager.SENSOR_DELAY_UI);
+        //else
+          //  mSensorManager.registerListener(SensorListener,
+            //        mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
+              //      SensorManager.SENSOR_DELAY_UI);
     }
 
     private void calculateOrientation()

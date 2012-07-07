@@ -111,6 +111,7 @@ public class FieldView extends FrameLayout
                 {
                     case RIGHT: return toRigthMonkey();
                     case BOTTOM: return toDownMonkey();
+                    case RIGHT_BOTTOM: return toRightDownMonkey();
                 }
                 break;
             }
@@ -120,6 +121,7 @@ public class FieldView extends FrameLayout
                 {
                     case RIGHT: return toRigthMonkey();
                     case TOP: return toUpMonkey();
+                    case RIGHT_TOP: return toRightUpMonkey();
                 }
                 break;
             }
@@ -129,6 +131,7 @@ public class FieldView extends FrameLayout
                 {
                     case LEFT: return toLeftMonkey();
                     case BOTTOM: return toDownMonkey();
+                    case LEFT_BOTTOM: return toLeftDownMonkey();
                 }
                 break;
             }
@@ -138,6 +141,7 @@ public class FieldView extends FrameLayout
                 {
                     case LEFT: return toLeftMonkey();
                     case TOP: return toUpMonkey();
+                    case LEFT_TOP: return toLeftUpMonkey();
                 }
                 break;
             }
@@ -148,6 +152,8 @@ public class FieldView extends FrameLayout
                     case RIGHT: return toRigthMonkey();
                     case BOTTOM: return toDownMonkey();
                     case TOP: return toUpMonkey();
+                    case RIGHT_BOTTOM: return toRightDownMonkey();
+                    case RIGHT_TOP: return toRightUpMonkey();
                 }
                 break;
             }
@@ -158,6 +164,8 @@ public class FieldView extends FrameLayout
                     case LEFT: return toLeftMonkey();
                     case BOTTOM: return toDownMonkey();
                     case TOP: return toUpMonkey();
+                    case LEFT_BOTTOM: return toLeftDownMonkey();
+                    case LEFT_TOP: return toLeftUpMonkey();
                 }
                 break;
             }
@@ -168,6 +176,8 @@ public class FieldView extends FrameLayout
                     case RIGHT: return toRigthMonkey();
                     case BOTTOM: return toDownMonkey();
                     case LEFT: return toLeftMonkey();
+                    case LEFT_BOTTOM: return toLeftDownMonkey();
+                    case RIGHT_BOTTOM: return toRightDownMonkey();
                 }
                 break;
             }
@@ -178,6 +188,8 @@ public class FieldView extends FrameLayout
                     case RIGHT: return toRigthMonkey();
                     case LEFT: return toLeftMonkey();
                     case TOP: return toUpMonkey();
+                    case LEFT_TOP: return toLeftUpMonkey();
+                    case RIGHT_TOP: return toRightUpMonkey();
                 }
                 break;
             }
@@ -189,6 +201,10 @@ public class FieldView extends FrameLayout
                     case BOTTOM: return toDownMonkey();
                     case TOP: return toUpMonkey();
                     case LEFT: return toLeftMonkey();
+                    case LEFT_TOP: return toLeftUpMonkey();
+                    case LEFT_BOTTOM: return toLeftDownMonkey();
+                    case RIGHT_TOP: return toRightUpMonkey();
+                    case RIGHT_BOTTOM: return toRightDownMonkey();
                 }
                 break;
             }
@@ -198,7 +214,7 @@ public class FieldView extends FrameLayout
 
     private IndicatorView.Smiles toRigthMonkey()
     {
-        return toMoveMonkey(monkeyCell.getRigthCell());
+        return toMoveMonkey(monkeyCell.getRightCell());
     }
 
     private IndicatorView.Smiles toDownMonkey()
@@ -215,6 +231,27 @@ public class FieldView extends FrameLayout
     {
         return toMoveMonkey(monkeyCell.getTopCell());
     }
+
+    private IndicatorView.Smiles toLeftUpMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getLeft_TopCell());
+    }
+
+    private IndicatorView.Smiles toLeftDownMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getLeft_BottomCell());
+    }
+
+    private IndicatorView.Smiles toRightUpMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getRight_TopCell());
+    }
+
+    private IndicatorView.Smiles toRightDownMonkey()
+    {
+        return toMoveMonkey(monkeyCell.getRight_BottomCell());
+    }
+
 
     private IndicatorView.Smiles toMoveMonkey(Cell newCell)
     {
@@ -330,10 +367,21 @@ public class FieldView extends FrameLayout
                 Cell cellTop = (Cell)rowTop.getChildAt(j);
                 Cell cellBottom = (Cell)rowBottom.getChildAt(j);
                 Cell cell = (Cell)row.getChildAt(j);
-                cell.setRigthCell(cellRight);
+
+                Cell cellLeft_Top = (Cell)rowTop.getChildAt(j-1);
+                Cell cellRight_Top = (Cell)rowTop.getChildAt(j+1);
+                Cell cellLeft_Bottom = (Cell)rowBottom.getChildAt(j-1);
+                Cell cellRight_Bottom = (Cell)rowBottom.getChildAt(j+1);
+
+                cell.setRightCell(cellRight);
                 cell.setLeftCell(cellLeft);
                 cell.setTopCell(cellTop);
                 cell.setBottomCell(cellBottom);
+
+                cell.setLeft_TopCell(cellLeft_Top);
+                cell.setRight_TopCell(cellRight_Top);
+                cell.setLeft_BottomCell(cellLeft_Bottom);
+                cell.setRight_BottomCell(cellRight_Bottom);
                 cell.setPosition(Cell.Position.CENTER);
             }
         }
@@ -349,18 +397,26 @@ public class FieldView extends FrameLayout
 
             Cell cellTop = (Cell)rowTop.getChildAt(0);
             Cell cellBottom = (Cell)rowBottom.getChildAt(0);
+            Cell cellRigth = (Cell)row.getChildAt(1);
+            Cell cellRightTop = (Cell)rowTop.getChildAt(1);
+            Cell cellRightBottom = (Cell)rowBottom.getChildAt(1);
             cell.setTopCell(cellTop);
             cell.setBottomCell(cellBottom);
-            Cell cellRigth = (Cell)row.getChildAt(1);
-            cell.setRigthCell(cellRigth);
+            cell.setRightCell(cellRigth);
+            cell.setRight_TopCell(cellRightTop);
+            cell.setRight_BottomCell(cellRightBottom);
             cell.setPosition(Cell.Position.LEFT);
 
             Cell rCellTop = (Cell)rowTop.getChildAt(NUM-1);
             Cell rCellBottom = (Cell)rowBottom.getChildAt(NUM-1);
+            Cell rcellLeft = (Cell)row.getChildAt(NUM-2);
+            Cell rcellLeftTop = (Cell)rowTop.getChildAt(NUM-2);
+            Cell rcellLeftBottom = (Cell)rowBottom.getChildAt(NUM-2);
             rCell.setTopCell(rCellTop);
             rCell.setBottomCell(rCellBottom);
-            Cell rcellLeft = (Cell)row.getChildAt(NUM-2);
             rCell.setLeftCell(rcellLeft);
+            rCell.setLeft_BottomCell(rcellLeftBottom);
+            rCell.setLeft_TopCell(rcellLeftTop);
             rCell.setPosition(Cell.Position.RIGHT);
         }
 
@@ -371,9 +427,11 @@ public class FieldView extends FrameLayout
 
         Cell leftTopCell = (Cell)row.getChildAt(0);
         Cell rigthCell = (Cell)row.getChildAt(1);
-        leftTopCell.setRigthCell(rigthCell);
+        leftTopCell.setRightCell(rigthCell);
         Cell bottomCell = (Cell)rowBottom.getChildAt(0);
         leftTopCell.setBottomCell(bottomCell);
+        Cell rightbottomCell = (Cell)rowBottom.getChildAt(1);
+        leftTopCell.setRight_BottomCell(rightbottomCell);
         leftTopCell.setPosition(Cell.Position.LEFTTOP);
 
         Cell rigthTopCell = (Cell)row.getChildAt(NUM-1);
@@ -381,13 +439,17 @@ public class FieldView extends FrameLayout
         rigthTopCell.setLeftCell(leftCell);
         bottomCell = (Cell)rowBottom.getChildAt(NUM-1);
         rigthTopCell.setBottomCell(bottomCell);
+        Cell leftbottomCell = (Cell)rowBottom.getChildAt(NUM-2);
+        rigthTopCell.setLeft_BottomCell(leftbottomCell);
         rigthTopCell.setPosition(Cell.Position.RIGTHTOP);
 
         Cell bottomLeftCell = (Cell)brow.getChildAt(0);
         rigthCell = (Cell)brow.getChildAt(1);
-        bottomLeftCell.setRigthCell(rigthCell);
+        bottomLeftCell.setRightCell(rigthCell);
         Cell topCell = (Cell)rowTop.getChildAt(0);
         bottomLeftCell.setTopCell(topCell);
+        Cell righttopCell = (Cell)rowTop.getChildAt(1);
+        bottomLeftCell.setRight_TopCell(righttopCell);
         bottomLeftCell.setPosition(Cell.Position.LEFTBOTTOM);
 
         Cell bottomRightCell = (Cell)brow.getChildAt(NUM-1);
@@ -395,6 +457,8 @@ public class FieldView extends FrameLayout
         bottomRightCell.setLeftCell(leftCell);
         topCell = (Cell)rowTop.getChildAt(NUM-1);
         bottomRightCell.setTopCell(topCell);
+        Cell lefttopCell = (Cell)rowTop.getChildAt(NUM-2);
+        bottomRightCell.setLeft_TopCell(lefttopCell);
         bottomRightCell.setPosition(Cell.Position.RIGTHBOTTOM);
 
         for(int i = 1; i < NUM-1; i++)
@@ -405,8 +469,12 @@ public class FieldView extends FrameLayout
 
             Cell cellLeft = (Cell)row.getChildAt(i-1);
             Cell cellRigth = (Cell)row.getChildAt(i+1);
-            cell.setRigthCell(cellRigth);
+            Cell cellLeftBottom = (Cell)rowBottom.getChildAt(i-1);
+            Cell cellRightBottom = (Cell)rowBottom.getChildAt(i+1);
+            cell.setRightCell(cellRigth);
             cell.setLeftCell(cellLeft);
+            cell.setLeft_BottomCell(cellLeftBottom);
+            cell.setRight_BottomCell(cellRightBottom);
             cell.setPosition(Cell.Position.TOP);
 
             Cell bCell = (Cell)brow.getChildAt(i);
@@ -415,8 +483,12 @@ public class FieldView extends FrameLayout
 
             Cell bCellLeft = (Cell)brow.getChildAt(i-1);
             Cell bCellRigth = (Cell)brow.getChildAt(i+1);
-            bCell.setRigthCell(bCellRigth);
+            Cell bCellLeftTop = (Cell)rowTop.getChildAt(i-1);
+            Cell bCellRightTop = (Cell)rowTop.getChildAt(i+1);
+            bCell.setRightCell(bCellRigth);
             bCell.setLeftCell(bCellLeft);
+            bCell.setLeft_TopCell(bCellLeftTop);
+            bCell.setRight_TopCell(bCellRightTop);
             bCell.setPosition(Cell.Position.BOTTOM);
         }
     }

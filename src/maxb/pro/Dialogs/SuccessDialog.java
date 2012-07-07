@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Gallery;
 import android.widget.TextView;
 import maxb.pro.Actors.Enemy;
@@ -39,6 +40,7 @@ public class SuccessDialog extends Dialog
     public SuccessDialog(Context context, int theme, Row_User_Levels level, ArrayList<Enemy> enemies)
     {
         super(context, theme);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mContext = context;
         setContentView(R.layout.success);
         this.level = level;

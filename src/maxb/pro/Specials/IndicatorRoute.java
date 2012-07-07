@@ -1,6 +1,8 @@
 package maxb.pro.Specials;
 
+import android.app.Activity;
 import android.content.Context;
+import android.view.*;
 
 /**
  * This program is free software: you can redistribute it and/or modify
@@ -18,26 +20,71 @@ import android.content.Context;
  */
 public class IndicatorRoute
 {
-    public enum Route{LEFT, TOP, RIGHT, BOTTOM}
+    public enum Route{LEFT, TOP, RIGHT, BOTTOM, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM}
+    private enum DefaultOrientations{LANDSCAPE, PORTRAIT}
     private OrientationInfo orientation = null;
+    private DefaultOrientations defaultOrientation = DefaultOrientations.LANDSCAPE;
 
     public IndicatorRoute(Context context)
     {
         this.orientation = new OrientationInfo(context);
+        int default_orientation = (((Activity)context).getWindowManager().getDefaultDisplay().getOrientation());
+        switch (default_orientation)
+        {
+            case Surface.ROTATION_0:
+                defaultOrientation = DefaultOrientations.LANDSCAPE;
+                break;
+            case Surface.ROTATION_90:
+                defaultOrientation = DefaultOrientations.PORTRAIT;
+                break;
+        }
     }
 
     public Route getRoute()
     {
-        float x = orientation.getX();
-        float y = orientation.getY();
-        if(orientation.getX()>1)
-           return Route.LEFT;
-        if(orientation.getX()<-1)
-            return  Route.RIGHT;
-        if(orientation.getY()>1)
-            return Route.BOTTOM;
-        if(orientation.getY()<-1)
-            return Route.TOP;
+        //float x = orientation.getX();
+        //float y = orientation.getY();
+        if(defaultOrientation == DefaultOrientations.LANDSCAPE)
+        {
+            if(orientation.getX()>1 && orientation.getY()>1)
+                return Route.LEFT_BOTTOM;
+            if(orientation.getX()<-1 && orientation.getY()<-1)
+                return Route.RIGHT_TOP;
+            if(orientation.getY()<-1 && orientation.getX()>1)
+                return Route.LEFT_TOP;
+            if(orientation.getY()>1 && orientation.getX()<-1)
+                return Route.RIGHT_BOTTOM;
+           if(orientation.getX()>1 && orientation.getY()<1)
+              return Route.LEFT;
+           if(orientation.getX()<-1 && orientation.getY()>-1)
+               return  Route.RIGHT;
+           if(orientation.getY()>1 && orientation.getX()<1)
+               return Route.BOTTOM;
+           if(orientation.getY()<-1 && orientation.getX()>-1)
+               return Route.TOP;
+
+
+        }
+        else
+        {
+            if(orientation.getX()>1 && orientation.getY()>1)
+                return Route.RIGHT_BOTTOM;
+            if(orientation.getX()<-1 && orientation.getY()<-1)
+                return Route.LEFT_TOP;
+            if(orientation.getY()<-1 && orientation.getX()>1)
+                return Route.LEFT_BOTTOM;
+            if(orientation.getY()>1 && orientation.getX()<-1)
+                return Route.RIGHT_TOP;
+            if(orientation.getX()>1 && orientation.getY()<1)
+                return Route.BOTTOM;
+            if(orientation.getX()<-1 && orientation.getY()>-1)
+                return  Route.TOP;
+            if(orientation.getY()>1 && orientation.getX()<1)
+                return Route.RIGHT;
+            if(orientation.getY()<-1 && orientation.getX()>-1)
+                return Route.LEFT;
+        }
         return null;
     }
+
 }
