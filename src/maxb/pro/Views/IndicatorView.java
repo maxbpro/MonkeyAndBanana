@@ -10,6 +10,8 @@ import android.view.Surface;
 import android.view.View;
 import maxb.pro.Specials.OrientationInfo;
 import maxb.pro.R;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class IndicatorView extends View
 {
@@ -23,7 +25,8 @@ public class IndicatorView extends View
     private int mCenter = 0;
     private Paint paint_red = null;
     private Paint paint_green = null;
-    private int score = 0;
+    private int score_show = 0;
+    private int score_indicator = 0;
     private int SMILE_WIDTH = 64; // in dp
     public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY,
         CRY_MUCH, IN_LOVE, FEAR }
@@ -51,38 +54,7 @@ public class IndicatorView extends View
         switchSmile(Smiles.NORMAL);
     }
 
-    private void determineOrientation()
-    {
-        int default_orientation = (((Activity)mContext).getWindowManager().getDefaultDisplay().getOrientation());
-        switch (default_orientation)
-        {
-            case Surface.ROTATION_0:
-                defaultOrientation = DefaultOrientations.LANDSCAPE;
-                break;
-            case Surface.ROTATION_90:
-                defaultOrientation = DefaultOrientations.PORTRAIT;
-                break;
-        }
-    }
 
-    private void initPaints()
-    {
-        paint_red = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint_red.setColor(Color.RED);
-        paint_red.setTextSize(20);
-        paint_green = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint_green.setColor(Color.GREEN);
-        paint_green.setTextSize(20);
-        paint_green.setStyle(Paint.Style.FILL);
-    }
-
-    private void initSmileSize()
-    {
-        int screenLayout = getResources().getConfiguration().screenLayout;
-        if ((screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL)
-            SMILE_WIDTH = 32;
-        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
-    }
 
     public void setWidth(int width)
     {
@@ -108,30 +80,38 @@ public class IndicatorView extends View
                 break;
             case HAPPY:
                 bmp_current = bmp_happy;
+                startTimerForSmiles();
                 break;
             case FEAR:
                 bmp_current = bmp_fear;
+                startTimerForSmiles();
                 break;
             case CRY:
                 bmp_current = bmp_cry;
+                startTimerForSmiles();
                 break;
             case CRY_MUCH:
                 bmp_current = bmp_cry_much;
+                startTimerForSmiles();
                 break;
             case WINK:
                 bmp_current = bmp_wink;
+                startTimerForSmiles();
                 break;
             case SURPRISE:
                 bmp_current = bmp_surprise;
+                startTimerForSmiles();
                 break;
             case ANRGY:
                 bmp_current = bmp_angry;
                 break;
             case IN_LOVE:
                 bmp_current = bmp_in_love;
+                startTimerForSmiles();
                 break;
             case SAD:
                 bmp_current = bmp_sad;
+                startTimerForSmiles();
                 break;
         }
     }
@@ -141,59 +121,165 @@ public class IndicatorView extends View
         invalidate();
     }
 
-    public void setScore(int score)
+    public void show_score_show(int score)
     {
-        this.score = score;
+        updatePaints(score);
+        this.score_show = score;
+        startTimer_score_show();
     }
 
-    public void cleatScore()
+    public void show_score_indicator(int score)
     {
-        score = 0;
+        updatePaints(score);
+        this.score_indicator = score;
+        startTimer_score_indicator();
+    }
+
+    public int get_score_indicator()
+    {
+        return score_indicator;
     }
 
 
     @Override
     protected void onDraw(Canvas canvas)
     {
-        if (defaultOrientation == DefaultOrientations.LANDSCAPE)
+        if(enabled)
         {
-           if(enabled)
-           {
-              float X = orientation.getX();
-              float Y = orientation.getY();
-              //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
-              canvas.drawBitmap(bmp_current, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
-           }
-           else
-           {
-               canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
-               if(score>0)
-                  canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
-               else if (score<0)
-                  canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
-           }
-        }
-        else
-        {
-            if(enabled)
+            if (defaultOrientation == DefaultOrientations.LANDSCAPE)
+            {
+               float X = orientation.getX();
+               float Y = orientation.getY();
+               //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
+               canvas.drawBitmap(bmp_current, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
+               draw_score_show(canvas, mCenter - mStep * X, mCenter + mStep * Y );
+               draw_score_indicator(canvas, mCenter - mStep * X, mCenter + mStep * Y );
+            }
+            else
             {
                 float X = orientation.getY();
                 float Y = orientation.getX();
                 //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
                 canvas.drawBitmap(bmp_current, mCenter + mStep * X, mCenter + mStep * Y, new Paint());
+                draw_score_show(canvas, mCenter + mStep * X , mCenter + mStep * Y);
+                draw_score_indicator(canvas, mCenter + mStep * X , mCenter + mStep * Y);
             }
-            else
-            {
-                canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
-                if(score>0)
-                    canvas.drawText("+" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_green);
-                else if (score<0)
-                    canvas.drawText("-" + score, mCenter + SMILE_WIDTH, mCenter - 10, paint_red );
-            }
+        }
+        else
+        {
+            canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
+            draw_score_show(canvas, mCenter, mCenter);
         }
 
     }
 
+    private void draw_score_show(Canvas canvas, float x, float y)
+    {
+        if(score_show>0)
+            canvas.drawText("+" + score_show, x + SMILE_WIDTH ,y - 5, paint_green);
+        else if (score_show<0)
+            canvas.drawText(String.valueOf(score_show), x + SMILE_WIDTH, y - 5, paint_red );
+
+    }
+
+    private void draw_score_indicator(Canvas canvas, float x, float y)
+    {
+        if(score_indicator>0)
+            canvas.drawText("+" + score_show, x + SMILE_WIDTH ,y - 10, paint_green);
+        else if (score_indicator<0)
+            canvas.drawText(String.valueOf(score_show), x + SMILE_WIDTH, y - 10, paint_red );
+    }
+
+
+    private void startTimerForSmiles()
+    {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                  bmp_current = bmp_normal;
+            }
+        };
+        timer.schedule(task,1500);
+    }
+
+    private void startTimer_score_show()
+    {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                 score_show = 0;
+            }
+        };
+        timer.schedule(task, 1000);
+    }
+
+    private void startTimer_score_indicator()
+    {
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                score_indicator = 0;
+            }
+        };
+        timer.schedule(task, 1000);
+    }
+
+    private void determineOrientation()
+    {
+        int default_orientation = (((Activity)mContext).getWindowManager().getDefaultDisplay().getOrientation());
+        switch (default_orientation)
+        {
+            case Surface.ROTATION_0:
+                defaultOrientation = DefaultOrientations.LANDSCAPE;
+                break;
+            case Surface.ROTATION_90:
+                defaultOrientation = DefaultOrientations.PORTRAIT;
+                break;
+        }
+    }
+
+    private void initPaints()
+    {
+        paint_red = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint_red.setColor(Color.RED);
+        paint_red.setTextSize(14);
+        paint_green = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint_green.setColor(Color.GREEN);
+        paint_green.setTextSize(14);
+    }
+
+    private void initSmileSize()
+    {
+        int screenLayout = getResources().getConfiguration().screenLayout;
+        if ((screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL)
+            SMILE_WIDTH = 32;
+        SMILE_WIDTH = dpToPx(SMILE_WIDTH);
+    }
+
+    private void updatePaints(int score)
+    {
+        if(score > 0)
+        {
+            if (score<=500)
+                paint_green.setTextSize(14);
+            else if (score<=1000)
+                paint_green.setTextSize(18);
+            else
+                paint_green.setTextSize(22);
+        }
+        else
+        {
+            if (score>=-200)
+                paint_red.setTextSize(14);
+            else if (score>-250)
+                paint_red.setTextSize(18);
+            else
+                paint_red.setTextSize(22);
+        }
+    }
 
     @Override
     protected void onMeasure(int wMeasureSpec, int hMeasureSpec)

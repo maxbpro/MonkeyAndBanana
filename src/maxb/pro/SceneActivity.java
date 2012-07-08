@@ -80,6 +80,7 @@ public class SceneActivity extends Activity
         mRoute = new IndicatorRoute(this);
     }
 
+    // update UI and check state every time
     private void initTimer()
     {
         final Handler handler = new Handler();
@@ -92,7 +93,11 @@ public class SceneActivity extends Activity
                     public void run() {
                         if(isPauseThread == false)
                         {
+                            if(mGameView.getIndicator().IsEnabled())
+                                AskIndicatorView();
+
                             UpdateUI();
+                            CheckState();
                             handler.postDelayed(this, DELAY);
                         }
                     }
@@ -103,6 +108,7 @@ public class SceneActivity extends Activity
         thread = new Thread(null,RecurringTask);
     }
 
+    // ask monkey
     private void initBtnJump()
     {
         mGameView.getIndicator().setOnTouchListener(new View.OnTouchListener() {
@@ -114,7 +120,7 @@ public class SceneActivity extends Activity
                         mGameView.getIndicator().update();
                         break;
                     case MotionEvent.ACTION_UP:
-                        MoveMonkeyAndCheck(mRoute.getRoute());
+                        MoveMonkey(mRoute.getRoute());
                         break;
                 }
                 return true;
@@ -122,12 +128,13 @@ public class SceneActivity extends Activity
         });
     }
 
-    private void MoveMonkeyAndCheck(IndicatorRoute.Route route)
+    // changing state model
+    private void MoveMonkey(IndicatorRoute.Route route)
     {
         if(route != null)
         {
+            // Changing state model
             IndicatorView.Smiles smile = mGameView.getField().moveMonkey(route);
-            mGameView.getIndicator().cleatScore();
             switch (smile)
             {
                 case IN_LOVE:
@@ -148,7 +155,7 @@ public class SceneActivity extends Activity
                 case CRY:
                     mGameView.getScene_text().setText("ENEMY!");
                     mGameView.txt_scene_text_scale();
-                    mGameView.getIndicator().setScore(mGameView.getField().getDeltaScores());
+                    //mGameView.getIndicator().showcore(mGameView.getField().getDeltaScores());
                     mGameModel.getUser_level().add_to_scores(mGameView.getField().getDeltaScores());
                     mGameView.txt_scores_scale();
                     //mGameView.getIndicator().
@@ -156,15 +163,16 @@ public class SceneActivity extends Activity
             }
 
             mGameView.getIndicator().switchSmile(smile);
-
-            boolean isContinues  = true;
-            if(mGameModel.getUser_level().get_scores()<0)
-                isContinues = false;
-            if(!isContinues)
-                isLostLevel();
-            else
-                isFinishLevel();
         }
+    }
+
+    // changing state model
+    private void AskIndicatorView()
+    {
+        int score_indicator = mGameView.getIndicator().get_score_indicator();
+        int score_current = mGameModel.getUser_level().get_scores();
+        mGameModel.getUser_level().set_scores(score_current + score_indicator);
+        mGameView.getIndicator().show_score_indicator(score_indicator);
     }
 
     private void UpdateUI()
@@ -180,7 +188,16 @@ public class SceneActivity extends Activity
 
     }
 
-
+    private void CheckState()
+    {
+        boolean isContinues  = true;
+        if(mGameModel.getUser_level().get_scores()<0)
+            isContinues = false;
+        if(!isContinues)
+            isLostLevel();
+        else
+            isFinishLevel();
+    }
 
 
 
