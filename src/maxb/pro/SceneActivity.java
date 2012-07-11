@@ -61,17 +61,8 @@ public class SceneActivity extends Activity
 
     private void SaveResultToDB()
     {
-        ArrayList<Row_User_Enemy> rows_enemies = new ArrayList<Row_User_Enemy>();
-        Map<Enemy, Integer> enemies = mGameModel.getEnemiesMap();
-        for (Enemy enemy : enemies.keySet())
-        {
-            rows_enemies.add(new Row_User_Enemy(
-                    enemy.getClassName(), enemies.get(enemy), mGameModel.getUser_level()));
-        }
-        UserDataBaseAdapter adapter = new UserDataBaseAdapter(this);
-        adapter.open();
-        adapter.insertEntryLevel(mGameModel.getUser_level(), rows_enemies);
-        adapter.close();
+        new AsyncSavingToDB().execute();
+
     }
 
 
@@ -209,12 +200,11 @@ public class SceneActivity extends Activity
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
+                Intent resultIntent = new Intent();
                 if(dialog.getResult()==LostDialog.Result.REFRESH)
-                {
-                    Intent resultIntent = new Intent();
                     resultIntent.putExtra("RESULT", mGameModel.getUser_level().get_level());
-                    setResult(0, resultIntent);
-                }
+                setResult(RESULT_OK, resultIntent);
+                finish();
 
             }
         });
@@ -355,6 +345,38 @@ public class SceneActivity extends Activity
             });
             dialog.transform();
         }
+    }
+
+    class AsyncSavingToDB extends AsyncTask<Void, Void, Void>
+    {
+
+        @Override
+        protected void onPreExecute(){}
+
+        @Override
+        protected Void doInBackground(Void... voids)
+        {
+            ArrayList<Row_User_Enemy> rows_enemies = new ArrayList<Row_User_Enemy>();
+            Map<Enemy, Integer> enemies = mGameModel.getEnemiesMap();
+            for (Enemy enemy : enemies.keySet())
+            {
+                rows_enemies.add(new Row_User_Enemy(
+                        enemy.getClassName(), enemies.get(enemy), mGameModel.getUser_level()));
+            }
+            UserDataBaseAdapter adapter = new UserDataBaseAdapter(mContext);
+            adapter.open();
+            adapter.insertEntryLevel(mGameModel.getUser_level(), rows_enemies);
+            adapter.close();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void voids)
+        {
+            super.onPostExecute(null);
+        }
+
+
     }
 
 }

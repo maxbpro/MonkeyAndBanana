@@ -10,26 +10,45 @@ import android.view.Surface;
 import android.view.View;
 import maxb.pro.Specials.OrientationInfo;
 import maxb.pro.R;
+
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class IndicatorView extends View
 {
     private Context mContext = null;
+
+    private int counter = 0;
+    private boolean isLock = false;
+    private Timer timer = null;
+    private TimerTask task = null;
+    private enum Routes{LEFT, TOP, RIGHT, BOTTOM, LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM, CENTER}
+    private Routes route_current = null;
+
     private enum DefaultOrientations{LANDSCAPE, PORTRAIT}
     private DefaultOrientations defaultOrientation = DefaultOrientations.LANDSCAPE;
-    private boolean enabled = false;
     private OrientationInfo orientation = null;
+
+    private int score_show = 0;
+    private int score_indicator = 0;
+    private boolean enabled = false;
+    private boolean isRun = false;
     private int mStep = 0;
     private int mWidth = 0;
     private int mCenter = 0;
+    private float X = 0;
+    private float Y = 0;
+    private float Mx = 0;
+    private float My = 0;
+    private float a = 0;
+
+
     private Paint paint_red = null;
     private Paint paint_green = null;
-    private int score_show = 0;
-    private int score_indicator = 0;
     private int SMILE_WIDTH = 64; // in dp
-    public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY,
-        CRY_MUCH, IN_LOVE, FEAR }
+    public enum Smiles {NORMAL, HAPPY, SAD, ANRGY, SURPRISE, WINK, CRY, CRY_MUCH, IN_LOVE, FEAR }
     private Bitmap bmp_current = null;
     private Bitmap bmp_normal = null;
     private Bitmap bmp_happy = null;
@@ -52,6 +71,7 @@ public class IndicatorView extends View
         initPaints();
         initAllBitmap();
         switchSmile(Smiles.NORMAL);
+        initGlobalTimer();
     }
 
 
@@ -141,15 +161,45 @@ public class IndicatorView extends View
     }
 
 
+
     @Override
     protected void onDraw(Canvas canvas)
     {
         if(enabled)
         {
-            if (defaultOrientation == DefaultOrientations.LANDSCAPE)
+            activeTimer();
+
+            if(!isLock)
             {
-               float X = orientation.getX();
-               float Y = orientation.getY();
+                isLock = true;
+                route_current = getRoute();
+                counter = 0;
+                a = 0;
+                canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
+            }
+            else
+            {
+                if(counter<1000)
+                {
+                    float value = counter/100;
+                    //if (counter > 300)
+                      //  a = a + 0.1f;
+
+                    draw_smile(canvas, route_current, value + a);
+                }
+                else
+                {
+                    isLock = false;
+                    this.X = 0;
+                    this.Y = 0;
+                }
+            }
+
+
+            /*if (defaultOrientation == DefaultOrientations.LANDSCAPE)
+            {
+               float X_device = orientation.getX();
+               float Y_device = orientation.getY();
                //canvas.drawCircle(mCenter - mStep * X, mCenter + mStep * Y, 20, paint_red);
                canvas.drawBitmap(bmp_current, mCenter - mStep * X, mCenter + mStep * Y, new Paint());
                draw_score_show(canvas, mCenter - mStep * X, mCenter + mStep * Y );
@@ -163,13 +213,92 @@ public class IndicatorView extends View
                 canvas.drawBitmap(bmp_current, mCenter + mStep * X, mCenter + mStep * Y, new Paint());
                 draw_score_show(canvas, mCenter + mStep * X , mCenter + mStep * Y);
                 draw_score_indicator(canvas, mCenter + mStep * X , mCenter + mStep * Y);
-            }
+            } */
         }
         else
         {
             canvas.drawBitmap(bmp_current, mCenter, mCenter, new Paint());
             draw_score_show(canvas, mCenter, mCenter);
         }
+
+    }
+
+
+    private void draw_smile(Canvas canvas, Routes route, float X)
+    {
+        switch(route)
+        {
+            case LEFT:
+                this.X = -X;
+                this.Y = 0;
+                break;
+            case RIGHT:
+                this.X = X;
+                this.Y = 0;
+                break;
+            case TOP:
+                this.Y = X;
+                this.X = 0;
+                break;
+            case BOTTOM:
+                this.Y = -X;
+                this.X = 0;
+                break;
+
+            case LEFT_TOP:
+                this.X = -X;
+                this.Y = getY(this.X);
+                if(My > 0.5)
+                {
+                    float temp = this.X;
+                    this.X= this.Y;
+                    this.Y = -temp;
+                }
+
+                break;
+            case LEFT_BOTTOM:
+                this.X = -X;
+                this.Y = getY(this.X);
+                if(My < -0.5)
+                {
+                    float temp = this.X;
+                    this.X= -this.Y;
+                    this.Y = temp;
+                }
+
+                break;
+            case RIGHT_TOP:
+                this.X = X;
+                this.Y = getY(this.X);
+                if(My > 0.5)
+                {
+                    float temp = this.X;
+                    this.X= this.Y;
+                    this.Y = temp;
+                }
+
+
+
+                break;
+            case RIGHT_BOTTOM:
+                this.X = X;
+                this.Y = getY(this.X);
+                if(My < -0.5)
+                {
+                    float temp = this.X;
+                    this.X= -this.Y;
+                    this.Y = -temp;
+                }
+
+
+                break;
+            case CENTER:
+                this.X = 0; this.Y = 0 ;break;
+        }
+
+        changeCoordinators();
+        canvas.drawBitmap(bmp_current, mCenter + mStep * this.X, mCenter - mStep * this.Y, new Paint());
+        checkPositionIsLost();
 
     }
 
@@ -182,14 +311,47 @@ public class IndicatorView extends View
 
     }
 
-    private void draw_score_indicator(Canvas canvas, float x, float y)
+    private void changeCoordinators()
     {
-        if(score_indicator>0)
-            canvas.drawText("+" + score_show, x + SMILE_WIDTH ,y - 10, paint_green);
-        else if (score_indicator<0)
-            canvas.drawText(String.valueOf(score_show), x + SMILE_WIDTH, y - 10, paint_red );
+        float X_device = orientation.getX();
+        float Y_device = orientation.getY();
+        // change X and Y  OR  X_device adn Y_device
+        // for compare
+
+        this.X = this.X - X_device;
+        this.Y = this.Y - Y_device;
     }
 
+    private void checkPositionIsLost()
+    {
+        if(this.X > 9 || this.X <-9 || this.Y > 9 || this.Y<-9)
+            score_indicator = -1;
+    }
+
+    private void draw_score_indicator(Canvas canvas, float x, float y)
+    {
+        if(score_indicator == -1)
+            canvas.drawText(getResources().getString(R.string.you_are_lost), x + SMILE_WIDTH ,y - 10, paint_green);
+        else
+        {
+           if(score_indicator>0)
+               canvas.drawText("+" + score_show, x + SMILE_WIDTH ,y - 10, paint_green);
+           else if (score_indicator<0)
+               canvas.drawText(String.valueOf(score_show), x + SMILE_WIDTH, y - 10, paint_red );
+        }
+    }
+
+
+    private void initGlobalTimer()
+    {
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                counter +=100;
+            }
+        };
+    }
 
     private void startTimerForSmiles()
     {
@@ -225,6 +387,15 @@ public class IndicatorView extends View
             }
         };
         timer.schedule(task, 1000);
+    }
+
+    private void activeTimer()
+    {
+        if(!isRun)
+        {
+            timer.schedule(task, 0, 100);
+            isRun = true;
+        }
     }
 
     private void determineOrientation()
@@ -290,7 +461,6 @@ public class IndicatorView extends View
         mStep = (mWidth - SMILE_WIDTH)/20;
     }
 
-
     private void initAllBitmap()
     {
         bmp_angry  = getResizeBitmap((BitmapDrawable) getResources().getDrawable(R.drawable.angry));
@@ -326,6 +496,55 @@ public class IndicatorView extends View
         float density = getResources().getDisplayMetrics().density;
         return Math.round(dp*density);
     }
+
+
+
+    private Routes getRoute()
+    {
+        Random rn = new Random();
+       // Mx = 2*rn.nextFloat()-1;
+        //My = 2*rn.nextFloat()-1;
+        do{
+          Mx = -RoundResult(rn.nextFloat(), 2);
+          My = RoundResult(rn.nextFloat(),2);
+        } while (Math.abs(My) == 0 || Math.abs(Mx)== 0 || Math.abs(My)>Math.abs(Mx));
+        //Mx = 0; My = 0;
+        if(Mx > 0 && My > 0)
+            return Routes.RIGHT_TOP;
+        else if (Mx < 0 && My < 0)
+            return Routes.LEFT_BOTTOM;
+        else if (Mx > 0 && My < 0)
+            return Routes.RIGHT_BOTTOM;
+        else if (Mx < 0 && My > 0)
+            return Routes.LEFT_TOP;
+        else if (Mx == 0 && My < 0)
+            return Routes.BOTTOM;
+        else if (Mx == 0 && My > 0)
+            return Routes.TOP;
+        else if (Mx > 0 && My == 0)
+            return Routes.RIGHT;
+        else if (Mx < 0 && My == 0)
+            return Routes.LEFT;
+        else
+            return Routes.CENTER;
+    }
+
+
+
+    private float getY(float x)
+    {
+        return My*x/Mx;
+    }
+
+
+    float RoundResult (float f, int precise)
+    {
+        precise = 10^precise;
+        f = f * precise;
+        int i = (int) Math.round(f);
+        return (float) i / precise;
+    }
+
 
 }
 

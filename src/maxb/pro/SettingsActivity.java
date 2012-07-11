@@ -27,26 +27,7 @@ public class SettingsActivity extends Activity
         super.onCreate(savedInstanceState);
         getWindow().getAttributes().windowAnimations = R.style.Fade;
         setContentView(R.layout.settings);
-        music_check = (CheckBox)findViewById(R.id.music_check);
-        sounds_check = (CheckBox)findViewById(R.id.sounds_check);
-        vibro_check = (CheckBox)findViewById(R.id.vibro_check);
-        final myButton btn_back = (myButton)findViewById(R.id.settings_back);
-        btn_back.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch(motionEvent.getAction())
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        btn_back.startAnimation();
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        savePreferences();
-                        finish();
-                        break;
-                }
-                return true;
-            }
-        });
+        initButtons();
         initPreferences();
         updateElementState();
     }
@@ -77,6 +58,30 @@ public class SettingsActivity extends Activity
         editor.putBoolean(VIBRO, vibro_on);
         editor.commit();
         updateEnvironment();
+    }
+
+    private void initButtons()
+    {
+        music_check = (CheckBox)findViewById(R.id.music_check);
+        sounds_check = (CheckBox)findViewById(R.id.sounds_check);
+        vibro_check = (CheckBox)findViewById(R.id.vibro_check);
+        final myButton btn_back = (myButton)findViewById(R.id.settings_back);
+        btn_back.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch(motionEvent.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        btn_back.startAnimation();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        savePreferences();
+                        finish();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void updateEnvironment()
