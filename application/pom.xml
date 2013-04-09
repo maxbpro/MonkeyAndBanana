@@ -23,11 +23,6 @@
       </dependency>
 
 
-      <dependency>
-          <groupId>com.google.zxing</groupId>
-          <artifactId>core</artifactId>
-          <version>2.1</version>
-      </dependency>
 
 
 
@@ -74,12 +69,7 @@
           <scope>test</scope>
       </dependency>
 
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.8.2</version>
-          <scope>test</scope>
-      </dependency>
+
 
   </dependencies>
 
