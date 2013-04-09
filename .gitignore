@@ -1,0 +1,21 @@
+#idea files
+.idea/
+*.iml
+
+BuildConfig.java
+
+#Backups
+.*~
+*~
+
+#Temp build dirs
+bin/
+out/
+target/
+gen-external-apklibs/
+
+#Properties that will be differ for other machine
+local.properties
+
+#Proguard logs
+proguard_logs/
