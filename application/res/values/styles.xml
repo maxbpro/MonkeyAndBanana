@@ -1,0 +1,40 @@
+<resources>
+    <style name="defaultTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:checkboxStyle">@style/CheckBoxStyle</item>
+        <item name="android:textViewStyle">@style/smallTextView</item>
+    </style>
+
+    <style name="CheckBoxStyle" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/chechbox_background</item>
+    </style>
+
+
+
+    <style name="smallTextView" parent="android:Widget.TextView">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+
+    <style name="timeTextStyle" parent="android:Widget.TextView">
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Fade">
+        <item name="android:windowEnterAnimation">@anim/fadein</item>
+        <item name="android:windowExitAnimation">@anim/fadeout</item>
+    </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:title">@style/PauseDialogTitle</item>
+    </style>
+
+    <style name="PauseDialogTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
+</resources>

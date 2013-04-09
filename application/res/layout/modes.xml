@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro.app"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10dp"
+                android:background="@drawable/modes_background">
+    <maxb.pro.app.Views.myButton android:layout_height="100dp"
+                       android:layout_width="100dp"
+                       android:layout_alignParentBottom="true"
+                       mb:image="@drawable/back"
+                       android:id="@+id/modes_back"
+                       mb:animMode="LEFT"/>
+    <maxb.pro.app.Views.myButton android:layout_height="100dp"
+                       android:layout_width="100dp"
+                       android:layout_alignParentBottom="true"
+                       android:layout_alignParentRight="true"
+                       mb:image="@drawable/info"
+                       mb:animMode="TWITCH"
+                       android:id="@+id/modes_info"
+            />
+    <Gallery android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:layout_centerInParent="true"
+             android:id="@+id/modes_gallery"
+            />
+
+
+</RelativeLayout>

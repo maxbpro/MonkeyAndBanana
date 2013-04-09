@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro.app"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10dp"
+                android:background="@drawable/main_background">
+    <maxb.pro.app.Views.myButton android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:id="@+id/btn_settings"
+            mb:image="@drawable/settings"
+            android:layout_alignParentBottom="true"
+            mb:animMode="ROTATE"/>
+    <maxb.pro.app.Views.myButton android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            mb:image="@drawable/forward"
+            android:id="@+id/btn_forward"
+            mb:animMode="RIGHT"/>
+    <LinearLayout android:layout_height="500dp"
+                  android:layout_width="400dp"
+                  android:layout_centerInParent="true"
+                  android:orientation="vertical"
+                  android:background="@android:color/transparent">
+        <ImageView android:layout_height="400dp"
+                android:layout_width="400dp"
+                android:src="@drawable/monkey"
+                android:layout_gravity="center_horizontal"/>
+        <TextView android:layout_height="100dp"
+                  android:layout_width="400dp"
+                  android:id="@+id/main_game_title"
+                  android:layout_gravity="center_horizontal"
+                  android:gravity="center_horizontal"
+                  android:text="@string/game_title"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

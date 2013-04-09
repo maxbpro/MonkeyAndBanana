@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<menu name="МЕНЮ" errorInfo="yes">
+	<menu name="КУХНЯ">
+		<menu name="Устрицы">
+		<item name="Устрицы  - Белый жемчуг (Франция.) 1 шт." desc="" price="300" photo="/files/menu/992.jpg"/>
+		<item name="Playboy - свежая, очищенная устрица в томатном соке. Подается в рюмке" desc="" price="300" photo="/files/menu/993.jpg"/>
+		</menu>
+		<menu name="Закуски">
+		<item name="Черная зернистая икра осетровых рыб 30 гр." desc="" price="3300" photo="/files/menu/994.jpg"/>
+		<item name="Черная икра - Русский сет (икра (20 гр.) подается с рюмкой водки Грей Гус)" desc="" price="2850" photo="/files/menu/995.jpg"/>
+		<item name="Сет 1-Средиземноморский -козий сыр с фисташками и виноградом,  пармская ветчина с дыней, мини-моцарелла с помидорами чери и базиликом, карпаччо из говядины со сладкой горчицей и пармезаном, салями, чоризо,  брускетта с томатами" desc="" price="2300" photo="/files/menu/997.jpg"/>
+		<item name="Сет 2-Азиатский -шашлычки из кальмара, курицы и свинины, креветки с хрустящим  стручковым горошком, роллы из рисовой бумаги с овощами, тунцом и лососем, гребешки с пикантным соусом и икрой летучей рыбы, темпура из овощей, жареные  пельмени с креветками" desc="" price="2300" photo="/files/menu/998.jpg"/>
+		<item name="Нежное филе тунца, слегка обжаренное с кунжутом, с салатом из авокадо и огурцов под лимонным дрессингом" desc="" price="850" photo="/files/menu/1000.jpg"/>
+		<item name="Тар-тар из тунца с имбирём и кориандром под азиатским соусом" desc="" price="850" photo="/files/menu/1002.jpg"/>
+		<item name="Карпаччо из говядины Вагью с черным трюфелем, сыром пармезан и копченой морской солью" desc="" price="900" photo="/files/menu/1003.jpg"/>
+		<item name="Французский сет (икра (15 гр.) подается с бокалом шампанского Луи Родерер" desc="" price="3300" photo="/files/menu/1538.jpg"/>
+		<item name="Микс из оливок, каперсов и маринованных овощей. " desc="" price="350" photo="/files/menu/1541.jpg"/>
+		<item name="Перепёлка в печёном гнезде с обжаренной фуа-гра и инжиром в соусе демигласс" desc="" price="900" photo="/files/menu/1547.jpg"/>
+		<item name="Большой помидор, фаршированный цитрусовым севиче из лосося, гребешков и авокадо" desc="" price="500" photo="/files/menu/1636.jpg"/>
+		<item name="Фуа-гра в пяти специях с нежным пюре из пастернака, обжаренными гребешками и соусом из порто и инжира" desc="" price="900" photo="/files/menu/1637.jpg"/>
+		</menu>
+		<menu name="Салаты">
+		<item name="Салат Нисуаз с тунцом и овощами, обжаренными на гриле, креветками и соусом Тонната" desc="" price="950" photo="/files/menu/1549.jpg"/>
+		<item name="Салат с уткой с хрустящей корочкой  на  подушке из овощей и ростков сои с красным сицилийским апельсином под легкой медово-соевойзаправкой и чипсами лотоса " desc="" price="600" photo="/files/menu/1551.jpg"/>
+		<item name="Салат Оливье с шейками свежего рака и  копчёной перепёлкой " desc="" price="800" photo="/files/menu/1552.jpg"/>
+		<item name="Тёплый микс-салат с гребешками и спаржей" desc="" price="800" photo="/files/menu/1554.jpg"/>
+		<item name="Моцарелла с томатами и фисташковым песто" desc="" price="800" photo="/files/menu/1555.jpg"/>
+		<item name="Салат Цезарь  с крабом и авокадо" desc="" price="1100" photo="/files/menu/1616.jpg"/>
+		<item name="Салат Цезарь  с креветками " desc="" price="800" photo="/files/menu/1617.jpg"/>
+		<item name="Салат Цезарь  с курицей" desc="" price="700" photo="/files/menu/1618.jpg"/>
+		<item name="Куриная печень с салатом из свежего шпината, обжаренной груши, кедровых орешков и лука" desc="" price="550" photo="/files/menu/1638.jpg"/>
+		<item name="Филе говядины, приготовленное на гриле,с обжаренными вешенками и портобелло, маринованными томатами, зелёными бобами и листьями микс-салата " desc="" price="950" photo="/files/menu/1639.jpg"/>
+		<item name="Салат из шпината и горгонзолы с обжаренной на гриле грушей и хрустящими орехами пекан" desc="" price="550" photo="/files/menu/1640.jpg"/>
+		<item name="Салат из рисовой лапши с куриным филе,обжаренным на гриле, хрустящими овощами, зелёной папайей, обжаренным арахисом, свежей мятой и кориандром под лёгким азиатским дрессингом " desc="" price="500" photo="/files/menu/1641.jpg"/>
+		</menu>
+		<menu name="Супы">
+		<item name="Острый томатный суп с куриным филе, начос, томатами, авокадо и сметаной" desc="" price="500" photo="/files/menu/1557.jpg"/>
+		<item name="Японский суп Суимоно с мясом краба , рисом, икрой лосося, грибами Намеко , японским омлетом, тофу и водорослями Нори " desc="" price="800" photo="/files/menu/1559.jpg"/>
+		<item name="Тайский кокосовый суп с королевскими креветками, чилийским сибасом, чили, мини-кукурузой, бок чой и грибами цаогу " desc="" price="800" photo="/files/menu/1560.jpg"/>
+		<item name="Тыквенный суп с крабовым мясом , сыром Филадельфия и кедровыми орешками" desc="" price="800" photo="/files/menu/1561.jpg"/>
+		<item name="Густой каштановый суп с уткой и обжаренным фундуком" desc="" price="500" photo="/files/menu/1642.jpg"/>
+		<item name="Домашний суп из баранины со шпинатом и рисом по рецепту моей мамы" desc="" price="500" photo="/files/menu/1643.jpg"/>
+		<item name="Суп-консоме из курицы с мини - равиоли" desc="" price="450" photo="/files/menu/1644.jpg"/>
+		</menu>
+		<menu name="Основные блюда">
+		<item name="Тальятта из филе Вагью, приготовленного на гриле, с руколой, сальсой из  томатов и базилика, хлопьями пармезана и молодым картофелем  " desc="" price="1600" photo="/files/menu/1021.jpg"/>
+		<item name="Стрип стейк из мраморной говядины  с мини-спаржей, цукини и сыром фета " desc="" price="1900" photo="/files/menu/1022.jpg"/>
+		<item name="Бeфстроганов из филе говядины с картофельным пюре и хрустящими   солеными огурцами " desc="" price="800" photo="/files/menu/1023.jpg"/>
+		<item name="Каре французского ягнёнка, приготовленное на гриле, с капонатой из баклажанов и оливок" desc="" price="1200" photo="/files/menu/1025.jpg"/>
+		<item name="Чилийский сибас с соусом Перно и молодым картофелем " desc="" price="1800" photo="/files/menu/1035.jpg"/>
+		<item name="Филе черной трески с  мисо соусом" desc="" price="1500" photo="/files/menu/1036.jpg"/>
+		<item name="Утиная грудка, глазированная в мёде, с обжаренными красными сливами,брокколи , соусом Порто и цитрусовым бисквитом" desc="" price="950" photo="/files/menu/1563.jpg"/>
+		<item name="Сет из мини-бургеров: с мраморной говядиной и сыром Томино, с бараниной и йогуртовым соусом с травами, с курицей карри и  лимонным соусом. Подаётся с картофелем фри. " desc="" price="650" photo="/files/menu/1564.jpg"/>
+		<item name="Креветки/ курица/ овощи, приготовленные на воке с карри" desc="" price="650/500/400" photo="/files/menu/1565.jpg"/>
+		<item name="Цыплёнок - корнишон, обжаренный на гриле с густым маринадом из сои, мёда, имбиря и семенами кунжута с салатом из обжаренной тыквы, молодого шпината, моркови  и хрустящей зелёной фасоли" desc="" price="900" photo="/files/menu/1566.jpg"/>
+		<item name="Филе лосося, приготовленное на гриле с соусом Терияки, с ананасом и майонезом из васаби" desc="" price="800" photo="/files/menu/1567.jpg"/>
+		<item name="Средиземноморский сибас, приготовленный на пару с имбирём и зелёным луком. Подаётся с бок чой, жасминовым рисом и устричным соусом" desc="" price="800" photo="/files/menu/1568.jpg"/>
+		<item name="Дим сам Чёрная акула с крабом, гребешком и лососем. Подаются в лёгком азиатском бульоне с водорослями нори" desc="" price="600" photo="/files/menu/1569.jpg"/>
+		<item name="Дим сам с лобстером" desc="" price="650" photo="/files/menu/1570.jpg"/>
+		<item name="Дим сам с фуа-гра со сливовым соусом" desc="" price="650" photo="/files/menu/1571.jpg"/>
+		<item name="Дим сам с чилийским сибасом и икрой летучей рыбы  " desc="" price="650" photo="/files/menu/1572.jpg"/>
+		<item name="Дим сам с гребешком  " desc="" price="550" photo="/files/menu/1573.jpg"/>
+		<item name="Дим сам с лососем и креветками  " desc="" price="550" photo="/files/menu/1574.jpg"/>
+		<item name="Дим сам с  мясом краба   " desc="" price="600" photo="/files/menu/1575.jpg"/>
+		<item name="Дим сам с бараниной   " desc="" price="450" photo="/files/menu/1576.jpg"/>
+		<item name="Дим сам с овощами ( шпинат, спаржа, томаты, кукуруза, шитаке)" desc="" price="450" photo="/files/menu/1577.jpg"/>
+		<item name="Сочные дим-сам с мясом краба, лимонником и имбирно-шафрановым соусом, с темпурой  мягкопанцирного краба и розовым грейпфрутом" desc="" price="1100" photo="/files/menu/1645.jpg"/>
+		<item name="Филе баранины-тандори с ореховым соусом и кориандром, с салатом из свежих томатов, мяты, огурцов и редиса, заправленных йогуртом" desc="" price="1250" photo="/files/menu/1971.jpg"/>
+		</menu>
+		<menu name="Блюда на воке">
+		<item name="Хрустящие овощи в устричном соусе" desc="" price="500" photo="/files/menu/602.jpg"/>
+		<item name="Китайская рисовая лапша с уткой,обжаренной на воке, грибами шитаке, фасолью и бок чой" desc="" price="750" photo="/files/menu/603.jpg"/>
+		<item name="Гребешки по-Сычуаньски" desc="" price="850" photo="/files/menu/604.jpg"/>
+		<item name="Мясо по-монгольски – ломтики говядины с овощами и бамбуком в монгольском  соусе" desc="" price="800" photo="/files/menu/626.jpg"/>
+		<item name="Нежная, тонко нарезанная говядина Вагью с азиатскими овощами в устричном соусе" desc="" price="900" photo="/files/menu/627.jpg"/>
+		<item name="Нежный тунец с китайскими грибами цао-гу, авокадо, сельдереем,болгарским перцем и ростками сои в пряном мисо-соусе с лаймом" desc="" price="900" photo="/files/menu/1198.jpg"/>
+		<item name="Филе говядины с баклажанами, зелёной фасолью и красным перцем,обжаренные с мисо соусом и семенами кунжута " desc="" price="850" photo="/files/menu/1586.jpg"/>
+		<item name="Нежное филе баранины, приготовленное на воке со стручками зелёной фасоли, мини-спаржей, баклажанами, кукурузой, луком-порей и свежим кореандром в соусе Квандон" desc="" price="850" photo="/files/menu/1646.jpg"/>
+		</menu>
+		<menu name="Мокимоно - Суси роллы">
+		<item name="Якудза - стружка тунца, краб, угорь, лосось, авокадо, сыр Филадельфия " desc="" price="750" photo="/files/menu/1097.jpg"/>
+		<item name="Сакура - лосось, красная икра, сыр Филадельфия, руккола" desc="" price="600" photo="/files/menu/1098.jpg"/>
+		<item name="Филадельфия - угорь, краб, лосось, сыр Филадельфия, авокадо" desc="" price="700" photo="/files/menu/1099.jpg"/>
+		<item name="Крейзи манки – темпура из лосося, тайского манго, сыра Филадельфия с соусом из манго" desc="" price="700" photo="/files/menu/1100.jpg"/>
+		<item name="Голливуд - авокадо, краб, японский огурец, икра летучей рыбы" desc="" price="800" photo="/files/menu/1116.jpg"/>
+		<item name="Черная вдова – камчатский краб, японский огурец,икра летучей рыбы с васаби, черный кунжут" desc="" price="850" photo="/files/menu/1117.jpg"/>
+		<item name="Полинезия – речной угорь унаги, лосось, манго, авокадо, папайя с черными семенами кунжута" desc="" price="650" photo="/files/menu/1118.jpg"/>
+		<item name="Спайси тунец – тунец, японский огурец, белый и чёрный кунжут, соус Сирача" desc="" price="650" photo="/files/menu/1119.jpg"/>
+		<item name="Гейша - копчёная скумбрия, дайкон, кенийская фасоль, острый соус" desc="" price="600" photo="/files/menu/1587.jpg"/>
+		<item name="Вулкан - сибас, лосось, гребешки, огурец, салат Ромен, соус Терияки" desc="" price="700" photo="/files/menu/1588.jpg"/>
+		<item name="Дракон - темпура из мягкопанцирного краба,огурец,тобико, омлет, зелёный лук, салат ромен, латук, острый соус" desc="" price="800" photo="/files/menu/1589.jpg"/>
+		<item name="Кимоно - филе говядины Вагью,мини-спаржа, салат лолло россо. зелёный лук,острый соус" desc="" price="600" photo="/files/menu/1590.jpg"/>
+		<item name="Кузнечик - краб, маринованный дайкон, нори, свежий огурец, острый соус с копченым лососем и сыром Филадельфия" desc="" price="800" photo="/files/menu/2220.jpg"/>
+		<item name="Цунами - лосось, сибас, копченый угорь, спаржа, нори, салат " desc="" price="600" photo="/files/menu/2221.jpg"/>
+		</menu>
+		<menu name="Суси и сасими">
+		<item name="Аками – красный тунец " desc="" price="120/600" photo="/files/menu/98.jpg"/>
+		<item name="Саке – лосось" desc="" price="100/500" photo="/files/menu/99.jpg"/>
+		<item name="Саке торо –  брюшко лосося" desc="" price="100/500" photo="/files/menu/100.jpg"/>
+		<item name="Хамачи – желтохвостик " desc="" price="140/700" photo="/files/menu/101.jpg"/>
+		<item name="Унаги -  угорь" desc="" price="120/600" photo="/files/menu/102.jpg"/>
+		<item name="Тараба  -  краб " desc="" price="140/700" photo="/files/menu/104.jpg"/>
+		<item name="Суцуки – чилийский сибас " desc="" price="100/500" photo="/files/menu/105.jpg"/>
+		<item name="Мадай –  японский окунь " desc="" price="120/600" photo="/files/menu/106.jpg"/>
+		<item name="Саба – норвежская макрель" desc="" price="100/500" photo="/files/menu/107.jpg"/>
+		<item name="Тако – осьминог " desc="" price="100/500" photo="/files/menu/108.jpg"/>
+		<item name="Монго ика – кальмар" desc="" price="100/500" photo="/files/menu/109.jpg"/>
+		<item name="Икура – икра лосося" desc="" price="100/500" photo="/files/menu/110.jpg"/>
+		<item name="Тобико – икра летучей рыбы " desc="" price="120/600" photo="/files/menu/111.jpg"/>
+		<item name="Эби – черная тигровая креветка " desc="" price="120/600" photo="/files/menu/112.jpg"/>
+		<item name="Хотате - гребешок " desc="" price="140/700" photo="/files/menu/625.jpg"/>
+		<item name="Вагью – обжаренная говядина" desc="" price="140/700" photo="/files/menu/1120.jpg"/>
+		</menu>
+		<menu name="Сыры ">
+		<item name="Сырная тарелка - бри, пекорино, маринованный в вине, итальянский сыр,  выдержанный в виноградном листе, козий сыр, гауда, дорблю, вишнёвый джем" desc="" price="800" photo="/files/menu/114.jpg"/>
+		</menu>
+		<menu name="Десерты">
+		<item name="Шоколадные конфеты ручной работы:  темный шоколад с бейлис, маракуйа, текила-лайм, карамель с солью, блю-кюрасао, кокос, чипса из кунжута -1 шт." desc="" price="60" photo="/files/menu/628.jpg"/>
+		<item name="Торт Наполеон с лесными ягодами" desc="" price="450" photo="/files/menu/1124.jpg"/>
+		<item name="Панна Котта с апельсиново-манговым соусом и свежей малиной" desc="" price="400" photo="/files/menu/1126.jpg"/>
+		<item name="Меренговый рулет с фисташками, взбитыми  сливками и свежей малиной" desc="" price="450" photo="/files/menu/1129.jpg"/>
+		<item name="Домашнее мороженое на выбор 1 шарик: тайское манго /темный шоколад /зелёный чай /тайский банан /кокос /ванильное" desc="" price="150" photo="/files/menu/1132.jpg"/>
+		<item name="Домашний сорбет на выбор 1 шарик: лесные ягоды/ лимон-лайм/ манго/ груша/ малина/ дыня" desc="" price="150" photo="/files/menu/1199.jpg"/>
+		<item name="Тортино с горячим шоколадом , манговым мороженым и свежим манго " desc="" price="500" photo="/files/menu/1592.jpg"/>
+		<item name="Аляска- клубничное мороженое, запечённое в итальянской меренге,  с ягоднымс соусом " desc="" price="500" photo="/files/menu/1594.jpg"/>
+		<item name="Нежное манговое парфе с соусом из манго" desc="" price="500" photo="/files/menu/1596.jpg"/>
+		<item name="Классический тирамису" desc="" price="500" photo="/files/menu/1597.jpg"/>
+		<item name="Чизкейк из красных апельсинов на хрустящем бисквите с фисташками, шоколадом и злаками, с апельсиновой пенкой , апельсиново-манговым соусом и  освежающим сорбетом из красного апельсина" desc="" price="500" photo="/files/menu/1647.jpg"/>
+		<item name="Золотое  шоколадное яйцо Фаберже со свежим манго, малиной, манговым сорбетом  и горячим ягодным соусом" desc="" price="500" photo="/files/menu/1648.jpg"/>
+		</menu>
+		<menu name="Гарниры">
+		<item name="Картофельное пюре" desc="" price="300" photo="/files/menu/1038.jpg"/>
+		<item name="Картофельное пюре с чёрным трюфелем" desc="" price="400" photo="/files/menu/1039.jpg"/>
+		<item name="Микс - салат" desc="" price="350" photo="/files/menu/1040.jpg"/>
+		<item name="Шпинат обжаренный (с сыром горгонзола)" desc="" price="450 / 600" photo="/files/menu/1041.jpg"/>
+		<item name="Свежие огурцы и помидоры" desc="" price="300" photo="/files/menu/1042.jpg"/>
+		<item name="Баклажаны, цукини, болгарский перец, артишоки,  чили перец, красный лук, зелёная спаржа, чеснок , приготовленные на гриле. Подаются с мятно-йогуртовым соусом." desc="" price="750" photo="/files/menu/1043.jpg"/>
+		<item name="Индийский рис" desc="" price="200" photo="/files/menu/1044.jpg"/>
+		<item name="Картофель фри " desc="" price="300" photo="/files/menu/1615.jpg"/>
+		</menu>
+		<menu name="Паста">
+		<item name="Пенне чили - Болоньезе " desc="" price="750" photo="/files/menu/1045.jpg"/>
+		<item name="Пенне с помидорами черри и базиликом в томатном соусе " desc="" price="600" photo="/files/menu/1046.jpg"/>
+		<item name="Феттучини с королевскими креветками, спаржей и помидорами черри" desc="" price="800" photo="/files/menu/1047.jpg"/>
+		<item name="Спагетти с крабовым мясом и обжареными, хрустящими цукини" desc="" price="1000" photo="/files/menu/1048.jpg"/>
+		<item name="Феттучини с белыми грибами  " desc="" price="800" photo="/files/menu/1049.jpg"/>
+		<item name="Феттучини с чёрным трюфелем в сливочном соусе " desc="" price="1100" photo="/files/menu/1619.jpg"/>
+		</menu>
+		<menu name="Свежие ягоды и фрукты">
+		<item name="Клубника ( 100 гр.)" desc="" price="350" photo="/files/menu/1134.jpg"/>
+		<item name="Малина ( 50 гр.)" desc="" price="350" photo="/files/menu/1135.jpg"/>
+		<item name="Ежевика (50 гр. )" desc="" price="350" photo="/files/menu/1136.jpg"/>
+		<item name="Голубика ( 50 гр.)" desc="" price="350" photo="/files/menu/1137.jpg"/>
+		<item name="Ананас (300 гр.)" desc="" price="450" photo="/files/menu/1138.jpg"/>
+		<item name="Арбуз ( 1 кг.)" desc="" price="2500" photo="/files/menu/1139.jpg"/>
+		<item name="Дыня медовая ( 0.5 кг.)" desc="" price="1000" photo="/files/menu/1140.jpg"/>
+		<item name="Королевское фруктовое блюдо  (арбуз, дыня, ананас, маракуйя,  виноград, клубника, киви, голубика, личи)" desc="" price="4500" photo="/files/menu/1142.jpg"/>
+		<item name="Фруктовое блюдо  (арбуз, дыня, ананас, маракуйя, виноград, клубника,  киви, голубика)" desc="" price="3000" photo="/files/menu/1339.jpg"/>
+		</menu>
+		<menu name="Летнее меню ">
+		<item name="Окрошка" desc="" price="450" photo="/files/menu/2205.jpg"/>
+		<item name="Охлаждённый суп гаспачо с моцарелой и крутонами  " desc="" price="450" photo="/files/menu/2206.jpg"/>
+		<item name="Хрустящие листья салата Айсберг с огурцами, редисом и семенами кунжута с горячим ореховым соусом   " desc="" price="400" photo="/files/menu/2207.jpg"/>
+		<item name="Салат из сыра халлуми и обжаренного на гриле персика с рукколой и  кедровыми орешками под гранатовой бальзамической заправкой" desc="" price="500" photo="/files/menu/2208.jpg"/>
+		<item name="Лёгкий салат с куриным филе, маринованным в манго, с томатами, перцем, кусочками манго  и свежей мятой      " desc="" price="600" photo="/files/menu/2209.jpg"/>
+		<item name="Хрустящий  греческий салат с сыром фета на воздушной  подушке из  теста фило           " desc="" price="750" photo="/files/menu/2210.jpg"/>
+		<item name="Свиная корейка в китайском соусе на гриле, с воздушным пюре из красных  яблок и сельдерея     " desc="" price="700" photo="/files/menu/2211.jpg"/>
+		<item name="Утка по-Тайски с красным карри , томатами черри и сочными личи     " desc="" price="1100" photo="/files/menu/2212.jpg"/>
+		<item name="Томлённая  голень молодого ягнёнка с пряным рисом  и сливовым соусом  " desc="" price="1200" photo="/files/menu/2213.jpg"/>
+		<item name="Мусс из чёрной вишни с шариком мороженого из белого шоколада   " desc="" price="450" photo="/files/menu/2214.jpg"/>
+		<item name="Панна Котта из лепестков роз со свежим личи  " desc="" price="450" photo="/files/menu/2215.jpg"/>
+		</menu>
+	</menu>
+	<menu name="НАПИТКИ">
+		<menu name="БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ ">
+		<item name="Вода Аква Панна 0,25 л." desc="" price="250" photo="/files/menu/638.jpg"/>
+		<item name="Вода Этруска газированная 0,25 л." desc="" price="300" photo="/files/menu/639.jpg"/>
+		<item name="Вода Этруска негазированная 0,25 мл." desc="" price="300" photo="/files/menu/640.jpg"/>
+		<item name="Вода Этруска газированная 1 л." desc="" price="600" photo="/files/menu/641.jpg"/>
+		<item name="Вода Этруска негазированная 1 л." desc="" price="600" photo="/files/menu/642.jpg"/>
+		<item name="Кока-Кола 0,25 л." desc="" price="200" photo="/files/menu/644.jpg"/>
+		<item name="Кока-Кола лайт 0,25 л." desc="" price="200" photo="/files/menu/645.jpg"/>
+		<item name="Спрайт 0,25 л." desc="" price="200" photo="/files/menu/646.jpg"/>
+		<item name="Тоник 0,25 л." desc="" price="200" photo="/files/menu/647.jpg"/>
+		<item name="Содовая 0,25 л." desc="" price="200" photo="/files/menu/648.jpg"/>
+		<item name="Ред Булл  0,25 л." desc="" price="300" photo="/files/menu/649.jpg"/>
+		<item name="Блэк 28 0,25 л. " desc="" price="300" photo="/files/menu/1649.jpg"/>
+		</menu>
+		<menu name="СВЕЖЕВЫЖАТЫЕ СОКИ 0,2 л">
+		<item name="Апельсин" desc="" price="350" photo="/files/menu/650.jpg"/>
+		<item name="Ананас" desc="" price="450" photo="/files/menu/651.jpg"/>
+		<item name="Грейпфрут" desc="" price="350" photo="/files/menu/652.jpg"/>
+		<item name="Мандарин" desc="" price="350" photo="/files/menu/653.jpg"/>
+		<item name="Яблоко" desc="" price="350" photo="/files/menu/654.jpg"/>
+		<item name="Груша" desc="" price="350" photo="/files/menu/655.jpg"/>
+		<item name="Виноград " desc="" price="450" photo="/files/menu/656.jpg"/>
+		<item name="Томат" desc="" price="350" photo="/files/menu/657.jpg"/>
+		<item name="Морковь" desc="" price="350" photo="/files/menu/658.jpg"/>
+		<item name="Сельдерей" desc="" price="450" photo="/files/menu/659.jpg"/>
+		<item name="Гранат" desc="" price="950" photo="/files/menu/660.jpg"/>
+		<item name="Киви" desc="" price="450" photo="/files/menu/661.jpg"/>
+		</menu>
+		<menu name="СОКИ И НЕКТАРЫ ПАГО 0,25 л">
+		<item name="Апельсин, ананас, грейпфрут, вишня, клюква, яблоко, томат, персик,  мультифрукт" desc="" price="200" photo="/files/menu/667.jpg"/>
+		</menu>
+		<menu name="КОФЕ">
+		<item name="Эспрессо" desc="" price="130" photo="/files/menu/668.jpg"/>
+		<item name="Американо" desc="" price="130" photo="/files/menu/669.jpg"/>
+		<item name="Капучино" desc="" price="150" photo="/files/menu/670.jpg"/>
+		<item name="Латте" desc="" price="150" photo="/files/menu/671.jpg"/>
+		<item name="Гляссе" desc="" price="200" photo="/files/menu/672.jpg"/>
+		<item name="Айс капучино" desc="" price="210" photo="/files/menu/1319.jpg"/>
+		</menu>
+		<menu name="ГОРЯЧИЕ КОКТЕЙЛИ C КОФЕ">
+		<item name="Ирландский кофе (виски,эспрессо,сливки)" desc="" price="350" photo="/files/menu/673.jpg"/>
+		<item name="Французский кофе (коньяк,бенедектин,эспрессо,сливки)" desc="" price="350" photo="/files/menu/674.jpg"/>
+		<item name="Карибский кофе (малибу,сохо,эспрессо,сливки)" desc="" price="350" photo="/files/menu/675.jpg"/>
+		<item name="Бейлис кофе" desc="" price="350" photo="/files/menu/676.jpg"/>
+		</menu>
+		<menu name="КЛАССИЧЕСКИЙ ЧАЙ">
+		<item name="Чёрный чай 0,5 л. / 1 л." desc="" price="250 / 450" photo="/files/menu/677.jpg"/>
+		<item name="Эрл грей 0,5 л. / 1 л." desc="" price="250 / 450" photo="/files/menu/678.jpg"/>
+		<item name="Зеленый чай Японская сенча  0,5 л. / 1 л. " desc="" price="250 / 450" photo="/files/menu/1650.jpg"/>
+		<item name="Фруктовый чай Огненная вишня с красной вишней, шиповником,  гибискусом, миндалём и ванилью 0,5 л. / 1 л.  " desc="" price="250 / 450" photo="/files/menu/1651.jpg"/>
+		<item name="Чай Красный халат с отборным шиповником 0,5 л. / 1 л." desc="" price="250 / 450" photo="/files/menu/1652.jpg"/>
+		<item name="Чай с ромашкой 0,5 л. / 1 л. " desc="" price="250 / 450" photo="/files/menu/1653.jpg"/>
+		</menu>
+		<menu name="ЭЛИТНЫЙ КИТАЙСКИЙ ЧАЙ">
+		  <menu name="ЗЕЛЕНЫЙ ">
+		<item name="Лунцзин  0,5 л. / 1 л." desc="" price="300/500" photo="/files/menu/1965.jpg"/>
+		<item name="Жасминовая Жемчужина 0,5 л. / 1 л. " desc="" price="300 / 500 " photo="/files/menu/2226.jpg"/>
+		  </menu>
+		  <menu name="БИРЮЗОВЫЙ ">
+		<item name="Жень Шень Улун 0,5 л. / 1 л." desc="" price="400/550" photo="/files/menu/1966.jpg"/>
+		<item name="Молочный Улун 0,5 л. / 1 л." desc="" price="400/550" photo="/files/menu/1968.jpg"/>
+		<item name="Да Хун Пао 0,5 л. / 1 л." desc="" price="400/550" photo="/files/menu/1969.jpg"/>
+		<item name="Тегуаньинь 0,5 л. / 1 л." desc="" price="500/650" photo="/files/menu/1970.jpg"/>
+		  </menu>
+		  <menu name="КРАСНЫЙ ">
+		<item name="Дянь хун из провинции Юнань 0,5 л. / 1 л." desc="" price="400/550" photo="/files/menu/1972.jpg"/>
+		  </menu>
+		  <menu name="ЧЁРНЫЙ ПУЭР ">
+		<item name="Пуэр, выдержанный 9 лет 0,5 л. / 1 л." desc="" price="500/650" photo="/files/menu/1974.jpg"/>
+		  </menu>
+		  <menu name="СВЯЗАННЫЙ ">
+		<item name="Цветок молодости - белый чай с лепестками красной лилии и цепочкой жасминовых цветов 0,5 л" desc="" price="500" photo="/files/menu/1975.jpg"/>
+		  </menu>
+		</menu>
+		<menu name="СОГРЕВАЮЩИЙ ЧАЙ">
+		<item name="Марокканский чай" desc="" price="300" photo="/files/menu/689.jpg"/>
+		<item name="Облепиха с Грушей" desc="" price="300" photo="/files/menu/690.jpg"/>
+		<item name="Брусника с Мятой" desc="" price="300" photo="/files/menu/691.jpg"/>
+		<item name="Клюква с Медом" desc="" price="300" photo="/files/menu/692.jpg"/>
+		<item name="Черный чай с клубникой " desc="" price="300" photo="/files/menu/693.jpg"/>
+		<item name="Черный чай с малиной" desc="" price="300" photo="/files/menu/694.jpg"/>
+		<item name="Черный чай с чебрецом" desc="" price="300" photo="/files/menu/695.jpg"/>
+		</menu>
+		<menu name="БЕЗАЛКОГОЛЬНЫЕ КОКТЕЙЛИ">
+		<item name="Мохито безалкогольный" desc="" price="250" photo="/files/menu/699.jpg"/>
+		<item name="Русский Мохито (лайм,эстрагон,лимон,сироп,спрайт,тоник)" desc="" price="250" photo="/files/menu/700.jpg"/>
+		<item name="Фани (персик,апельсин,клюква,гренадин,сауэр микс)" desc="" price="250" photo="/files/menu/701.jpg"/>
+		<item name="Молочный на Ваш вкус (мороженое,молоко,сироп,фрукты)" desc="" price="250" photo="/files/menu/702.jpg"/>
+		<item name="Айболит (апельсин,грейпфрут,банан,клубника)" desc="" price="400" photo="/files/menu/704.jpg"/>
+		</menu>
+		<menu name="ГОРЯЧИЕ КОКТЕЙЛИ">
+		<item name="Глинтвейн (вино красное,мед,яблоки,апельсны,специи)" desc="" price="400" photo="/files/menu/705.jpg"/>
+		<item name="Тодди Грог (ром,чай,гренадин,лайм,лимон,специи)" desc="" price="350" photo="/files/menu/706.jpg"/>
+		<item name="Чай Сохо (драмбуи,сохо,чай,гренадин,лемон,личи)" desc="" price="350" photo="/files/menu/707.jpg"/>
+		<item name="Белый Глинтвейн" desc="" price="400" photo="/files/menu/1320.jpg"/>
+		<item name="Медовый Грог" desc="" price="450" photo="/files/menu/1321.jpg"/>
+		</menu>
+		<menu name="МИКС ДРИНКС">
+		<item name="Чивас Ригал кола" desc="" price="700" photo="/files/menu/708.jpg"/>
+		<item name="Отвертка" desc="" price="500" photo="/files/menu/709.jpg"/>
+		<item name="Водка - Джинджер Эль" desc="" price="500" photo="/files/menu/710.jpg"/>
+		<item name="Водка Клюквенный сок" desc="" price="500" photo="/files/menu/711.jpg"/>
+		<item name="Саке Имбирный лимонад" desc="" price="350" photo="/files/menu/712.jpg"/>
+		<item name="Джин тоник" desc="" price="500" photo="/files/menu/713.jpg"/>
+		<item name="Текила Санрайз" desc="" price="450" photo="/files/menu/715.jpg"/>
+		<item name="Бакарди Кола" desc="" price="550" photo="/files/menu/716.jpg"/>
+		<item name="Мартини сок " desc="" price="400" photo="/files/menu/718.jpg"/>
+		<item name="Мартини спрайт" desc="" price="400" photo="/files/menu/719.jpg"/>
+		<item name="Гарибальди" desc="" price="400" photo="/files/menu/720.jpg"/>
+		<item name="Бехеровка тоник " desc="" price="400" photo="/files/menu/721.jpg"/>
+		<item name="Кир" desc="" price="600" photo="/files/menu/723.jpg"/>
+		<item name="Кир Роял" desc="" price="1800" photo="/files/menu/724.jpg"/>
+		<item name="Беллини" desc="" price="1800" photo="/files/menu/725.jpg"/>
+		<item name="Водка - блэк 28 " desc="" price="650" photo="/files/menu/1976.jpg"/>
+		</menu>
+		<menu name="САМЫЕ ПОПУЛЯРНЫЕ КОКТЕЙЛИ">
+		<item name="Мохито" desc="" price="600" photo="/files/menu/1102.jpg"/>
+		<item name="Космополитен (водка,куантро,клюква,лайм)" desc="" price="500" photo="/files/menu/1103.jpg"/>
+		<item name="Флоридита Дайкири (ром,мараскино,лайм,сахар)" desc="" price="500" photo="/files/menu/1104.jpg"/>
+		<item name="Маргарита (текила,куантро,лайм)" desc="" price="550" photo="/files/menu/1105.jpg"/>
+		<item name="Пина Колада ( ром,малибу,ананас)" desc="" price="500" photo="/files/menu/1107.jpg"/>
+		<item name="Лонг Айленд Айс Ти (водка, джин, ром, текила, Куантро,кока-кола)" desc="" price="650" photo="/files/menu/1108.jpg"/>
+		<item name="Сохо Мартини (ром,мартини,сохо)" desc="" price="450" photo="/files/menu/1109.jpg"/>
+		<item name="Текила Санрайз" desc="" price="500" photo="/files/menu/1110.jpg"/>
+		<item name="Кир" desc="" price="600" photo="/files/menu/1111.jpg"/>
+		<item name="Кровавая Мэри (водка,томатный сок,лимон,специи, сельдерей)" desc="" price="400" photo="/files/menu/1112.jpg"/>
+		<item name="Копункаa (сохо,куантро,грейпфрут,лайм)" desc="" price="550" photo="/files/menu/1114.jpg"/>
+		<item name="Сингапурский Слинг (ром, шерри бренди,лимон,содовая)" desc="" price="500" photo="/files/menu/1115.jpg"/>
+		<item name="Файнел Кат (ром, клюквенный сок, свежий манго, малина, клубника)" desc="" price="600" photo="/files/menu/2222.jpg"/>
+		</menu>
+		<menu name="СПЕЦИАЛЬНЫЕ КОКТЕЙЛИ МАРТИНИ">
+		<item name="Сухой Мартини (джин,мартини сухой)" desc="" price="450" photo="/files/menu/750.jpg"/>
+		<item name="Совершенный Мартини (джин,два мартини)" desc="" price="450" photo="/files/menu/751.jpg"/>
+		<item name="Сохо Мартини (ром,мартини,сохо)" desc="" price="450" photo="/files/menu/753.jpg"/>
+		<item name="Американо (мартини,кампари,содовая)" desc="" price="350" photo="/files/menu/755.jpg"/>
+		<item name="Негрони (джин,мартини,кампари,содовая)" desc="" price="500" photo="/files/menu/756.jpg"/>
+		<item name="Мартини Голд Рояль (мартини Голд, Просеко, Крем де Касис)" desc="" price="850" photo="/files/menu/1322.jpg"/>
+		<item name="Мартини Голд Фингер (мартини Голд, Водка Грей Гуз)" desc="" price="800" photo="/files/menu/1323.jpg"/>
+		<item name="Мартини Рояле (Mартини Бьянко, Просекко, сок лайма, мята )" desc="" price="400" photo="/files/menu/2223.jpg"/>
+		<item name="Мартини Голд Рокс (Мартини Голд, свежая ежевика, имбирь)" desc="" price="700" photo="/files/menu/2225.jpg"/>
+		</menu>
+		<menu name="ТОКИО">
+		<item name="Жасмин (джин,кампари,куантро,лимон,сахар)" desc="" price="450" photo="/files/menu/763.jpg"/>
+		<item name="Токио 71 (бурбон,два мартини,гальяно,кампари)" desc="" price="500" photo="/files/menu/764.jpg"/>
+		<item name="Казухиро (куантро,амаретто,фиалки,сливки)" desc="" price="400" photo="/files/menu/765.jpg"/>
+		<item name="Лейлари (саке,персик,ментол,клюква)" desc="" price="400" photo="/files/menu/767.jpg"/>
+		<item name="Катей Хани (японская водка,имбирь,лайм,сахар)" desc="" price="300" photo="/files/menu/768.jpg"/>
+		<item name="Спайси Манго (саке,водка,спайси,манго,васаби,спрайт)" desc="" price="400" photo="/files/menu/770.jpg"/>
+		</menu>
+		<menu name="ПАРИЖ">
+		<item name="Космополитен (водка,куантро,клюква,лайм)" desc="" price="500" photo="/files/menu/773.jpg"/>
+		<item name="Бакарди Коктейль (ром,лайм,гренадин)" desc="" price="350" photo="/files/menu/774.jpg"/>
+		<item name="Сайд Кар (коньяк,куантро,лимон)" desc="" price="450" photo="/files/menu/775.jpg"/>
+		<item name="Коко Шанель (джин,калуа,сливки,молоко)" desc="" price="450" photo="/files/menu/777.jpg"/>
+		<item name="Французкий Мартини (водка,малина,ананас)" desc="" price="350" photo="/files/menu/778.jpg"/>
+		<item name="Французкий Поцелуй (бурбон,абрикос бренди, гранат)" desc="" price="350" photo="/files/menu/779.jpg"/>
+		</menu>
+		<menu name="ТРОПИКИ ">
+		<item name="Флоридита Дайкири (ром,мараскино,лайм,сахар)" desc="" price="500" photo="/files/menu/2034.jpg"/>
+		<item name="Маргарита (текила,куантро,лайм) " desc="" price="550" photo="/files/menu/2035.jpg"/>
+		<item name="Кайпиринья (кашаса,лайм,сахар)" desc="" price="400" photo="/files/menu/2036.jpg"/>
+		<item name="Май Тай (ром,куантро,миндаль,лайм)" desc="" price="550" photo="/files/menu/2037.jpg"/>
+		<item name="Сингапурский Слинг (ром,шерри бренди,лимон,содовая)" desc="" price="550" photo="/files/menu/2038.jpg"/>
+		<item name="Мохито " desc="" price="600" photo="/files/menu/2039.jpg"/>
+		<item name="Пина Колада (ром,малибу,ананас)" desc="" price="500" photo="/files/menu/2040.jpg"/>
+		<item name="Копункаa (сохо,куантро,грейпфрут,лайм)" desc="" price="550" photo="/files/menu/2041.jpg"/>
+		</menu>
+		<menu name="СЛОИСТЫЕ КОКТЕЙЛИ ">
+		<item name="Б-52 (калуа,бейлис,куантро)" desc="" price="400" photo="/files/menu/2042.jpg"/>
+		<item name="Ирландский Флаг (ментол,бейлис,коньяк)" desc="" price="400" photo="/files/menu/2043.jpg"/>
+		<item name="Пожар в Техасе (ментол,кампари,куантро)" desc="" price="400" photo="/files/menu/2044.jpg"/>
+		<item name="Ураган (драмбуи,бурбон,куантро,калуа,бейлис)" desc="" price="400" photo="/files/menu/2045.jpg"/>
+		<item name="Мираж (ментол,бейлис,куантро,егермастер) " desc="" price="400" photo="/files/menu/2046.jpg"/>
+		<item name="Танто (сливовое вино,куантро,дыня,лайм)" desc="" price="300" photo="/files/menu/2047.jpg"/>
+		<item name="На Границе (драмбуи,бурбон,апельсин)" desc="" price="300" photo="/files/menu/2048.jpg"/>
+		<item name="Гальяно Хот Шот (гальяно,еспрессо,сливки)" desc="" price="300" photo="/files/menu/2049.jpg"/>
+		</menu>
+		<menu name="АВТОРСКИЕ КОКТЕЙЛИ  ">
+		<item name="Wild Berry-tini (водка Grey Goose, малина, голубика, клюква, ежевика,мед, клюквенный сок)" desc="" price="600" photo="/files/menu/2052.jpg"/>
+		<item name="Lynchburg Lemonade (Jack daniel`s виски,апель.ликер,лим.сок,содовая)" desc="" price="600" photo="/files/menu/2054.jpg"/>
+		<item name="Бейлис дыня (Бейлис, дыня, дынный сироп)" desc="" price="450" photo="/files/menu/2055.jpg"/>
+		<item name="Scarlett O Hara (ликёр Southern Comfort, клюквенный сок, сок лайма)" desc="" price="550" photo="/files/menu/2056.jpg"/>
+		</menu>
+		<menu name="КОКТЕЙЛИ БАКАРДИ">
+		<item name="Классический мохито " desc="" price="600" photo="/files/menu/2057.jpg"/>
+		<item name="Клубничный мохито " desc="" price="650" photo="/files/menu/2058.jpg"/>
+		<item name="Малиновый мохито " desc="" price="750" photo="/files/menu/2059.jpg"/>
+		<item name="Ежевичный мохито " desc="" price="750" photo="/files/menu/2060.jpg"/>
+		<item name="Апельсиново-карамельный мохито " desc="" price="750" photo="/files/menu/2061.jpg"/>
+		<item name="Дайкири " desc="" price="450" photo="/files/menu/2227.jpg"/>
+		<item name="Клубничный дайкири " desc="" price="550" photo="/files/menu/2228.jpg"/>
+		</menu>
+		<menu name="КОКТЕЙЛИ ВЬЕЙ ВИЛЛЬ ">
+		<item name="Вегас (коньяк Вьей Вилль VSOP,клюквенный морс, лайм, свежая малина)" desc="" price="700" photo="/files/menu/2062.jpg"/>
+		<item name="Блэк Блюз (коньяк Вьей Вилль VSOP, крем де касис, ежевика, спрайт)" desc="" price="700" photo="/files/menu/2063.jpg"/>
+		<item name="Джинджер Эль (коньяк Вьей Вилль VSOP, имбирь, сироп личи, лайм, зелёный чай)" desc="" price="600" photo="/files/menu/2064.jpg"/>
+		</menu>
+		<menu name="ВЕРМУТЫ 100 мл. ">
+		<item name="Мартини Бьянко " desc="" price="350" photo="/files/menu/2065.jpg"/>
+		<item name="Мартини Россо " desc="" price="350" photo="/files/menu/2066.jpg"/>
+		<item name="Мартини Розато " desc="" price="350" photo="/files/menu/2067.jpg"/>
+		<item name="Мартини Экстра Драй " desc="" price="350" photo="/files/menu/2068.jpg"/>
+		<item name="Матрини Голд " desc="" price="650" photo="/files/menu/2069.jpg"/>
+		<item name="Нойлли Прат " desc="" price="950" photo="/files/menu/2070.jpg"/>
+		</menu>
+		<menu name="БИТТЕРЫ 50 мл.">
+		<item name="Карловарская Бехеровка " desc="" price="250" photo="/files/menu/2071.jpg"/>
+		<item name="Мирто Тремонтис " desc="" price="250" photo="/files/menu/2072.jpg"/>
+		<item name="Кампари " desc="" price="350" photo="/files/menu/2073.jpg"/>
+		</menu>
+		<menu name="НАСТОЙКИ 50 мл. ">
+		<item name="Абсент  " desc="" price="450" photo="/files/menu/2074.jpg"/>
+		<item name="Фернет Бранка " desc="" price="350" photo="/files/menu/2075.jpg"/>
+		<item name="Бранка Мента " desc="" price="350" photo="/files/menu/2076.jpg"/>
+		<item name="Егермастер " desc="" price="350" photo="/files/menu/2077.jpg"/>
+		<item name="Лимончелло " desc="" price="350" photo="/files/menu/2235.jpg"/>
+		<item name="Рикар " desc="" price="350" photo="/files/menu/2236.jpg"/>
+		</menu>
+		<menu name="ВОДКА 50 мл. ">
+		<menu name="СУПЕР ПРЕМИУМ ВОДКА 50 мл. ">
+		<item name="BELUGA   NOBLE " desc="" price="350" photo="/files/menu/2231.jpg"/>
+		<item name="BELUGA  TRANSATLANTIC " desc="" price="400 " photo="/files/menu/2232.jpg"/>
+		<item name="BELUGA  Allure " desc="" price="850" photo="/files/menu/2233.jpg"/>
+		<item name="BELUGA  Gold Line " desc="" price="900" photo="/files/menu/2234.jpg"/>
+		</menu>
+		<item name="Грэй Гуз " desc="" price="350" photo="/files/menu/2078.jpg"/>
+		<item name="Абсолют (ваниль, чёрная смородина, мандарин, груша, малина, цитрус, перец)" desc="" price="300" photo="/files/menu/2229.jpg"/>
+		<item name="Кауффман частная коллекция 2005  " desc="" price="350" photo="/files/menu/2230.jpg"/>
+		</menu>
+		<menu name="100% ВИНОГРАДНАЯ ВОДКА - ФРАНЦИЯ  50мл. ">
+		<item name="Сирок " desc="" price="270" photo="/files/menu/2081.jpg"/>
+		</menu>
+		<menu name="ЯЧМЕННАЯ ВОДКА - ЯПОНИЯ 50 мл.  ">
+		<item name="Иичико (Силуэт) " desc="" price="250" photo="/files/menu/2082.jpg"/>
+		</menu>
+		<menu name="РОМ 50 мл. ">
+		<item name="Бакарди Супериор " desc="" price="400" photo="/files/menu/2083.jpg"/>
+		<item name="Бакарди Блэк " desc="" price="400" photo="/files/menu/2084.jpg"/>
+		<item name="Бакарди Оро " desc="" price="400" photo="/files/menu/2085.jpg"/>
+		<item name="Бакарди 8 лет " desc="" price="400" photo="/files/menu/2086.jpg"/>
+		<item name="Бакарди Оакхарт" desc="" price="450" photo="/files/menu/2087.jpg"/>
+		<item name="Бакарди 151" desc="" price="550" photo="/files/menu/2088.jpg"/>
+		</menu>
+		<menu name="ТЕКИЛА 50 мл. ">
+		<item name="Ольмека Бланко " desc="" price="400" photo="/files/menu/2089.jpg"/>
+		<item name="Ольмека Голд " desc="" price="450" photo="/files/menu/2090.jpg"/>
+		<item name="Ольмека Тезон Аньехо " desc="" price="850" photo="/files/menu/2091.jpg"/>
+		<item name="Ольмека Альтос Плата " desc="" price="450" photo="/files/menu/2092.jpg"/>
+		<item name="Ольмека Альтос Репосадо " desc="" price="500" photo="/files/menu/2093.jpg"/>
+		<item name="Казадорес Аньехо " desc="" price="500" photo="/files/menu/2094.jpg"/>
+		<item name="Казадорес Репосадо " desc="" price="450" photo="/files/menu/2095.jpg"/>
+		<item name="Казадорес Бланко " desc="" price="400" photo="/files/menu/2096.jpg"/>
+		<item name="Эль Химадор Бланко " desc="" price="400" photo="/files/menu/2097.jpg"/>
+		<item name="Эль Химадор Репосадо " desc="" price="400" photo="/files/menu/2098.jpg"/>
+		<item name="Эррадурра Бланко " desc="" price="550" photo="/files/menu/2099.jpg"/>
+		<item name="Эррадурра Репосадо " desc="" price="600" photo="/files/menu/2100.jpg"/>
+		</menu>
+		<menu name="МЕСКАЛЬ 50 мл. ">
+		<item name="Эль Сеньор Репосадо Экстра " desc="" price="350" photo="/files/menu/2101.jpg"/>
+		</menu>
+		<menu name="ДЖИН 50 мл. ">
+		<item name="Бифитер " desc="" price="400" photo="/files/menu/2102.jpg"/>
+		<item name="Бомбей Сапфир " desc="" price="400" photo="/files/menu/2103.jpg"/>
+		</menu>
+		<menu name="ВИСКИ ЧИВАС РИГАЛ  50 мл. ">
+		<item name="Чивас Ригал 12 лет " desc="" price="550" photo="/files/menu/2104.jpg"/>
+		<item name="Чивас Ригал 18 лет " desc="" price="900" photo="/files/menu/2105.jpg"/>
+		<item name="Чивас Ригал 25 лет " desc="" price="3350" photo="/files/menu/2106.jpg"/>
+		<item name="Чивас Ригал Роял Салют " desc="" price="1550" photo="/files/menu/2107.jpg"/>
+		<item name="Чивас Ригал Роял Салют 100 Каск " desc="" price="4000" photo="/files/menu/2108.jpg"/>
+		<item name="Чивас Ригал Стратайла " desc="" price="600" photo="/files/menu/2109.jpg"/>
+		</menu>
+		<menu name="ШОТЛАНДСКИЙ ВИСКИ КУПАЖИРОВАННЫЙ 50 мл.  ">
+		<item name="Дюарс Уайт Лэйбл " desc="" price="400" photo="/files/menu/2110.jpg"/>
+		<item name="Дюарс 12 лет " desc="" price="550" photo="/files/menu/2111.jpg"/>
+		<item name="Дюарс 18 лет " desc="" price="900" photo="/files/menu/2112.jpg"/>
+		<item name="Дюарс Сигначер " desc="" price="1550" photo="/files/menu/2113.jpg"/>
+		<item name="Балантайнс Файнест " desc="" price="400" photo="/files/menu/2114.jpg"/>
+		<item name="Балантайнс 12 лет " desc="" price="500" photo="/files/menu/2115.jpg"/>
+		<item name="Балантайнс 17 лет " desc="" price="850" photo="/files/menu/2116.jpg"/>
+		</menu>
+		<menu name="СОЛОДОВЫЙ ВИСКИ 50 мл. ">
+		  <menu name="АЙЛЕЙ ">
+		<item name="Буннахавэн 12 лет " desc="" price="700" photo="/files/menu/2130.jpg"/>
+		<item name="Буннахаван 18 лет " desc="" price="1400" photo="/files/menu/2131.jpg"/>
+		<item name="Буннахаван 25 лет " desc="" price="3900" photo="/files/menu/2132.jpg"/>
+		</menu>
+		<menu name="ОРКНИ ">
+		<item name="Хайленд Парк 12 лет 43% ОР " desc="" price="850" photo="/files/menu/2127.jpg"/>
+		<item name="Хайленд Парк 25 лет " desc="" price="2050" photo="/files/menu/2128.jpg"/>
+		<item name="Скапа " desc="" price="550" photo="/files/menu/2129.jpg"/>
+		</menu>
+		<menu name="ЛОУЛЕНДС ">
+		<item name="Гленкинчи 12 лет " desc="" price="500" photo="/files/menu/2125.jpg"/>
+		<item name="Розбэнк Миссия 1989г. Мюррей МакДэвид  46% " desc="" price="1050" photo="/files/menu/2126.jpg"/>
+		</menu>
+		<menu name="ХАЙЛЕНДС ">
+		<item name="Aберфелди 12 лет " desc="" price="700" photo="/files/menu/2118.jpg"/>
+		<item name="Aберфелди 21 лет " desc="" price="1700" photo="/files/menu/2119.jpg"/>
+		<item name="Гленливет 12 лет " desc="" price="550" photo="/files/menu/2120.jpg"/>
+		<item name="Гленливет 15 лет " desc="" price="700" photo="/files/menu/2121.jpg"/>
+		<item name="Гленливет 18 лет" desc="" price="850" photo="/files/menu/2122.jpg"/>
+		<item name="Аберлауэр " desc="" price="550" photo="/files/menu/2123.jpg"/>
+		<item name="Лонгморн " desc="" price="1200" photo="/files/menu/2124.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ИРЛАНДСКИЙ ВИСКИ КУПАЖИРОВАННЫЙ 50 мл. ">
+		<item name="Джемесон 6 лет" desc="" price="450" photo="/files/menu/2133.jpg"/>
+		<item name="Джемесон 12 лет " desc="" price="550" photo="/files/menu/2134.jpg"/>
+		<item name="Джемесон Золотой " desc="" price="750" photo="/files/menu/2135.jpg"/>
+		</menu>
+		<menu name="АМЕРИКАНСКИЙ ВИСКИ 50 мл.">
+		<menu name="ТЕННЕССИ ">
+		<item name="Джек Дэниэлс " desc="" price="450" photo="/files/menu/2136.jpg"/>
+		<item name="Джек Дэниэлс Сингл Баррел " desc="" price="600" photo="/files/menu/2137.jpg"/>
+		<item name="Джентельмен Джек" desc="" price="600" photo="/files/menu/2138.jpg"/>
+		</menu>
+		<menu name="КЕНТУККИ ">
+		<item name="Джим Бим " desc="" price="350" photo="/files/menu/2139.jpg"/>
+		<item name="Джим Бим Блек " desc="" price="350" photo="/files/menu/2140.jpg"/>
+		<item name="Бэйкерс" desc="" price="850" photo="/files/menu/2141.jpg"/>
+		<item name="Кноб Крик " desc="" price="550" photo="/files/menu/2142.jpg"/>
+		<item name="Вудфорд Резерв " desc="" price="600" photo="/files/menu/2143.jpg"/>
+		</menu>
+		</menu>
+		<menu name="КАНАДСКИЙ ВИСКИ 50 мл.  ">
+		<item name="Канадиен Клаб Хересные бочки " desc="" price="600" photo="/files/menu/2144.jpg"/>
+		</menu>
+		<menu name="ЯПОНСКИЙ ВИСКИ 50 мл.">
+		<item name="Никко Блек Пьюр Молт " desc="" price="550" photo="/files/menu/2145.jpg"/>
+		</menu>
+		<menu name="КОНЬЯК 50 мл. ">
+		<item name="Хайн Рар VSOP " desc="" price="850" photo="/files/menu/2147.jpg"/>
+		<item name="Хайн Сигар Резерв " desc="" price="1050" photo="/files/menu/2148.jpg"/>
+		<item name="Хайн Антик XO" desc="" price="2200" photo="/files/menu/2149.jpg"/>
+		<item name="Хайн Винтаж 1976 " desc="" price="7400" photo="/files/menu/2150.jpg"/>
+		<item name="Марьяж де Томас Хайн " desc="" price="32000" photo="/files/menu/2151.jpg"/>
+		<item name="Хеннесси Эллипс " desc="" price="25000" photo="/files/menu/2152.jpg"/>
+		<item name="Хеннесси Ричард " desc="" price="15000" photo="/files/menu/2153.jpg"/>
+		<item name="Мартель VSOP " desc="" price="600" photo="/files/menu/2154.jpg"/>
+		<item name="Мартель XO " desc="" price="1950" photo="/files/menu/2155.jpg"/>
+		<item name="Мартель Гранд Экстра " desc="" price="5800" photo="/files/menu/2156.jpg"/>
+		<item name="Мартель Коиба " desc="" price="3900" photo="/files/menu/2157.jpg"/>
+		<item name="Отард VS " desc="" price="500" photo="/files/menu/2158.jpg"/>
+		<item name="Отард VSOP " desc="" price="600" photo="/files/menu/2159.jpg"/>
+		<item name="Отард ХО " desc="" price="1350" photo="/files/menu/2160.jpg"/>
+		<item name="Отард Экстра " desc="" price="2500" photo="/files/menu/2161.jpg"/>
+		<item name="Леро 1967 г " desc="" price="4100" photo="/files/menu/2162.jpg"/>
+		<item name="Леро 1969 г " desc="" price="2950" photo="/files/menu/2163.jpg"/>
+		<item name="Вьей Вилль VSOP " desc="" price="550" photo="/files/menu/2164.jpg"/>
+		<item name="Вьей Вилль XO " desc="" price="1260" photo="/files/menu/2165.jpg"/>
+		<item name="Вьей Вилль Экстра " desc="" price="1600" photo="/files/menu/2166.jpg"/>
+		<item name="Л Овр " desc="" price="12000" photo="/files/menu/2167.jpg"/>
+		<item name="Арарат Наири 20 лет " desc="" price="1200" photo="/files/menu/2168.jpg"/>
+		<item name="Реми Мартин Луи XIII " desc="" price="20000" photo="/files/menu/2169.jpg"/>
+		</menu>
+		<menu name="АРМАНЬЯК 50 мл. ">
+		<item name="Жанно XO " desc="" price="450" photo="/files/menu/2170.jpg"/>
+		</menu>
+		<menu name="ГРАППА 50 мл. ">
+		<item name="Фриулана " desc="" price="300" photo="/files/menu/2171.jpg"/>
+		<item name="Иль Пирус ди Нонино" desc="" price="400" photo="/files/menu/2172.jpg"/>
+		<item name="Крю Моновитиньо Фраголино " desc="" price="700" photo="/files/menu/2173.jpg"/>
+		<item name="Берта Элизи " desc="" price="600" photo="/files/menu/2174.jpg"/>
+		<item name="Берта Рокканиво " desc="" price="1200" photo="/files/menu/2175.jpg"/>
+		<item name="Ди Сассикайя " desc="" price="1100" photo="/files/menu/2176.jpg"/>
+		</menu>
+		<menu name="КАЛЬВАДОС 50 мл. ">
+		<item name="Пьер Маглуар 20 лет " desc="" price="900" photo="/files/menu/2177.jpg"/>
+		</menu>
+		<menu name="САКЕ 50 мл. ">
+		<item name="Дайгиндзё Осакая Тёбей " desc="" price="300" photo="/files/menu/2178.jpg"/>
+		</menu>
+		<menu name="ХЕРЕС 50 мл. ">
+		<item name="Фино Фернандо де Кастилья " desc="" price="230" photo="/files/menu/2179.jpg"/>
+		<item name="Антик Педро Хименез Фернандо де Кастилья " desc="" price="600" photo="/files/menu/2180.jpg"/>
+		</menu>
+		<menu name="ПОРТО 50 мл.">
+		<item name="Доуз Тони 10 лет " desc="" price="400" photo="/files/menu/2181.jpg"/>
+		<item name="Варес 20 лет " desc="" price="850" photo="/files/menu/2182.jpg"/>
+		</menu>
+		<menu name="ЛИКЕРЫ 50 мл. ">
+		<item name="Мари Бризард " desc="" price="300" photo="/files/menu/2183.jpg"/>
+		<item name="Болс " desc="" price="300" photo="/files/menu/2184.jpg"/>
+		<item name="Дисароно Амаретто " desc="" price="300" photo="/files/menu/2185.jpg"/>
+		<item name="Бенедиктин " desc="" price="350" photo="/files/menu/2186.jpg"/>
+		<item name="Драмбуи " desc="" price="320" photo="/files/menu/2187.jpg"/>
+		<item name="Галиано " desc="" price="300" photo="/files/menu/2188.jpg"/>
+		<item name="Гранд Марнье " desc="" price="300" photo="/files/menu/2189.jpg"/>
+		<item name="Мараскино " desc="" price="300" photo="/files/menu/2190.jpg"/>
+		<item name="Дынный ликер " desc="" price="300" photo="/files/menu/2191.jpg"/>
+		<item name="Самбука   " desc="" price="350" photo="/files/menu/2192.jpg"/>
+		<item name="Бэйлис " desc="" price="300" photo="/files/menu/2193.jpg"/>
+		<item name="Куантро " desc="" price="350" photo="/files/menu/2194.jpg"/>
+		<item name="Калуа " desc="" price="350" photo="/files/menu/2195.jpg"/>
+		<item name="Малибу " desc="" price="350" photo="/files/menu/2196.jpg"/>
+		<item name="Сохо " desc="" price="300" photo="/files/menu/2197.jpg"/>
+		<item name="Шамбор" desc="" price="500" photo="/files/menu/2198.jpg"/>
+		<item name="Cаузерн Комфорт " desc="" price="400" photo="/files/menu/2199.jpg"/>
+		</menu>
+		<menu name="ПИВО 330 мл. ">
+		<item name="Кроненбург 1664 " desc="" price="300" photo="/files/menu/2200.jpg"/>
+		<item name="Кроненбург Бланк 460 мл" desc="" price="300" photo="/files/menu/2201.jpg"/>
+		<item name="Асахи 500 мл" desc="" price="300" photo="/files/menu/2202.jpg"/>
+		<item name="Корона " desc="" price="300" photo="/files/menu/2203.jpg"/>
+		<item name="Карлсберг б/а 330 мл" desc="" price="200" photo="/files/menu/2204.jpg"/>
+		</menu>
+	</menu>
+	<menu name="ВИННАЯ КАРТА">
+		<menu name="ВИНО ПО БОКАЛАМ 150 МЛ">
+		<menu name="Красные вина">
+		<item name="2008 Каберне Совиньон. Шато Сент Мишель" desc="" price="750" photo="/files/menu/1947.jpg"/>
+		<item name="2008 Кьянти Классико Берарденга. Фаттория ди Фельсина" desc="" price="750" photo="/files/menu/1948.jpg"/>
+		<item name="2009 Пино Нуар Барда. Бодега Чакра" desc="" price="650" photo="/files/menu/1949.jpg"/>
+		</menu>
+		<menu name="Розовые вина">
+		<item name="2010 Сансер Ле Барон Розе.  Анри Буржуа" desc="" price="750" photo="/files/menu/1946.jpg"/>
+		</menu>
+		<menu name="Белые вина">
+		<item name="2010 Совиньон блан Ресерва. Луиджи Боска" desc="" price="650" photo="/files/menu/1942.jpg"/>
+		<item name="2010 Пино Гриджио. Вольпе Пасини" desc="" price="750" photo="/files/menu/1943.jpg"/>
+		<item name="2010 Шабли. Жан- Марк Брокар" desc="" price="750 " photo="/files/menu/1944.jpg"/>
+		<item name="2008 Гевюрцтраминер Альто Адидже . Франц Хаас" desc="" price="800" photo="/files/menu/1945.jpg"/>
+		</menu>
+		<menu name="Игристые вина">
+		<item name="Мартини Асти " desc="" price="600" photo="/files/menu/1938.jpg"/>
+		<item name="Мартини Брют" desc="" price="600" photo="/files/menu/1939.jpg"/>
+		<item name="Мартини Розе" desc="" price="650" photo="/files/menu/1940.jpg"/>
+		<item name="Мартини Просекко" desc="" price="650" photo="/files/menu/1941.jpg"/>
+		</menu>
+		<menu name="Шампанское ">
+		<item name="Луи Родерер Брют Премьер" desc="" price="1800" photo="/files/menu/1936.jpg"/>
+		<item name="Луи Родерер Розе Винтаж" desc="" price="2700" photo="/files/menu/1937.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ПОЛУБУТЫЛКИ 375 МЛ">
+		<menu name="Шампанское">
+		<item name="Луи Родерер Брют Премьер " desc="" price="4500" photo="/files/menu/1922.jpg"/>
+		</menu>
+		<menu name="Белые вина">
+		<item name="2010 Гави дей Гави Черная Этикетка.Ла Сколка " desc="" price="3600" photo="/files/menu/1923.jpg"/>
+		<item name="2010 Гави. Вилла Сколька " desc="" price="2500 " photo="/files/menu/1924.jpg"/>
+		<item name="2009 Шабли Премье Крю Монмен Ж.М.Брокар " desc="" price="3150" photo="/files/menu/1925.jpg"/>
+		<item name="2008 Сансер блан Рошуа.Домен Ляпорт " desc="" price="2600" photo="/files/menu/1926.jpg"/>
+		<item name="2001 Токай Азу 5 Путтоний.Дисноко (500мл) " desc="" price="" photo="/files/menu/1927.jpg"/>
+		<item name="2008 Пюлиньи-Монраше. Оливье Лефлев Фрер " desc="" price="5300" photo="/files/menu/1928.jpg"/>
+		<item name="2009 Кондрие Ля Птит Кот. Домен Ив Кюйерон " desc="" price="5200" photo="/files/menu/1929.jpg"/>
+		<item name="2003 Рислинг. Тримбах " desc="" price="2500" photo="/files/menu/1930.jpg"/>
+		<item name="2010 Москато д Асти Винья Сенца Номе. Браида " desc="" price="1900" photo="/files/menu/1931.jpg"/>
+		</menu>
+		<menu name="Красные вина">
+		<item name="2007 Сассикайя.Тенута Сан Гуидо " desc="" price="13950" photo="/files/menu/1932.jpg"/>
+		<item name="2006 Брунелло ди Монтальчино.Кастелло Банфи " desc="" price="" photo="/files/menu/1933.jpg"/>
+		<item name="2008 Речото делла Вальполичелла Классико.Аллегрини " desc="" price="" photo="/files/menu/1934.jpg"/>
+		<item name="2005 Амароне делла Вальполичелла Классико. Спери" desc="" price="5950" photo="/files/menu/1935.jpg"/>
+		<item name="2008 Кьянти Классико Берарденга. Фаттория ди Фельсина" desc="" price="2900" photo="/files/menu/2009.jpg"/>
+		<item name="2009 Альмавива. Барон Филипп де Ротшильд&amp;amp;Конча и Торо" desc="" price="10500" photo="/files/menu/2010.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ШАМПАНСКОЕ 750 МЛ">
+		<item name="Луи Родерер Брют Премьер" desc="" price="9000" photo="/files/menu/1683.jpg"/>
+		<item name="2005 Луи Родерер Брют Винтаж " desc="" price="13000" photo="/files/menu/1684.jpg"/>
+		<item name="2002 Деламотт Брют Блан де Блан" desc="" price="15000" photo="/files/menu/1685.jpg"/>
+		<item name="2007 Луи Родерер Розе" desc="" price="13500" photo="/files/menu/1686.jpg"/>
+		<item name="2004 Кристаль Луи Родерер  " desc="" price="36500" photo="/files/menu/1687.jpg"/>
+		<item name="2004 Кристаль Розе Луи Родерер  " desc="" price="59000" photo="/files/menu/1688.jpg"/>
+		</menu>
+		<menu name="БЕЛЫЕ ВИНА 750 МЛ">
+		   <menu name="ИТАЛИЯ">
+		      <menu name="Умбрия">
+		     <item name="2006 Сан Джовани-делла Сала Классико Супериоре                        " desc="" price="3700" photo="/files/menu/398.jpg"/>
+		     <item name="2006 Черваро.Кастелло делла Сала" desc="" price="5900" photo="/files/menu/399.jpg"/>
+		    </menu>
+		      <menu name="Тоскана ">
+		     <item name="2010 Шардоне Фонтанелле.Кастелло Банфи" desc="" price="5600" photo="/files/menu/1786.jpg"/>
+		<item name="2010 Верментино.Тенута Гуадо Аль Тассо" desc="" price="4500" photo="/files/menu/1787.jpg"/>
+		<item name="2008 Аль Поджио. Кастелло ди Ама" desc="" price="4530" photo="/files/menu/1788.jpg"/>
+		<item name="2008 Поджо Арджентато Фаттория Ле Пупилле" desc="" price="4900" photo="/files/menu/1789.jpg"/>
+		<item name="2008 Шардоне. Капаннелле" desc="" price="8700" photo="/files/menu/1790.jpg"/>
+		</menu>
+		      <menu name="Венето">
+		<item name="2009 Капитель Кроче Экс-Соаве Классико.Ансельми" desc="" price="4500" photo="/files/menu/1751.jpg"/>
+		<item name="2008 Лугана Ризерва.Серджио Дзенато" desc="" price="5950" photo="/files/menu/1752.jpg"/>
+		<item name="2009 Виньето дю Лот Соаве Классико-Инама" desc="" price="6100" photo="/files/menu/1753.jpg"/>
+		</menu>
+		      <menu name="Фриули - Венеция -Джулия">
+		<item name="2011 Пино Гриджио. Ливио Феллуга" desc="" price="4950" photo="/files/menu/1782.jpg"/>
+		<item name="2008 Пиере Совиньон дель Изонцо. Вие Ди Романс" desc="" price="6250" photo="/files/menu/1783.jpg"/>
+		<item name="2008 Шардоне. Вие Ди Романс " desc="" price="6650" photo="/files/menu/1784.jpg"/>
+		<item name="2006 Ипсо Пино Гриджио.  Зук ди Вольпе" desc="" price="6950" photo="/files/menu/1785.jpg"/>
+		<item name="2010 Совиньон. Вольпе Пасини" desc="" price="4500" photo="/files/menu/2011.jpg"/>
+		</menu>
+		      <menu name="Трентино-Альто Адидже">
+		<item name="2009 Лафоа Совиньон Кольтеренцио" desc="" price="6900" photo="/files/menu/1742.jpg"/>
+		<item name="2008 Манна.Франц Хаас" desc="" price="5750" photo="/files/menu/1743.jpg"/>
+		<item name="2010 Пино Гриджио.Франц Хаас" desc="" price="4500" photo="/files/menu/1744.jpg"/>
+		<item name="2009 Пино Бьянко.Франц Хаас" desc="" price="4500" photo="/files/menu/1745.jpg"/>
+		<item name="2010 Пфефферер Голдмускателлер. Кольтеренцио" desc="" price="4600" photo="/files/menu/1746.jpg"/>
+		</menu>
+		      <menu name="Пьемонт">
+		<item name="2010 Москато д Асти.Пио Чезаре" desc="" price="4500" photo="/files/menu/1747.jpg"/>
+		<item name="2009 Роеро Арнейс. Бруно Джакоза  " desc="" price="5100" photo="/files/menu/1748.jpg"/>
+		<item name="2010 Гави дей Гави Черная Этикетка.Ла Сколка" desc="" price="79000" photo="/files/menu/1749.jpg"/>
+		<item name="2006 Ланге Шардоне Буссиадор.Подери Альдо Контерно" desc="" price="9500" photo="/files/menu/1750.jpg"/>
+		<item name="2009 Ланге Бьянко Армандо Паруссо" desc="" price="4100" photo="/files/menu/1791.jpg"/>
+		</menu>
+		      <menu name="Кампания ">
+		<item name="2008 Новасерра Греко ди Туфо.Мастроберардино " desc="" price="4500" photo="/files/menu/1794.jpg"/>
+		<item name="2009 Фиано ди Авеллино Вилла Матильде" desc="" price="4500" photo="/files/menu/1795.jpg"/>
+		</menu>
+		      <menu name="Сицилия ">
+		<item name="2008 Джале Шардоне.Кузумано" desc="" price="4500" photo="/files/menu/1776.jpg"/>
+		<item name="2007 Кьяранда.Доннафугата" desc="" price="6950" photo="/files/menu/1777.jpg"/>
+		<item name="2008 Кабир.Доннафугата" desc="" price="5950" photo="/files/menu/1778.jpg"/>
+		<item name="2008 Ноцце д Оро.Конте Таска д Альмерита" desc="" price="4400" photo="/files/menu/1779.jpg"/>
+		<item name="2005 Бьянко ди Вальгуарнера.Дука ди Салапарута" desc="" price="13050" photo="/files/menu/1780.jpg"/>
+		<item name="2009 Шардоне. Конте Таска д Альмерита" desc="" price="8700" photo="/files/menu/1781.jpg"/>
+		</menu>
+		      <menu name="Ломбардия">
+		<item name="2008 Шардоне Ка Дель Боско" desc="" price="13450" photo="/files/menu/1792.jpg"/>
+		<item name="2009 Куртефранка бьянко Ка Дель Боско" desc="" price="5100" photo="/files/menu/1793.jpg"/>
+		</menu>
+		   </menu>
+		   <menu name="ФРАНЦИЯ ">
+		  <menu name="Долина Роны ">
+		<item name="2010 Шатонеф дю Пап Кло ля Рокет. Виньобль Брюнье" desc="" price="7600" photo="/files/menu/1734.jpg"/>
+		<item name="2008 Кондрие Ле Шайе Вьей Винь. Домен Ив Кюйерон" desc="" price="12200" photo="/files/menu/1735.jpg"/>
+		<item name="2008 Кондрие. Тардье Лоран" desc="" price="11400" photo="/files/menu/1736.jpg"/>
+		</menu>
+		<menu name="Эльзас ">
+		<item name="2007 Пино Гри Резерв.Тримбах " desc="" price="4600" photo="/files/menu/1737.jpg"/>
+		<item name="2007 Гевюрцтраминер Жюбиле .Хюгель" desc="" price="6500" photo="/files/menu/1738.jpg"/>
+		<item name="2007 Рислинг Традисьен Хюгель" desc="" price="5100" photo="/files/menu/1739.jpg"/>
+		<item name="2009 Рислинг.Домен Марсель Дайс" desc="" price="5500" photo="/files/menu/1740.jpg"/>
+		</menu>
+		<menu name="Долина Луары">
+		<item name="2008 Пуйи-Фюме .Домен Ляпорт" desc="" price="5600" photo="/files/menu/1729.jpg"/>
+		<item name="2008 Пуйи Фюме Барон де эЛь" desc="" price="12100 " photo="/files/menu/1730.jpg"/>
+		<item name="2010 Сансер блан Рошуа .Домен Ляпорт" desc="" price="4600" photo="/files/menu/1731.jpg"/>
+		<item name="2009 Сансер д Антан. Анри Буржуа" desc="" price="8100" photo="/files/menu/1732.jpg"/>
+		<item name="2009 Сансер Комт Лафон Гранд Кюве Блан .Де Лядусетт" desc="" price="6300" photo="/files/menu/1733.jpg"/>
+		</menu>
+		<menu name="Бургундия ">
+		<menu name="Маконне">
+		<item name="2004 Пуйи-Фюиссе Вьей Винь. Шато Фюиссе" desc="" price="6900" photo="/files/menu/1727.jpg"/>
+		<item name="2004 Пуйи-Вензель Вьей Винь.Домен Валет" desc="" price="8350" photo="/files/menu/1728.jpg"/>
+		</menu>
+		<menu name="Кот-де-Бон">
+		<item name="2008 Пюлиньи-Монраше.Жозеф Друэн" desc="" price="9800 " photo="/files/menu/1720.jpg"/>
+		<item name="2007 Шассань-Монраше Пр.Крю Аббе де Моржо О.Лефлев" desc="" price="15800" photo="/files/menu/1722.jpg"/>
+		<item name="2009 Бон Премье Крю Кло де Муш Блан.Жозеф Друэн" desc="" price="13100 " photo="/files/menu/1723.jpg"/>
+		<item name="2007 Монраше Гран Крю Маркиз де Лагиш .Жозеф Друэн" desc="" price="65300" photo="/files/menu/1724.jpg"/>
+		<item name="2000 Кортон-Шарлемань Гран Крю Бонно дю Марте" desc="" price="29600" photo="/files/menu/1725.jpg"/>
+		<item name="1990 Шевалье-Монраше Гран Крю.Домен Жак Приёр" desc="" price="48500 " photo="/files/menu/1726.jpg"/>
+		<item name="2009 Мерсо Женеврьер Пр. Крю. Бушар Пэр &amp;amp; Фис " desc="" price="16500" photo="/files/menu/2219.jpg"/>
+		</menu>
+		<menu name="Шабли ">
+		<item name="2002 Шабли Премье Крю Пик Премье .Альбер Пик э Фис" desc="" price="11400" photo="/files/menu/1714.jpg"/>
+		<item name="2004 Шабли Гран Крю Бланшо Домен Франсуа Равено  " desc="" price="32100 " photo="/files/menu/1715.jpg"/>
+		<item name="2007 Шабли Гран Крю Ле Кло. Жозеф Друэн" desc="" price="12900" photo="/files/menu/1716.jpg"/>
+		<item name="2008 Шабли Премье Крю . Домен Бернар Дефе" desc="" price="6550" photo="/files/menu/1717.jpg"/>
+		<item name="2009 Шабли Ж.Моро &amp;amp; Фис" desc="" price="4800" photo="/files/menu/1718.jpg"/>
+		<item name="2009 Шабли Вьей Винь.Жан-Марк Брокар " desc="" price="5200" photo="/files/menu/1719.jpg"/>
+		</menu>
+		</menu>
+		<menu name="Бордо ">
+		<item name="2004 Шато Карбане Гран Крю Классе" desc="" price="14050" photo="/files/menu/355.jpg"/>
+		<item name="2000 Игрек д Икем " desc="" price="39900 " photo="/files/menu/1712.jpg"/>
+		<item name="2008 Кайу Блан дю Шато Тальбо" desc="" price="6650" photo="/files/menu/1713.jpg"/>
+		</menu>
+		</menu>
+		   <menu name="ИСПАНИЯ ">
+		<item name="2010 Эредерос дель Маркес де Рискаль Совиньон " desc="" price="4100" photo="/files/menu/1797.jpg"/>
+		<item name="2009 Альбариньо. Пазо де Баррантес  " desc="" price="4200" photo="/files/menu/1798.jpg"/>
+		<item name="2005 Кло д Агон бланко.Мас Жиль " desc="" price="7670" photo="/files/menu/1799.jpg"/>
+		<item name="2006 Наварра Колексьон 125 бланко. Бодегас Чивите " desc="" price="8700" photo="/files/menu/1800.jpg"/>
+		</menu>
+		   <menu name="ГЕРМАНИЯ ">
+		<item name="2010 Рислинг Трокен. Вайнгут Роберт Вайль " desc="" price="8700" photo="/files/menu/2218.jpg"/>
+		</menu>
+		   <menu name="АВСТРИЯ">
+		<item name="2009 Грюнер Вельтлинер Каферберг. Рудольф Рабль " desc="" price="5500" photo="/files/menu/410.jpg"/>
+		</menu>
+		   <menu name="ЧИЛИ">
+		<item name="2010 Шардоне Касабланка Вэлли. Винья Арболеда " desc="" price="4500" photo="/files/menu/1801.jpg"/>
+		<item name="2008 Совиньон блан Леида Вэлли. Винья Арболеда " desc="" price="4500" photo="/files/menu/1802.jpg"/>
+		</menu>
+		   <menu name="АРГЕНТИНА ">
+		<item name="2009 Шардоне Финка Лос Ноблес. Луиджи Боска " desc="" price="4600" photo="/files/menu/1803.jpg"/>
+		</menu>
+		   <menu name="ЮЖНАЯ АФРИКА ">
+		<item name="2008 Баронесс Надин Шардоне. Руперт и Ротшильд " desc="" price="6300" photo="/files/menu/1804.jpg"/>
+		<item name="2009 Вионье. Спайс Рут  " desc="" price="4500" photo="/files/menu/1805.jpg"/>
+		</menu>
+		   <menu name="США">
+		<item name="2008 Кария Шардоне.Стагс Лип Вайн Селларс " desc="" price="5300" photo="/files/menu/1806.jpg"/>
+		<item name="2007 Шардоне Ле Нуазитьер. Кистлер " desc="" price="12900" photo="/files/menu/1808.jpg"/>
+		<item name="2005 Эроика Рислинг Шато Сент Мишель " desc="" price="5800" photo="/files/menu/1809.jpg"/>
+		</menu>
+		   <menu name="АВСТРАЛИЯ">
+		<item name="2009 Семийон Шардоне. Пенфолдс  " desc="" price="3950" photo="/files/menu/1810.jpg"/>
+		<item name="2009 Лост Уоч Рислинг.Вирра Вирра " desc="" price="4100 " photo="/files/menu/1811.jpg"/>
+		<item name="2006 МакЛарен Вейл Шардоне.Рокбеа " desc="" price="4100" photo="/files/menu/1812.jpg"/>
+		<item name="2010 Бин 311 Шардоне Тумбарумба. Пенфолдс " desc="" price="9800" photo="/files/menu/1813.jpg"/>
+		</menu>
+		   <menu name="НОВАЯ ЗЕЛАНДИЯ">
+		<item name="2011 Совиньон Блан.  Сент Клер " desc="" price="4500" photo="/files/menu/1814.jpg"/>
+		<item name="2010 Елстон Шардоне.Те Мата " desc="" price="4560" photo="/files/menu/1815.jpg"/>
+		<item name="2010 Совиньон Блан Мальборо.Кло Энри " desc="" price="5300" photo="/files/menu/1816.jpg"/>
+		</menu>
+		</menu>
+		<menu name="КРАСНЫЕ ВИНА 750 МЛ">
+		<menu name="ФРАНЦИЯ ">
+		<menu name="Долина Роны">
+		<item name="2007 Кот дю Рон Расто Вьей Винь.Тардье Лоран " desc="" price="5500" photo="/files/menu/1831.jpg"/>
+		<item name="2007 Эрмитаж. Тардье Лоран " desc="" price="17500" photo="/files/menu/1832.jpg"/>
+		<item name="2008 Шатонеф дю Пап Ла Бернардин.Шапутье " desc="" price="7500" photo="/files/menu/1833.jpg"/>
+		<item name="2003 Кот Роти Терр Сомбр Домен Ив Кюйерон " desc="" price="9800" photo="/files/menu/1834.jpg"/>
+		</menu>
+		<menu name="Бургундия ">
+		<item name="2007 Вольнэ Премьер Крю Кло де Шен Антонен Гийон " desc="" price="10500" photo="/files/menu/1825.jpg"/>
+		<item name="2003 Нюи-Сен-Жорж Премье Крю АнРюДеШо Б.Амбруаз " desc="" price="10900" photo="/files/menu/1826.jpg"/>
+		<item name="2008 Бон Премье Крю Кло де Муш Руж. Жозеф Друэн " desc="" price="15400" photo="/files/menu/1827.jpg"/>
+		<item name="2007 Кло де Лямбре Гран Крю.Домен де Лямбре " desc="" price="23070" photo="/files/menu/1828.jpg"/>
+		<item name="2004 Вон-Романе Жак Каше " desc="" price="10500" photo="/files/menu/1829.jpg"/>
+		<item name="2003 Кло-Вужо Гран Крю Домен Рене Анжель " desc="" price="39900" photo="/files/menu/1830.jpg"/>
+		</menu>
+		<menu name="Бордо">
+		<item name="2007 Кло Марглен.Марго  " desc="" price="7900" photo="/files/menu/1820.jpg"/>
+		<item name="2004 3 де Валандро.Сент-Эмилион Гран Крю " desc="" price="8100" photo="/files/menu/1821.jpg"/>
+		<item name="2006 Шато Фран Майэ Кюве Жан Баптист.Помроль " desc="" price="9900" photo="/files/menu/1822.jpg"/>
+		<item name="2009 Шато д Асьер.Лангедок  " desc="" price="4900" photo="/files/menu/1823.jpg"/>
+		<item name="2004 Шато Лаланд Бори. Сен-Жюльен  " desc="" price="6590" photo="/files/menu/1824.jpg"/>
+		<item name="2009 Кристиан Муэкс. Помроль" desc="" price="5250" photo="/files/menu/2013.jpg"/>
+		<item name="2003 Шато Рамафор. Медок Крю буржуа" desc="" price="5400" photo="/files/menu/2014.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ИТАЛИЯ">
+		<menu name="Абруццо">
+		<item name="2006 Контрогуэрра Ризерва Люмен. Дино Иллюминати " desc="" price="7100" photo="/files/menu/1879.jpg"/>
+		</menu>
+		<menu name="Трентино - Альто Адидже ">
+		<item name="2006 Пино Неро Швайцер.Франц Хаас      " desc="" price="10150" photo="/files/menu/477.jpg"/>
+		</menu>
+		<menu name="Пьемонт ">
+		<item name="2008 Барбера д Альба. Бруно Джакоза " desc="" price="5600" photo="/files/menu/1835.jpg"/>
+		<item name="2007 Барбареско Санто Стефано. Бруно Джакоза " desc="" price="27900" photo="/files/menu/1836.jpg"/>
+		<item name="2006 Барбареско Бернардот Брикко Азили.Черетто " desc="" price="11150" photo="/files/menu/1837.jpg"/>
+		<item name="2001 Барбареско Сори Паолин.Кашина Луизин " desc="" price="9030" photo="/files/menu/1838.jpg"/>
+		<item name="2007 Бароло.Армандо Паруссо " desc="" price="11200" photo="/files/menu/1839.jpg"/>
+		<item name="2004 Бароло Брикко Рокке Брикко Рокке-Черетто " desc="" price="18700" photo="/files/menu/1840.jpg"/>
+		</menu>
+		<menu name="Ломбардия ">
+		<item name="2003 Маурицио Дзанелла. Ка Дель Боско " desc="" price="11500" photo="/files/menu/1841.jpg"/>
+		</menu>
+		<menu name="Фриули - Венеция - Джулия">
+		<item name="2004 Воос дай Чампс-Вие Ди Романс" desc="" price="6300" photo="/files/menu/483.jpg"/>
+		<item name="2004 Фокус. Зук ди Вольпе " desc="" price="6950" photo="/files/menu/1842.jpg"/>
+		</menu>
+		<menu name="Венето ">
+		<item name="2008 Вальполичелла Сант Урбано.Спери " desc="" price="4500" photo="/files/menu/1843.jpg"/>
+		<item name="2009 Рипасса делла Вальполичелла.Дзенато  " desc="" price="4900" photo="/files/menu/1844.jpg"/>
+		<item name="2007 Палаццо Делла Торре.Аллегрини  " desc="" price="4550" photo="/files/menu/1845.jpg"/>
+		<item name="2006 Ла Пойя.Аллегрини " desc="" price="17500" photo="/files/menu/1846.jpg"/>
+		<item name="2007 Амароне делла Вальполичелла Классико. Спери " desc="" price="9500" photo="/files/menu/1847.jpg"/>
+		<item name="2007 Амароне делла Вальполичелла Классико.Аллегрини " desc="" price="13450" photo="/files/menu/1848.jpg"/>
+		</menu>
+		<menu name="Тоскана">
+		<item name="2008 Россо Ди Монтальчино.Сиро Паченти " desc="" price="5950" photo="/files/menu/1849.jpg"/>
+		<item name="2008 Россо Ди Монтальчино. Казанова ди Нери " desc="" price="4900" photo="/files/menu/1850.jpg"/>
+		<item name="2005 Брунелло ди Монтальчино. Сиро Паченти " desc="" price="16600" photo="/files/menu/1851.jpg"/>
+		<item name="2004 Брунелло ди Монтальчино Поджо Ал Оро.Банфи " desc="" price="24500" photo="/files/menu/1852.jpg"/>
+		<item name="2006 Брунелло ди Монтальчино.Пиан делле Вине Антинори" desc="" price="9300" photo="/files/menu/1853.jpg"/>
+		<item name="2004 Вино Нобиле ди Монтепульчано Антика Кьюзина " desc="" price="8990" photo="/files/menu/1854.jpg"/>
+		<item name="2008 Кьянти Классико Ризерва Кастелларе ди Кастеллина " desc="" price="6950" photo="/files/menu/1855.jpg"/>
+		<item name="2007 Кьянти Классико Кастелло ди Ама " desc="" price="6900" photo="/files/menu/1856.jpg"/>
+		<item name="2008 Кьянти Классико Ризерва.Фатория Ниттарди " desc="" price="10900" photo="/files/menu/1857.jpg"/>
+		<item name="2004 Иль Карбонайоне.Подере Поджио Скалетте " desc="" price="7900" photo="/files/menu/1858.jpg"/>
+		<item name="2008 Тиньянелло.Антинори " desc="" price="14500" photo="/files/menu/1859.jpg"/>
+		<item name="2006 Сира Казе Виа.Фонтоди  " desc="" price="6970" photo="/files/menu/1860.jpg"/>
+		<item name="2007 Торрионе.Фаттория Петроло " desc="" price="5300" photo="/files/menu/1862.jpg"/>
+		<item name="2007 Галатрона.Фаттория Петроло " desc="" price="19300" photo="/files/menu/1863.jpg"/>
+		<item name="2009 Ле Дифезе. Тенута Сан Гуидо " desc="" price="4500" photo="/files/menu/1865.jpg"/>
+		<item name="2005 50&amp;amp;50 Капаннелле " desc="" price="20960" photo="/files/menu/1866.jpg"/>
+		<item name="2007 Морморето. Маркези де Фрескобальди " desc="" price="11900" photo="/files/menu/1867.jpg"/>
+		<item name="2006 Тавернелле Каберне совиньон.Кастелло Банфи " desc="" price="6270" photo="/files/menu/1868.jpg"/>
+		<item name="2006 Суммус Сант Антимо.Кастелло Банфи " desc="" price="11200" photo="/files/menu/1869.jpg"/>
+		<item name="2005 Джусто ди Нотри.Туа Рита " desc="" price="10550" photo="/files/menu/1870.jpg"/>
+		<item name="2006 Редигаффи.Туа Рита " desc="" price="26800" photo="/files/menu/1871.jpg"/>
+		<item name="2003 Лупикайя-Кастелло дель Терричио " desc="" price="21900" photo="/files/menu/1872.jpg"/>
+		<item name="2007 Гуадо Аль Тассо  " desc="" price="15400" photo="/files/menu/1873.jpg"/>
+		<item name="2007 Палео Россо. Ле Маккиоле " desc="" price="13950" photo="/files/menu/1874.jpg"/>
+		<item name="2005 Саффреди Маремма.Фаттория Ле Пупилле " desc="" price="15500" photo="/files/menu/1876.jpg"/>
+		<item name="2008 Джорджо Примо. Фаттория ля Масса " desc="" price="13900" photo="/files/menu/1877.jpg"/>
+		<item name="2007 Ле Перголе Торте. Монтевертине " desc="" price="13900" photo="/files/menu/1878.jpg"/>
+		</menu>
+		<menu name="Марке">
+		<item name="2004 Пелаго-Умани Ронки   " desc="" price="6900" photo="/files/menu/506.jpg"/>
+		<item name="2008 Курни-Оази Дельи Анжели " desc="" price="15370" photo="/files/menu/507.jpg"/>
+		</menu>
+		<menu name="Сардиния ">
+		<item name="2005 Туррига,Изола дей Нураги-Арджиолас" desc="" price="10300" photo="/files/menu/509.jpg"/>
+		<item name="2008 Монтессу Агрикола Пуника" desc="" price="4850" photo="/files/menu/510.jpg"/>
+		</menu>
+		<menu name="Сицилия ">
+		<item name="2008 Ламури. Конте Таска д Альмерита " desc="" price="4900" photo="/files/menu/1880.jpg"/>
+		<item name="2004 Дука Энрико.Дука ди Салапарута  " desc="" price="13900" photo="/files/menu/1881.jpg"/>
+		<item name="2006 Ноа. Кузумано  " desc="" price="5950" photo="/files/menu/1882.jpg"/>
+		<item name="2005 Каберне Совиньон.Конте Таска д Альмерита " desc="" price="8730" photo="/files/menu/1883.jpg"/>
+		<item name="2005 Милле э Уна Нотте.Доннафугата " desc="" price="11515" photo="/files/menu/1884.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ИСПАНИЯ">
+		<item name="2006 Маркиз де Муррьета Резерва    " desc="" price="4500" photo="/files/menu/1885.jpg"/>
+		<item name="2004 Далмау Тинто Маркиз де Муррьета " desc="" price="14300" photo="/files/menu/1886.jpg"/>
+		<item name="2001 Эредерос дель Маркес де Рискаль Гран Ресерва " desc="" price="10450" photo="/files/menu/1887.jpg"/>
+		<item name="2006 Винья Педроса Резерва.Эрманос Перес Паскуас " desc="" price="7090" photo="/files/menu/1888.jpg"/>
+		<item name="2004 Кальварио.Финка Альенде " desc="" price="17470" photo="/files/menu/1889.jpg"/>
+		<item name="2004 Кастийо Игай Гран Резерва Эспесьяль " desc="" price="7950" photo="/files/menu/1890.jpg"/>
+		<item name="2004 Вальбуена 5?.Бодегас Вега Сисилия " desc="" price="19300" photo="/files/menu/1891.jpg"/>
+		<item name="1999 Вега Сисилия Унико" desc="" price="53900" photo="/files/menu/1892.jpg"/>
+		<item name="2008 Ла Флор де Пингус " desc="" price="15700" photo="/files/menu/1893.jpg"/>
+		<item name="2006 Пингус " desc="" price="98900" photo="/files/menu/1894.jpg"/>
+		</menu>
+		<menu name="ЧИЛИ ">
+		<item name="2006 Альмавива-Барон Филипп де Ротшильд. Конча и Торо " desc="" price="17100" photo="/files/menu/1903.jpg"/>
+		<item name="2009 Карменер Кольчагуа Вэлли. Винья Арболеда " desc="" price="4500" photo="/files/menu/1904.jpg"/>
+		<item name="2006 Терра Матер Ан южуэл Карменер-Шираз " desc="" price="5700" photo="/files/menu/1905.jpg"/>
+		<item name="2003 Ле Дикс де Лос Васкос.Барон Лафит де Ротшильд  " desc="" price="8300" photo="/files/menu/1906.jpg"/>
+		</menu>
+		<menu name="АРГЕНТИНА">
+		<item name="2007 Мальбек Вердо Финка Лос Ноблес.Луиджи Боска " desc="" price="7680" photo="/files/menu/1908.jpg"/>
+		<item name="2006 Каро.Барон Лафит де Ротшильд  и Николас Катена " desc="" price="14400" photo="/files/menu/1909.jpg"/>
+		<item name="2008 Барда Пино Нуар Патагония - Рио Негро " desc="" price="4900" photo="/files/menu/1910.jpg"/>
+		</menu>
+		<menu name="ЮЖНАЯ АФРИКА">
+		<item name="2007 Барон Эдмонд Руперт &amp;amp; Ротшильд " desc="" price="9100" photo="/files/menu/1912.jpg"/>
+		<item name="2009 Пинотаж. Спайс Рут (Малмсбери) " desc="" price="4900" photo="/files/menu/1913.jpg"/>
+		</menu>
+		<menu name="США">
+		<item name="2007 Нордстар Мерло " desc="" price="6700" photo="/files/menu/1895.jpg"/>
+		<item name="2005 Кол Соларе (Антинори&amp;amp;Шато Сент Мишель) " desc="" price="14900" photo="/files/menu/1896.jpg"/>
+		<item name="2007 Каберне-Совиньон. Стагс Лип Вайн Селларс " desc="" price="14500" photo="/files/menu/1897.jpg"/>
+		<item name="2008 Литтон Спрингз Сонома Каунти.  Ридж Виньярдс " desc="" price="6900" photo="/files/menu/1898.jpg"/>
+		<item name="2005 Каск 23 Каберне Совиньон Стагс Лип Вайн Селларс " desc="" price="26500" photo="/files/menu/1899.jpg"/>
+		<item name="2007 Пино Нуар Фристоун. Джозеф Фелпс " desc="" price="7000" photo="/files/menu/1900.jpg"/>
+		<item name="2006 Инсинья. Джозеф Фелпс " desc="" price="33950 " photo="/files/menu/1901.jpg"/>
+		<item name="2008 Опус Уан " desc="" price="39000" photo="/files/menu/1902.jpg"/>
+		</menu>
+		<menu name="АВСТРАЛИЯ">
+		<item name="2006 Дэд Рингер Каберне Совиньон.Вирра Вирра " desc="" price="9250" photo="/files/menu/539.jpg"/>
+		<item name="2003 Баросса Бейб Шираз.Рокбеа " desc="" price="4500" photo="/files/menu/1914.jpg"/>
+		<item name="2009 Зе Бул энд зе Беа Баросса Вэлли. Ту Хэндз " desc="" price="7700" photo="/files/menu/1915.jpg"/>
+		<item name="2005 Астралис.Кларендон Хилз " desc="" price="46900" photo="/files/menu/1916.jpg"/>
+		</menu>
+		<menu name="НОВАЯ ЗЕЛАНДИЯ ">
+		<item name="2006 Колерайн.Те Мата " desc="" price="6970" photo="/files/menu/1917.jpg"/>
+		<item name="2008 Пино нуар Мальборо.Кло Энри " desc="" price="6650" photo="/files/menu/1918.jpg"/>
+		</menu>
+		<item name="" desc="" price="" photo="/files/menu/353.jpg"/>
+		</menu>
+		<menu name="РОЗОВЫЕ ВИНА  750 МЛ ">
+		<item name="2009 Сансер Конт Лафон  Розе.Де Лядусетт  " desc="" price="5150" photo="/files/menu/1817.jpg"/>
+		<item name="2010 Тавель Боревуар .М.Шапутье " desc="" price="4900" photo="/files/menu/1818.jpg"/>
+		<item name="2010 Миссис Уигли Розе " desc="" price="4900" photo="/files/menu/1819.jpg"/>
+		<item name="2010 Домен Отт &amp;quot;Кло Мирей&amp;quot; Розе " desc="" price="6950" photo="/files/menu/2216.jpg"/>
+		</menu>
+		<menu name="МАГНУМ">
+		<menu name="ШАМПАНСКОЕ 1,5 Л">
+		<item name="Луи Родерер Брют Премьер " desc="" price="19500" photo="/files/menu/1919.jpg"/>
+		<item name="2004 Кристаль Луи Родерер   " desc="" price="85000" photo="/files/menu/1920.jpg"/>
+		</menu>
+		<menu name="БЕЛЫЕ ВИНА  1,5 Л ">
+		<item name="2009 Гави Дей Гави Черная Этикетка .Ла Сколка " desc="" price="15990" photo="/files/menu/1921.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ВЕЛИКИЕ ВИНА ФРАНЦИИ">
+		<menu name="СОТЕРН">
+		<item name="1999 Шато д Икем Сотерн Премье Гран Крю" desc="" price="65000" photo="/files/menu/1950.jpg"/>
+		</menu>
+		<menu name="ПЕССАК-ЛЕОНЬЯН-ГРАВ">
+		<item name="2004 Шато Пап Клеман Гран Крю Классе" desc="" price="21400" photo="/files/menu/1951.jpg"/>
+		<item name="2000 Шато О Брион (Блан) Премье Гран Крю Классе" desc="" price="96000" photo="/files/menu/1952.jpg"/>
+		</menu>
+		<menu name="О-МЕДОК">
+		<item name="2004 Шато Ля Лагун 3-й Гран Крю" desc="" price="46200 " photo="/files/menu/1953.jpg"/>
+		<item name="1990 Шато Марго Премье Гран Крю" desc="" price="255000" photo="/files/menu/1954.jpg"/>
+		</menu>
+		<menu name="ПОЙЯК">
+		<item name="2006 Шато Линч Баж 5-й Гран Крю" desc="" price="30600" photo="/files/menu/1955.jpg"/>
+		</menu>
+		<menu name="СЕНТ-ЭСТЕФ">
+		<item name="1999 Шато Кос д Эстурнель 2-й Гран Крю" desc="" price="29600" photo="/files/menu/1956.jpg"/>
+		</menu>
+		<menu name="СЕНТ-ЭМИЛИОН ">
+		<item name="2002 Шато Фижак Премье Гран Крю Б" desc="" price="29800" photo="/files/menu/1957.jpg"/>
+		</menu>
+		<menu name="ПОМРОЛЬ">
+		<item name="1998 Шато Ле Пин" desc="" price="170100" photo="/files/menu/1958.jpg"/>
+		<item name="1996 Шато Ла Флер Де Гэ" desc="" price="29100" photo="/files/menu/1959.jpg"/>
+		</menu>
+		<menu name="ПРОВАНС ">
+		<item name="2010 Домен Отт &amp;quot;Кло Мирей&amp;quot; Блан де блан " desc="" price="6950" photo="/files/menu/2217.jpg"/>
+		</menu>
+		</menu>
+		<menu name="ВЕЛИКИЕ ВИНА ИТАЛИИ">
+		<item name="2006 Солайя. Антинори" desc="" price="42500" photo="/files/menu/1960.jpg"/>
+		<item name="2008 Сассикайя. Тенута Сан Гуидо" desc="" price="39500" photo="/files/menu/1961.jpg"/>
+		<item name="2000 Массето. Тенута дель Орнелайя" desc="" price="97500" photo="/files/menu/1962.jpg"/>
+		</menu>
+	</menu>
+	<menu name="СИГАРИЛЛЫ И КАЛЬЯНЫ">
+		<menu name="СИГАРИЛЛЫ">
+		<item name="Давидоф Экскьюзитос " desc="" price="5100" photo="/files/menu/1963.jpg"/>
+		<item name="Фиттипальди Валентина " desc="" price="1900" photo="/files/menu/1964.jpg"/>
+		</menu>
+		<menu name="КАЛЬЯНЫ">
+		<item name="Лайт" desc="" price="1500" photo="/files/menu/1006.jpg"/>
+		<item name="Гейша - виноград со сливой на виноградном соке" desc="" price="2000" photo="/files/menu/1007.jpg"/>
+		<item name="Синяя фея - микс из сливы, арбуза и дыни на ликёре Блю Курасао" desc="" price="2500" photo="/files/menu/1008.jpg"/>
+		<item name="Шато - микс различных табаков на десертном вине" desc="" price="2500" photo="/files/menu/1009.jpg"/>
+		<item name="Пинки - вишня, клубника, виноград на молоке с клубничным сиропом" desc="" price="2000" photo="/files/menu/1010.jpg"/>
+		<item name="Зелёная фея - апельсин, лимон, вишня на абсенте с лимонным соком" desc="" price="3000" photo="/files/menu/1011.jpg"/>
+		<item name="Фреш -  апельсин, лимон и мята в апельсине на лимонном фреше" desc="" price="3000" photo="/files/menu/1012.jpg"/>
+		<item name="Дыня - чаша из свежей дыни, с миксом из различных табаков" desc="" price="3500" photo="/files/menu/1013.jpg"/>
+		<item name="Мохитос - лимонный и апельсиновый табак с мятой на роме" desc="" price="3000" photo="/files/menu/1014.jpg"/>
+		<item name="Кофейный смок - кофейный табак в чаше из яблока и эспрессо" desc="" price="2500" photo="/files/menu/1015.jpg"/>
+		<item name="Айриш крем - чаша из дыни со сладким миксом на ликёре Бейлис" desc="" price="3500" photo="/files/menu/1016.jpg"/>
+		<item name="Дикая вишня - вишневый и виноградный табак в свежем яблоке, на ликёре из итальянской вишни сорта Мараскино" desc="" price="3500" photo="/files/menu/1017.jpg"/>
+		<item name="Maniana - микс лимонного, яблочного и ананасового табака в свежем ананасе на роме с лаймом и мятой " desc="" price="4000" photo="/files/menu/1018.jpg"/>
+		<item name="SOHO - аромат ананаса, вишни, клубники и яблока на ликере Soно" desc="" price="4500" photo="/files/menu/1019.jpg"/>
+		</menu>
+		<menu name="СИГАРЕТНЫЕ НАБОРЫ">
+		<item name="Парламент Резерв Супер Слимс 100" desc="" price="150" photo="/files/menu/1051.jpg"/>
+		<item name="Парламент Резерв Супер Слимс" desc="" price="150" photo="/files/menu/1052.jpg"/>
+		<item name="Парламент Найт Блю" desc="" price="150" photo="/files/menu/1053.jpg"/>
+		<item name="Парламент Аква Блю" desc="" price="150" photo="/files/menu/1054.jpg"/>
+		<item name="Парламент Силвер Блю" desc="" price="150" photo="/files/menu/1055.jpg"/>
+		<item name="Парламент Платинум Блю" desc="" price="150" photo="/files/menu/1056.jpg"/>
+		<item name="Парламент Супер Слимс" desc="" price="150" photo="/files/menu/1057.jpg"/>
+		<item name="Ив Супер Слимс Ред" desc="" price="150" photo="/files/menu/1059.jpg"/>
+		<item name="Ив Супер Слимс Минт" desc="" price="150" photo="/files/menu/1060.jpg"/>
+		<item name="Ив Супер Слимс Блю" desc="" price="150" photo="/files/menu/1061.jpg"/>
+		<item name="Ив Слимс" desc="" price="150" photo="/files/menu/1066.jpg"/>
+		<item name="Мальборо Фильтр Плюс" desc="" price="150" photo="/files/menu/1068.jpg"/>
+		<item name="Мальборо Голд Тач" desc="" price="150" photo="/files/menu/1069.jpg"/>
+		<item name="Мальборо Голд Файн Тач" desc="" price="150" photo="/files/menu/1073.jpg"/>
+		<item name="Мальборо Голд Эдж" desc="" price="150" photo="/files/menu/1074.jpg"/>
+		<item name="Мальборо Флейвор " desc="" price="150" photo="/files/menu/1530.jpg"/>
+		<item name="Мальборо Лайтс" desc="" price="150" photo="/files/menu/1531.jpg"/>
+		<item name="Мальборо Айс Буст" desc="" price="150" photo="/files/menu/1532.jpg"/>
+		<item name="Вирджиния С.Фуксия" desc="" price="150" photo="/files/menu/1533.jpg"/>
+		<item name="Вирджиния С.Фиолетовая" desc="" price="150" photo="/files/menu/1534.jpg"/>
+		<item name="Вирджиния С.Зелёная" desc="" price="150" photo="/files/menu/1535.jpg"/>
+		</menu>
+		<menu name="СИГАРЫ">
+		<item name="Коиба Робусто" desc="" price="2450" photo="/files/menu/1078.jpg"/>
+		<item name="Коиба Сигло №2" desc="" price="1800" photo="/files/menu/1079.jpg"/>
+		<item name="Коиба Сигло №3" desc="" price="2100" photo="/files/menu/1080.jpg"/>
+		<item name="Коиба Мадуро 5" desc="" price="3300" photo="/files/menu/1082.jpg"/>
+		<item name="Коиба Беике 54 " desc="" price="5500" photo="/files/menu/1599.jpg"/>
+		<item name="Тринидад Рабусто Т " desc="" price="2400" photo="/files/menu/1600.jpg"/>
+		<item name="Монтекристо ОУПЕН " desc="" price="1800" photo="/files/menu/1601.jpg"/>
+		<item name="Монтекристо №2 " desc="" price="1900" photo="/files/menu/1602.jpg"/>
+		<item name="Партагас  Эдишн Лимитада 2010" desc="" price="2100" photo="/files/menu/1603.jpg"/>
+		<item name="Партагас Д №4 " desc="" price="1800" photo="/files/menu/1604.jpg"/>
+		<item name="Ромео и Джульетта Черчилль " desc="" price="2100" photo="/files/menu/1605.jpg"/>
+		<item name="Ромео и Джульетта Шот Черчиль " desc="" price="1900" photo="/files/menu/1606.jpg"/>
+		<item name="Артуро Фуенте Опус Икс " desc="" price="6600" photo="/files/menu/1607.jpg"/>
+		<item name="Куэста-Рей  Пирамид №9" desc="" price="2350" photo="/files/menu/1608.jpg"/>
+		<item name="Зино Платинум Гранд Мастер " desc="" price="4050" photo="/files/menu/1609.jpg"/>
+		<item name="Лаура Шавин №11 " desc="" price="1800" photo="/files/menu/1610.jpg"/>
+		<item name="Лаура Шавин  VI Гран Пирамид " desc="" price="3690" photo="/files/menu/1611.jpg"/>
+		<item name="Маканудо Винтаж 2000" desc="" price="3970" photo="/files/menu/1612.jpg"/>
+		<item name="Гурка Роял Салют Торпедо " desc="" price="8400" photo="/files/menu/1613.jpg"/>
+		<item name="Падрон 1964 " desc="" price="3800" photo="/files/menu/1614.jpg"/>
+		</menu>
+	</menu>
+	<menu name="ЗАВТРАКИ">
+		<menu name="ЗАВТРАКИ (Весь день)">
+		<item name="Овсяная каша со свежими ягодами" desc="" price="250" photo="/files/menu/1158.jpg"/>
+		<item name="Сырники творожные со сметаной и ягодным соусом" desc="" price="250" photo="/files/menu/1159.jpg"/>
+		<item name="Яйца Бенедикт - яйца пашот, канадский бекон, копченый лосось голландский соус, на горячей английской булке" desc="" price="300" photo="/files/menu/1161.jpg"/>
+		<item name="Омлет с копченым лососем, зеленью и сыром Филадельфия" desc="" price="300" photo="/files/menu/1162.jpg"/>
+		<item name="Омлет из четырёх яиц с тремя ингредиентами на Ваш выбор: копчёный лосось, копчёная курица, ветчина, свежие помидоры, маслины, болгарский перец, оливки, вяленые томаты, шпинат, козий сыр, сыр Гауда или моцарелла" desc="" price="400" photo="/files/menu/1163.jpg"/>
+		<item name="Свежие ягоды с йогуртом" desc="" price="250" photo="/files/menu/1164.jpg"/>
+		<item name="Хрустящие хлопья с легким йогуртом и ягодным кули" desc="" price="300" photo="/files/menu/1165.jpg"/>
+		<item name="Сет из мини-бургеров: с мраморной  говядиной и сыром Томино, с бараниной и йогуртом соусом с травами, с курицей карри и лимонным соусом. Подается с картофелем фри" desc="" price="650" photo="/files/menu/1536.jpg"/>
+		<item name="Традиционный французский сэндвич с ветчиной, нежным сырос Грюйер, дижонской горчицей и корнишонами" desc="" price="500" photo="/files/menu/1537.jpg"/>
+		</menu>
+	</menu>
+	<menu name="ФУРШЕТНОЕ МЕНЮ">
+		<menu name="ЗАКУСКИ">
+		<item name="Блинчики из рисовой муки с уткой, огурцом, зеленым луком и соусом хойсан" desc="" price="120" photo="/files/menu/1483.jpg"/>
+		<item name="Мини-оладьи с лососем и сыром Филадельфия" desc="" price="120" photo="/files/menu/1484.jpg"/>
+		<item name="Вяленые томаты с сыром Рикотта и соусом Песто" desc="" price="120" photo="/files/menu/1485.jpg"/>
+		<item name="Козий сыр с фисташками и виноградом" desc="" price="120" photo="/files/menu/1486.jpg"/>
+		<item name="Пармская ветчина с дыней" desc="" price="120" photo="/files/menu/1487.jpg"/>
+		<item name="Роллы из рисовой бумаги с овощами и тунцом с азиатским соусом" desc="" price="120" photo="/files/menu/1488.jpg"/>
+		<item name="Роллы из рисовой бумаги с овощами и лососем с азиатским соусом" desc="" price="120" photo="/files/menu/1489.jpg"/>
+		<item name="Карпаччо из мраморной говядины со сладкой горчицей, пармезаном и каперсами" desc="" price="120" photo="/files/menu/1490.jpg"/>
+		<item name="Мини-сендвич с ветчиной, сыром и перепелинным яйцом" desc="" price="120" photo="/files/menu/1491.jpg"/>
+		<item name="Тарталетка с салатом Цезарь" desc="" price="120" photo="/files/menu/1492.jpg"/>
+		<item name="Сладкая тигровая креветка с зеленым стручковым горошком и соусом из манго" desc="" price="120" photo="/files/menu/1493.jpg"/>
+		<item name="Мини-моцарелла с томатами черри, базиликом и соусом песто" desc="" price="120" photo="/files/menu/1494.jpg"/>
+		<item name="Лосось маринованный с укропом, на черном хлебе с соусом из дижонской горчицы" desc="" price="120" photo="/files/menu/1495.jpg"/>
+		<item name="Брускетта с томатами, базиликом и кедровыми орешками" desc="" price="120" photo="/files/menu/1496.jpg"/>
+		<item name="Маринованные артишоки-гриль с лимоном и тимьяном" desc="" price="120" photo="/files/menu/1497.jpg"/>
+		<item name="Овощные дипсы из огурца, моркови и сельдерея с соусом Тартар" desc="" price="120" photo="/files/menu/1522.jpg"/>
+		<item name="Белые грибы со сметаной, зеленым луком и сыром Гауда в корзиночке из слоеного теста" desc="" price="120" photo="/files/menu/1523.jpg"/>
+		<item name="Мини-чизбургер" desc="" price="120" photo="/files/menu/1524.jpg"/>
+		<item name="Филе тунца с манго, листьями салата и спайси - майонезом" desc="" price="120" photo="/files/menu/1525.jpg"/>
+		<item name="Сыр Фета с фенхелем, огурцом, мятой и красными оливками" desc="" price="120" photo="/files/menu/1526.jpg"/>
+		<item name="Томаты Черри с крабом и соусом Тартар" desc="" price="120" photo="/files/menu/1527.jpg"/>
+		</menu>
+		<menu name="ГОРЯЧИЕ ЗАКУСКИ">
+		<item name="Брошет из лосося с соусом манго-чили" desc="" price="150" photo="/files/menu/1498.jpg"/>
+		<item name="Брошет из куриного филе с ананасом в соусе Терияки" desc="" price="150" photo="/files/menu/1499.jpg"/>
+		<item name="Брошет из курицы с соусом манго-чили" desc="" price="150" photo="/files/menu/1500.jpg"/>
+		<item name="Люля-кебаб из баранины с острым соусом из свежих томатов" desc="" price="150" photo="/files/menu/1501.jpg"/>
+		<item name="Люля-кебаб из баранины тандори с йогуртовым соусом" desc="" price="150" photo="/files/menu/1502.jpg"/>
+		<item name="Гребешки на гриле с острым майонезом и красной икрой летучей рыбы" desc="" price="150" photo="/files/menu/1503.jpg"/>
+		<item name="Куриный кейк с айоли из авокадо и томатной сальсой" desc="" price="150" photo="/files/menu/1504.jpg"/>
+		<item name="Темпура из овощей с соевым соусом" desc="" price="150" photo="/files/menu/1505.jpg"/>
+		<item name="Черная треска с соусом Мисо" desc="" price="150" photo="/files/menu/1506.jpg"/>
+		<item name="Тигровая креветка в кокосовом соусе с шафраном" desc="" price="150" photo="/files/menu/1507.jpg"/>
+		<item name="Хрустящие королевские креветки с имбирем и кориандром с соусом манго-чили" desc="" price="150" photo="/files/menu/1508.jpg"/>
+		</menu>
+		<menu name="МИНИ-ДЕСЕРТЫ">
+		<item name="Мини-тарталетка с заварным кремом и ежевикой" desc="" price="150" photo="/files/menu/1509.jpg"/>
+		<item name="Мини-тарталетка с заварным кремом и малиной" desc="" price="150" photo="/files/menu/1510.jpg"/>
+		<item name="Профитроли с заварным кремом со вкусами ванили, маракуйи и шоколада" desc="" price="150" photo="/files/menu/1511.jpg"/>
+		<item name="Мини-тарталетка с меренгой и лимоным кремом" desc="" price="150" photo="/files/menu/1512.jpg"/>
+		<item name="Птичье молоко в шоколадной глазури" desc="" price="150" photo="/files/menu/1513.jpg"/>
+		<item name="Сладкая клубника в белом и горьком шоколаде" desc="" price="150" photo="/files/menu/1514.jpg"/>
+		<item name="Ассорти шоколадных конфет и мармелада ручной работы" desc="" price="150" photo="/files/menu/1515.jpg"/>
+		<item name="Крем-брюле" desc="" price="150" photo="/files/menu/1516.jpg"/>
+		<item name="Микс из фруктов на шпажке: клубника, виноград, ананас, киви" desc="" price="150" photo="/files/menu/1517.jpg"/>
+		<item name="Желе из маракуйи, банана, красного грейпфрута и апельсина с соусом из манго" desc="" price="150" photo="/files/menu/1518.jpg"/>
+		<item name="Панна кота с соусом из лесных ягод и свежей малиной" desc="" price="150" photo="/files/menu/1519.jpg"/>
+		<item name="Тирамису" desc="" price="150" photo="/files/menu/1520.jpg"/>
+		<item name="Желе из шампанского с клубникой" desc="" price="150" photo="/files/menu/1521.jpg"/>
+		</menu>
+	</menu>
+</menu>

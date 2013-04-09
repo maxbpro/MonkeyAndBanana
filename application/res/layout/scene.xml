@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:background="@drawable/scene_background">
+
+ <LinearLayout android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center_horizontal">
+    <maxb.pro.Views.FieldView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/field"/>
+    <RelativeLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:id="@+id/panel"
+            android:background="@android:color/black">
+        <ScrollView android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scene_scroll">
+            <RelativeLayout android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+              <ImageView android:layout_width="80dp"
+                   android:layout_height="80dp"
+                   android:src="@drawable/timer"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_clock_pic"/>
+              <ImageView android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/star"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_scores_pic"
+                   android:layout_below="@id/scene_clock_pic"
+                   android:layout_margin="5dp"/>
+              <ImageView android:layout_width="50dp"
+                   android:layout_height="50dp"
+                   android:src="@drawable/banana"
+                   android:layout_alignParentRight="true"
+                   android:id="@+id/scene_bananas_pic"
+                   android:layout_below="@id/scene_scores_pic"
+                   android:layout_margin="5dp"/>
+              <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_time"
+                  style="@style/timeTextStyle"
+                  android:text="@string/start_time"
+                  android:layout_toLeftOf="@id/scene_clock_pic"
+                  android:layout_alignTop="@id/scene_clock_pic"/>
+              <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_scores"
+                  style="@style/smallTextView"
+                  android:layout_toLeftOf="@id/scene_scores_pic"
+                  android:layout_alignBottom="@id/scene_scores_pic"/>
+              <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scene_bananas"
+                  style="@style/smallTextView"
+                  android:layout_toLeftOf="@id/scene_bananas_pic"
+                  android:layout_alignBottom="@id/scene_bananas_pic"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Hello? my friends"
+                          android:layout_below="@id/scene_bananas"
+                          android:layout_centerHorizontal="true"
+                          android:textSize="14sp"
+                          android:id="@+id/scene_text"/>
+                <Gallery android:layout_width="fill_parent"
+                         android:layout_height="50dp"
+                         android:layout_below="@id/scene_text"
+                         android:id="@+id/scene_gallery_activated"/>
+            </RelativeLayout>
+        </ScrollView>
+        <maxb.pro.Views.IndicatorView android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:id="@+id/indicator"
+               android:background="@android:color/white"/>
+    </RelativeLayout>
+</LinearLayout>
+</FrameLayout>

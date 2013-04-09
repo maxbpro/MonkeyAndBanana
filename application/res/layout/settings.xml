@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:mb="http://schemas.android.com/apk/res/maxb.pro.app"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:padding="10dp"
+              android:background="@drawable/main_background">
+        <maxb.pro.Views.myButton android:layout_height="100dp"
+                           android:layout_width="100dp"
+                           android:layout_alignParentBottom="true"
+                           mb:image="@drawable/back"
+                android:id="@+id/settings_back"
+                mb:animMode="LEFT"/>
+        <ScrollView android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/settings_back"
+                    android:layout_centerInParent="true">
+           <TableLayout android:layout_height="wrap_content"
+                      android:layout_width="400dp"
+                android:stretchColumns="*">
+               <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                   <TextView android:text="@string/music"
+                          android:layout_gravity="center"/>
+                   <CheckBox android:id="@+id/music_check"
+                          android:checked="true"/>
+               </TableRow>
+               <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                   <TextView android:text="@string/sounds"
+                          android:layout_gravity="center"/>
+                   <CheckBox android:id="@+id/sounds_check"
+                          android:checked="true"/>
+               </TableRow>
+               <TableRow android:layout_height="80dp"
+                      android:layout_width="fill_parent" >
+                   <TextView android:text="@string/vibration"
+                          android:layout_gravity="center"/>
+                   <CheckBox android:id="@+id/vibro_check"
+                          android:checked="true"/>
+               </TableRow>
+           </TableLayout>
+        </ScrollView>
+</RelativeLayout>

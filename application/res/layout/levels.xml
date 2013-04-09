@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:mb="http://schemas.android.com/apk/res/maxb.pro.app"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="10dp"
+        android:background="@drawable/modes_background">
+    <maxb.pro.app.Views.myButton android:layout_height="100dp"
+                       android:layout_width="100dp"
+                       android:layout_alignParentBottom="true"
+                       mb:image="@drawable/back"
+                       android:id="@+id/levels_back"
+                       mb:animMode="LEFT"/>
+    <GridView android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_above="@id/levels_back"
+              android:paddingBottom="15dp"
+              android:paddingTop="30dp"
+              android:paddingLeft="30dp"
+              android:paddingRight="30dp"
+              android:id="@+id/levelsGrid"
+              android:numColumns="auto_fit"
+              android:columnWidth="150dp"/>
+</RelativeLayout>
